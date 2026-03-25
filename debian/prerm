@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+systemctl stop big-parental-daemon.service || true
+systemctl disable big-parental-daemon.service || true
+
+exit 0

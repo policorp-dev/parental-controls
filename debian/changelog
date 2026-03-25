@@ -1,0 +1,11 @@
+big-parental-controls (1.0.1) stable; urgency=medium
+
+  * Resolvendo problema de informações de configuração de usuário.
+
+ -- Carlos Eduardo Obristo <carlos.eduardo@biglinux.com.br>  Wed, 25 Mar 2026 12:17:00 -0300
+
+big-parental-controls (1.0) unstable; urgency=medium
+
+  * Initial release (converted from PKGBUILD)
+
+ -- BigLinux <dev@biglinux.com.br>  Mon, 23 Mar 2026 10:00:00 -0300

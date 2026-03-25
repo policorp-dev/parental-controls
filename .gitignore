@@ -1,0 +1,8 @@
+big-age-signal/target/
+big-parental-controls/usr/
+debian/.debhelper/
+debian/big-parental-controls/
+debian/*.debhelper
+debian/*.substvars
+debian/debhelper-build-stamp
+debian/files

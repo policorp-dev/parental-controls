@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+export PATH := $(HOME)/.cargo/bin:$(PATH)
+%:
+	dh $@
+
+override_dh_auto_build:
+	which rustc
+	rustc --version
+	cd big-age-signal && cargo build --release
+
+override_dh_auto_install:
+	# binário Rust
+	install -Dm755 big-age-signal/target/release/big-parental-daemon \
+		debian/big-parental-controls/usr/lib/big-parental-controls/big-parental-daemon
+	cp -r big-parental-controls/usr debian/big-parental-controls/
+	mkdir -p debian/big-parental-controls/usr/lib/python3/dist-packages/
+	cp -r src/big_parental_controls \
+		debian/big-parental-controls/usr/lib/python3/dist-packages/

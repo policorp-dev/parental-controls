@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# criar grupo supervisionado
+getent group supervised >/dev/null || groupadd -r supervised
+
+# garantir diretório
+mkdir -p /var/lib/big-parental-controls
+chmod 700 /var/lib/big-parental-controls
+
+# ativar serviço
+systemctl daemon-reexec || true
+systemctl enable big-parental-daemon.service || true
+systemctl start big-parental-daemon.service || true
+
+exit 0

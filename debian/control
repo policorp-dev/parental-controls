@@ -1,0 +1,20 @@
+Source: big-parental-controls
+Section: admin
+Priority: optional
+Maintainer: BigLinux Team <dev@biglinux.com.br>
+Build-Depends: debhelper-compat (= 13), cargo, rustc
+Standards-Version: 4.6.0
+
+Package: big-parental-controls
+Architecture: amd64
+Depends: 
+ python3,
+ python3-gi,
+ libgtk-4-1,
+ libadwaita-1-0,
+ libmalcontent-0-0,
+ accountsservice,
+ polkitd,
+ acl
+Description: BigLinux parental control system (ECA Digital)
+ System-level parental control using ACL, PAM and systemd.

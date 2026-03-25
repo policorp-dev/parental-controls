@@ -1,0 +1,9 @@
+[Unit]
+Description=Big Parental Controls Daemon
+
+[Service]
+ExecStart=/usr/lib/big-parental-controls/big-parental-daemon
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
