@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Resolve the real location of this script (follows symlinks)
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+
+# Check for development source tree (relative to script or repo root)
+DEV_SRC=""
+for candidate in \
+    "$SCRIPT_DIR/../../../src" \
+    "$SCRIPT_DIR/../../../../src"; do
+    if [[ -f "$candidate/big_parental_controls/__main__.py" ]]; then
+        DEV_SRC="$(cd "$candidate" && pwd)"
+        break
+    fi
+done
+
+if [[ -n "$DEV_SRC" ]]; then
+    # Development mode — prioritise local source
+    export PYTHONPATH="$DEV_SRC${PYTHONPATH:+:$PYTHONPATH}"
+    exec python3 -m big_parental_controls "$@"
+fi
+
+# Installed mode — let Python find the package via its normal sys.path
+exec python3 -m big_parental_controls "$@"
