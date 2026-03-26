@@ -1,3 +1,9 @@
+parental-controls (1.0.2) stable; urgency=medium
+
+  * Validar username
+
+ -- Vinicius Neves <vinicius.neves@policorp.com.br>  Fri, 27 Mar 2026 09:37:20 -0300
+
 parental-controls (1.0.1) stable; urgency=medium
 
   * Resolvendo problema de informações de configuração de usuário.

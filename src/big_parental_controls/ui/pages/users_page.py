@@ -2,6 +2,7 @@
 
 import subprocess
 import gi
+import re
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -177,12 +178,29 @@ class UsersPage(Gtk.Box):
         mirror = [True]
         fullname_hid: list[int | None] = [None]
 
+        def _is_valid(row: Adw.EntryRow) -> None:
+            """
+            Verifica se o texto:
+            - começa com letra
+            - contem apenas letras sem acento, numeros, _ ou -
+            """
+
+            pattern = r'^[A-Za-z][A-Za-z0-9_-]*$'
+            row_is_valid = bool(re.match(pattern, row.get_text()))
+            dialog.set_response_enabled("create", row_is_valid)
+            if row_is_valid:
+                row.remove_css_class("error")
+                return True
+            else:
+                row.add_css_class("error")
+                return False
+
         def _validate(*_args: object) -> None:
             uname = username_row.get_text().strip()
             pwd = password_row.get_text()
             conf = confirm_row.get_text()
             ok = bool(uname) and bool(pwd) and pwd == conf
-            dialog.set_response_enabled("create", ok)
+            dialog.set_response_enabled("create", _is_valid(username_row) and ok)
             if pwd and conf and pwd != conf:
                 confirm_row.add_css_class("error")
             else:
