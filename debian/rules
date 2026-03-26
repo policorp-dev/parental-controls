@@ -11,8 +11,8 @@ override_dh_auto_build:
 override_dh_auto_install:
 	# binário Rust
 	install -Dm755 big-age-signal/target/release/big-parental-daemon \
-		debian/big-parental-controls/usr/lib/big-parental-controls/big-parental-daemon
-	cp -r big-parental-controls/usr debian/big-parental-controls/
-	mkdir -p debian/big-parental-controls/usr/lib/python3/dist-packages/
+		debian/parental-controls/usr/lib/big-parental-controls/big-parental-daemon
+	cp -r big-parental-controls/usr debian/parental-controls/
+	mkdir -p debian/parental-controls/usr/lib/python3/dist-packages/
 	cp -r src/big_parental_controls \
-		debian/big-parental-controls/usr/lib/python3/dist-packages/
+		debian/parental-controls/usr/lib/python3/dist-packages/
