@@ -14,6 +14,7 @@ Comment[fr]=Gérer les comptes supervisés et les contrôles parentaux
 Comment[de]=Beaufsichtigte Konten und Kindersicherung verwalten
 Exec=big-parental-controls
 Icon=big-parental-controls
+StartupWMClass=br.com.biglinux.ParentalControls
 Categories=Settings;System;
 Keywords=parental;control;family;children;kids;supervised;safety;
 Keywords[pt]=parental;controle;familia;criancas;supervisionado;seguranca;
