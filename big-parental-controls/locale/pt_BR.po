@@ -799,7 +799,6 @@ msgstr "Acesso a Aplicativos"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
 #: src/big_parental_controls/ui/pages/user_detail_page.py:337
-#, fuzzy
 msgid "Manage Allowed Apps"
 msgstr "Aplicativos Permitidos"
 
