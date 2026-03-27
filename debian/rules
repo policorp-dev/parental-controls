@@ -4,9 +4,11 @@ export PATH := $(HOME)/.cargo/bin:$(PATH)
 	dh $@
 
 override_dh_auto_build:
+	./update_translations.sh
 	which rustc
 	rustc --version
 	cd big-age-signal && cargo build --release
+
 
 override_dh_auto_install:
 	# binário Rust
