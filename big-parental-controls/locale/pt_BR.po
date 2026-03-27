@@ -224,7 +224,7 @@ msgstr ""
 
 #: src/big_parental_controls/ui/pages/app_filter_page.py:78
 msgid "Filter apps…"
-msgstr ""
+msgstr "Filtrar aplicativos..."
 
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
