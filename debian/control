@@ -15,7 +15,8 @@ Depends:
  libmalcontent-0-0,
  accountsservice,
  polkitd,
- acl
+ acl,
+ malcontent
 Description: Parental control system (ECA Digital)
  System-level parental control using ACL, PAM and systemd.
  This package, controls-parental, is a fork of the original 
