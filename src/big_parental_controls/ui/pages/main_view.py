@@ -14,9 +14,9 @@ from big_parental_controls.utils.i18n import setup_i18n
 _ = setup_i18n()
 
 SUPPORT_LINKS = [
-    ("CVV 188", _("Emotional support, 24h"), "188"),
-    ("SaferNet", _("Online safety for children"), "https://www.safernet.org.br"),
-    ("Disque 100", _("Human rights violations"), "100"),
+    ("CVV 188", _("Emotional support, 24h"), "188", "call-start-symbolic"),
+    ("SaferNet", _("Online safety for children"), "https://www.safernet.org.br", "security-high-symbolic"),
+    ("Disque 100", _("Human rights violations"), "100", "dialog-warning-symbolic"),
 ]
 
 
@@ -90,17 +90,26 @@ class MainView(Gtk.Box):
         add_btn.connect("clicked", self._on_add_user)
         inner.append(add_btn)
 
-        # Help group
+        # Help and Support Expander
         help_group = Adw.PreferencesGroup()
-        help_group.set_title(_("Help and Support"))
-        for name, desc, contact in SUPPORT_LINKS:
+        help_expander = Adw.ExpanderRow()
+        help_expander.set_title(_("Help and Support"))
+        help_expander.set_icon_name("help-browser-symbolic")
+
+        for name, desc, contact, icon_name in SUPPORT_LINKS:
             row = Adw.ActionRow()
             row.set_title(name)
             row.set_subtitle(desc)
+            
+            prefix_icon = Gtk.Image(icon_name=icon_name)
+            row.add_prefix(prefix_icon)
+            
             suffix = Gtk.Label(label=contact)
             suffix.add_css_class("dim-label")
             row.add_suffix(suffix)
-            help_group.add(row)
+            help_expander.add_row(row)
+
+        help_group.add(help_expander)
         inner.append(help_group)
 
         # Legal framework group
@@ -181,7 +190,6 @@ class MainView(Gtk.Box):
     def _build_legal_group(self) -> Adw.PreferencesGroup:
         """Legal framework references (ECA, LGPD, GDPR, UK Code, DSA)."""
         group = Adw.PreferencesGroup()
-        group.set_title(_("Legal Framework"))
 
         laws = [
             (
@@ -231,10 +239,16 @@ class MainView(Gtk.Box):
             ),
         ]
 
+        legal_expander = Adw.ExpanderRow()
+        legal_expander.set_title(_("Legal Framework"))
+        legal_expander.set_icon_name("emblem-system-symbolic")
+
         for title, subtitle in laws:
             row = Adw.ActionRow()
             row.set_title(title)
             row.set_subtitle(subtitle)
-            group.add(row)
+            legal_expander.add_row(row)
+
+        group.add(legal_expander)
 
         return group
