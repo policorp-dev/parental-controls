@@ -58,31 +58,39 @@ class UsersPage(Gtk.Box):
         clamp = Adw.Clamp()
         clamp.set_maximum_size(600)
 
-        inner = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
-        inner.set_margin_top(24)
-        inner.set_margin_bottom(24)
-        inner.set_margin_start(24)
-        inner.set_margin_end(24)
+        self._main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
+        self._main_box.set_margin_top(24)
+        self._main_box.set_margin_bottom(24)
+        self._main_box.set_margin_start(24)
+        self._main_box.set_margin_end(24)
 
-        # Prominent create button — visible and clear for all users
+        # Bottom section: StatusPage for empty state (initially hidden)
+        self._status_page = Adw.StatusPage()
+        self._status_page.set_icon_name("system-users-symbolic")
+        # Usando texto original encontrado no sistema
+        self._status_page.set_title(_("No supervised users yet"))
+        self._status_page.set_description(
+            _("Create a supervised account to get started.")
+        )
+        self._status_page.set_visible(False)
+        self._main_box.append(self._status_page)
+
+        # Top section: Create button
         create_group = Adw.PreferencesGroup()
         self._add_btn = Adw.ButtonRow()
         self._add_btn.set_title(_("Create Supervised User"))
         self._add_btn.set_start_icon_name("list-add-symbolic")
-        self._add_btn.update_property(
-            [Gtk.AccessibleProperty.LABEL], [_("Create supervised user")]
-        )
         self._add_btn.connect("activated", self._on_create_clicked)
         create_group.add(self._add_btn)
-        inner.append(create_group)
+        self._main_box.append(create_group)
 
+        # List section: Other users
         self._all_group = Adw.PreferencesGroup()
         self._all_group.set_title(_("Other Users"))
         self._all_group.set_description(_("Add supervision to an existing account."))
+        self._main_box.append(self._all_group)
 
-        inner.append(self._all_group)
-
-        clamp.set_child(inner)
+        clamp.set_child(self._main_box)
         scrolled.set_child(clamp)
         toolbar.set_content(scrolled)
 
@@ -94,40 +102,43 @@ class UsersPage(Gtk.Box):
         """Reload the list of unsupervised users."""
         for row in self._other_rows:
             self._all_group.remove(row)
-        self._sup_rows.clear()
         self._other_rows.clear()
 
         users = self._accounts.list_users()
+        visible_users = 0
+
         for user in users:
             is_sup = self._accounts.is_supervised(user)
             is_adm = self._accounts.is_admin(user)
             if is_sup or is_adm:
                 continue
 
-            row = Adw.ActionRow()
-            row.set_title(user.get_real_name() or user.get_user_name())
-            row.set_subtitle(user.get_user_name())
+            visible_users += 1
+            real_name = user.get_real_name() or user.get_user_name()
+            username = user.get_user_name()
 
-            icon = Gtk.Image(
-                icon_name="avatar-default-symbolic",
-                pixel_size=32,
-                accessible_role=Gtk.AccessibleRole.PRESENTATION,
-            )
-            row.add_prefix(icon)
+            row = Adw.ActionRow()
+            row.set_title(real_name)
+            row.set_subtitle(username)
+
+            # Modern Avatar instead of static icon
+            avatar = Adw.Avatar.new(32, real_name, True)
+            row.add_prefix(avatar)
 
             add_btn = Gtk.Button(icon_name="list-add-symbolic")
             add_btn.add_css_class("flat")
+            add_btn.add_css_class("circular")
             add_btn.set_valign(Gtk.Align.CENTER)
             add_btn.set_tooltip_text(_("Add supervision"))
-            add_btn.update_property(
-                [Gtk.AccessibleProperty.LABEL],
-                [_("Add supervision to %s") % user.get_user_name()],
-            )
             add_btn.connect("clicked", self._on_add_supervised, user)
             row.add_suffix(add_btn)
 
             self._all_group.add(row)
             self._other_rows.append(row)
+
+        # Show StatusPage if no users are available to be supervised
+        self._all_group.set_visible(visible_users > 0)
+        self._status_page.set_visible(visible_users == 0)
 
     def _on_create_clicked(self, _button: Gtk.Button) -> None:
         """Show dialog to create a new supervised user."""

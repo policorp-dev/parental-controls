@@ -48,51 +48,39 @@ class MainWindow(Adw.ApplicationWindow):
         header = Adw.HeaderBar()
         toolbar.add_top_bar(header)
 
-        content = Gtk.Box(
+        # Use Adw.StatusPage for a modern, central locked state
+        status_page = Adw.StatusPage()
+        status_page.set_icon_name("system-lock-screen-symbolic")
+        status_page.set_title(_("Parental Controls"))
+        status_page.set_description(
+            _("Administrator authentication is required to change settings.")
+        )
+
+        # Action container for button and feedback
+        action_box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=16,
-            valign=Gtk.Align.CENTER,
             halign=Gtk.Align.CENTER,
-            vexpand=True,
         )
-        content.set_margin_start(48)
-        content.set_margin_end(48)
-
-        icon = Gtk.Image(
-            icon_name="system-lock-screen-symbolic",
-            pixel_size=64,
-        )
-        content.append(icon)
-
-        title = Gtk.Label(label=_("Parental Controls"))
-        title.add_css_class("title-1")
-        content.append(title)
-
-        desc = Gtk.Label(
-            label=_("Administrator authentication is required to change settings."),
-        )
-        desc.add_css_class("dim-label")
-        desc.set_wrap(True)
-        desc.set_justify(Gtk.Justification.CENTER)
-        desc.set_max_width_chars(40)
-        content.append(desc)
 
         self._auth_spinner = Gtk.Spinner()
         self._auth_spinner.set_visible(False)
-        content.append(self._auth_spinner)
+        action_box.append(self._auth_spinner)
 
         self._auth_status = Gtk.Label()
         self._auth_status.add_css_class("dim-label")
         self._auth_status.set_visible(False)
-        content.append(self._auth_status)
+        action_box.append(self._auth_status)
 
         auth_btn = Gtk.Button(label=_("Authenticate"))
         auth_btn.add_css_class("suggested-action")
         auth_btn.add_css_class("pill")
+        auth_btn.set_size_request(180, -1)
         auth_btn.connect("clicked", self._on_auth_clicked)
-        content.append(auth_btn)
+        action_box.append(auth_btn)
 
-        toolbar.set_content(content)
+        status_page.set_child(action_box)
+        toolbar.set_content(status_page)
         gate.append(toolbar)
         self.set_content(gate)
 

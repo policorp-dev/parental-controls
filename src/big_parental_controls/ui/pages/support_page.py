@@ -13,25 +13,25 @@ _ = setup_i18n()
 SUPPORT_LINKS = [
     {
         "title": "CVV 188",
-        "subtitle": _("Centro de Valorização da Vida — apoio emocional gratuito"),
+        "subtitle": _("Emotional support — free of charge"),
         "icon": "call-start-symbolic",
         "url": "https://www.cvv.org.br",
     },
     {
         "title": "SaferNet Brasil",
-        "subtitle": _("Ajuda e denúncias sobre crimes e segurança na internet"),
+        "subtitle": _("Help and reports on internet crimes and safety"),
         "icon": "security-high-symbolic",
         "url": "https://new.safernet.org.br",
     },
     {
         "title": _("Disque 100"),
-        "subtitle": _("Relatar violações de direitos de crianças e adolescentes"),
+        "subtitle": _("Report violations of children's and adolescents' rights"),
         "icon": "dialog-warning-symbolic",
         "url": "https://www.gov.br/mdh/pt-br/acesso-a-informacao/disque-100",
     },
     {
         "title": "CERT.br",
-        "subtitle": _("Guias de segurança e boas práticas na rede"),
+        "subtitle": _("Security guides and best practices on the web"),
         "icon": "network-server-symbolic",
         "url": "https://cartilha.cert.br",
     },
@@ -39,20 +39,20 @@ SUPPORT_LINKS = [
 
 LEGAL_LINKS = [
     {
-        "title": _("ECA Digital (Lei nº 15.211/2025)"),
-        "subtitle": _("Dispõe sobre a obrigatoriedade de ferramentas de supervisão parental"),
+        "title": _("ECA Digital (Law 15,211/2025)"),
+        "subtitle": _("Provides for the mandatory availability of parental supervision tools"),
         "icon": "document-properties-symbolic",
-        "url": "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm", # ECA Geral como referência principal
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm", # General ECA as main reference
     },
     {
-        "title": _("LGPD (Lei nº 13.709/2018)"),
-        "subtitle": _("Proteção de dados pessoais de menores (Art. 14)"),
+        "title": _("LGPD (Law 13,709/2018)"),
+        "subtitle": _("Protection of minors' personal data (Art. 14)"),
         "icon": "security-medium-symbolic",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
     },
     {
-        "title": _("Marco Civil (Lei nº 12.965/2014)"),
-        "subtitle": _("Direitos e garantias dos usuários da rede no Brasil"),
+        "title": _("Marco Civil (Law 12,965/2014)"),
+        "subtitle": _("Rights and guarantees of internet users in Brazil"),
         "icon": "network-workgroup-symbolic",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm",
     },
@@ -82,8 +82,8 @@ class SupportPage(Gtk.Box):
 
         desc = Gtk.Label(
             label=_(
-                "Trabalhamos para garantir uma experiência digital segura e saudável. "
-                "Aqui você encontra canais de ajuda e a base legal de proteção."
+                "We work to ensure a safe and healthy digital experience. "
+                "Here you will find help channels and the legal basis for protection."
             )
         )
         desc.set_wrap(True)
@@ -96,8 +96,8 @@ class SupportPage(Gtk.Box):
 
         # Support Expander
         support_expander = Adw.ExpanderRow()
-        support_expander.set_title(_("Canais de Ajuda e Apoio"))
-        support_expander.set_subtitle(_("Suporte emocional, segurança e denúncias"))
+        support_expander.set_title(_("Help and Support Channels"))
+        support_expander.set_subtitle(_("Emotional support, safety, and reporting"))
         support_expander.set_icon_name("help-browser-symbolic")
         
         for link in SUPPORT_LINKS:
@@ -119,8 +119,8 @@ class SupportPage(Gtk.Box):
 
         # Legal Expander
         legal_expander = Adw.ExpanderRow()
-        legal_expander.set_title(_("Marco Legal e Proteção"))
-        legal_expander.set_subtitle(_("Legislação brasileira sobre proteção de menores"))
+        legal_expander.set_title(_("Legal Framework and Protection"))
+        legal_expander.set_subtitle(_("Brazilian legislation on protection of minors"))
         legal_expander.set_icon_name("emblem-system-symbolic")
 
         for link in LEGAL_LINKS:
@@ -144,11 +144,11 @@ class SupportPage(Gtk.Box):
 
         # Emergency info
         emergency_group = Adw.PreferencesGroup()
-        emergency_group.set_title(_("Emergência"))
+        emergency_group.set_title(_("Emergency"))
 
         emergency_row = Adw.ActionRow()
-        emergency_row.set_title(_("Em perigo imediato, ligue 190 (Polícia) ou 192 (SAMU)"))
-        emergency_row.set_subtitle(_("Números gratuitos disponíveis 24/7 em todo o Brasil"))
+        emergency_row.set_title(_("In case of immediate danger, call 190 (Police) or 192 (SAMU)"))
+        emergency_row.set_subtitle(_("Free numbers available 24/7 throughout Brazil"))
 
         emergency_icon = Gtk.Image(
             icon_name="emblem-important-symbolic",
