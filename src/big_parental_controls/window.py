@@ -42,8 +42,6 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _show_auth_gate(self) -> None:
         """Show authentication screen before granting admin access."""
-        gate = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-
         toolbar = Adw.ToolbarView()
         header = Adw.HeaderBar()
         toolbar.add_top_bar(header)
@@ -81,8 +79,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         status_page.set_child(action_box)
         toolbar.set_content(status_page)
-        gate.append(toolbar)
-        self.set_content(gate)
+        self.set_content(toolbar)
 
     def _on_auth_clicked(self, _btn: Gtk.Button) -> None:
         """Trigger polkit authentication via pkexec."""
