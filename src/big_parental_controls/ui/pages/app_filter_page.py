@@ -43,9 +43,9 @@ class AppFilterPage(Gtk.Box):
         header = Adw.HeaderBar()
         toolbar.add_top_bar(header)
 
-        scrolled = Gtk.ScrolledWindow()
-        scrolled.set_vexpand(True)
-        scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        scrolled = Gtk.Window()
+        #scrolled.set_vexpand(True)
+        #scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
 
         clamp = Adw.Clamp()
         clamp.set_maximum_size(600)
@@ -81,10 +81,18 @@ class AppFilterPage(Gtk.Box):
         inner.append(self._search_entry)
 
         # Apps group
+        apps_box = Gtk.ScrolledWindow()
+        apps_box.set_vexpand(True)
+        apps_box.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        apps_clamp = Adw.Clamp()
+        apps_clamp.set_maximum_size(600)
+        apps_clamp.set_margin_bottom(5)
         self._apps_group = Adw.PreferencesGroup()
         self._apps_group.set_title(_("Installed Apps"))
         self._apps_group.set_visible(False)
-        inner.append(self._apps_group)
+        apps_clamp.set_child(self._apps_group)
+        apps_box.set_child(apps_clamp)
+        inner.append(apps_box)
 
         '''
         # Apply button
@@ -97,8 +105,8 @@ class AppFilterPage(Gtk.Box):
         '''
 
         clamp.set_child(inner)
-        scrolled.set_child(clamp)
-        toolbar.set_content(scrolled)
+        #scrolled.set_child(clamp)
+        toolbar.set_content(clamp)
         self.append(toolbar)
 
         self._populate_user_combo()
