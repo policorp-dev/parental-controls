@@ -86,13 +86,15 @@ class AppFilterPage(Gtk.Box):
         self._apps_group.set_visible(False)
         inner.append(self._apps_group)
 
+        '''
         # Apply button
         self._apply_btn = Gtk.Button(label=_("Apply Changes"))
         self._apply_btn.add_css_class("suggested-action")
         self._apply_btn.set_sensitive(False)
         self._apply_btn.set_halign(Gtk.Align.END)
         self._apply_btn.connect("clicked", self._on_apply)
-        inner.append(self._apply_btn)
+        inner.append(self._apply_btn)*/
+        '''
 
         clamp.set_child(inner)
         scrolled.set_child(clamp)
@@ -133,7 +135,7 @@ class AppFilterPage(Gtk.Box):
         self._apps_group.set_visible(True)
         self._search_entry.set_visible(True)
         self._pending_changes.clear()
-        self._apply_btn.set_sensitive(False)
+        #self._apply_btn.set_sensitive(False)
         self._filter_text = ""
         self._search_entry.set_text("")
         self._load_apps()
@@ -254,9 +256,8 @@ class AppFilterPage(Gtk.Box):
         self, row: Adw.SwitchRow, _pspec: object, app_id: str, exe: str
     ) -> None:
         self._pending_changes[exe] = row.get_active()
-        self._apply_btn.set_sensitive(True)
+        #self._apply_btn.set_sensitive(True)
 
-    def _on_apply(self, _button: Gtk.Button) -> None:
         """Apply pending changes via ACL batch."""
         if not self._selected_username or not self._pending_changes:
             return
@@ -282,8 +283,8 @@ class AppFilterPage(Gtk.Box):
 
         def on_done(_result: object) -> None:
             self._pending_changes.clear()
-            self._apply_btn.set_sensitive(False)
-            self._show_success(_("App access updated."))
+            #self._apply_btn.set_sensitive(False)
+            #self._show_success(_("App access updated."))
 
         def on_error(exc: Exception) -> None:
             self._show_error(str(exc))
