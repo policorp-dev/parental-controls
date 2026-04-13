@@ -3,10 +3,11 @@
 import subprocess
 import gi
 import re
+import os
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, GLib, Gtk
+from gi.repository import Adw, GLib, Gtk, Gdk
 
 from big_parental_controls.core.constants import GROUP_HELPER
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
@@ -121,8 +122,21 @@ class UsersPage(Gtk.Box):
             row.set_title(real_name)
             row.set_subtitle(username)
 
+            '''
             # Modern Avatar instead of static icon
             avatar = Adw.Avatar.new(32, real_name, True)
+            row.add_prefix(avatar)
+            '''
+
+            # Get user's icon
+            avatar = Adw.Avatar(size=32)
+            user_avatar_path = user.props.icon_file;
+            if user_avatar_path and os.access(user_avatar_path, os.R_OK):
+                texture = Gdk.Texture.new_from_filename(user_avatar_path)
+                avatar.set_custom_image(texture)
+            else:
+                avatar.set_text(real_name)
+                avatar.set_show_initials(True)
             row.add_prefix(avatar)
 
             add_btn = Gtk.Button(icon_name="list-add-symbolic")

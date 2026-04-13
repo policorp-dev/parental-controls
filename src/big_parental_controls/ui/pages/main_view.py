@@ -1,10 +1,11 @@
 """Main view — landing screen with supervised users list and help links."""
 
 import gi
+import os
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, Gio, Gtk
+from gi.repository import Adw, Gio, Gtk, Gdk
 
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.services.activity_service import ActivityService
@@ -172,9 +173,21 @@ class MainView(Gtk.Box):
         row.set_title(info["name"])
         row.set_subtitle(info["username"])
         row.set_activatable(True)
-
+        '''
         icon = Gtk.Image(icon_name="avatar-default-symbolic")
         row.add_prefix(icon)
+        '''
+
+        # Get user's icon
+        avatar = Adw.Avatar(size=32)
+        user_avatar_path = info["user"].props.icon_file;
+        if user_avatar_path and os.access(user_avatar_path, os.R_OK):
+            texture = Gdk.Texture.new_from_filename(user_avatar_path)
+            avatar.set_custom_image(texture)
+        else:
+            avatar.set_text(info["name"])
+            avatar.set_show_initials(True)
+        row.add_prefix(avatar)
 
         arrow = Gtk.Image(icon_name="go-next-symbolic")
         row.add_suffix(arrow)
