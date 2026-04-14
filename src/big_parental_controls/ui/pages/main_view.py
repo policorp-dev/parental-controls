@@ -82,6 +82,7 @@ class MainView(Gtk.Box):
         self._users_group.set_title(_("Supervised Users"))
         inner.append(self._users_group)
 
+        '''
         # Add user button
         add_btn = Gtk.Button()
         add_btn.set_label(_("Add Supervised User"))
@@ -89,7 +90,34 @@ class MainView(Gtk.Box):
         add_btn.add_css_class("pill")
         add_btn.set_halign(Gtk.Align.CENTER)
         add_btn.connect("clicked", self._on_add_user)
+        add_btn.set_icon_name("list-add-symbolic")
         inner.append(add_btn)
+        '''
+
+        add_btn = Gtk.Button()
+        add_btn.add_css_class("suggested-action")
+        add_btn.set_halign(Gtk.Align.CENTER)
+        from big_parental_controls.ui.pages.users_page import UsersPage
+        users_page = UsersPage()
+        add_btn.connect("clicked", users_page._on_create_clicked)
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        image = Gtk.Image.new_from_icon_name("list-add-symbolic")
+        label = Gtk.Label(label=_("Create Supervised User"))
+        box.append(image)
+        box.append(label)
+        add_btn.set_child(box)
+        self._users_group.set_header_suffix(add_btn)
+
+        # Users list button
+        users_list = Adw.PreferencesGroup()
+        users_row = Adw.ActionRow()
+        users_row.set_title(_("Other Users"))
+        users_row.set_activatable(True)
+        users_row.add_prefix(Gtk.Image.new_from_icon_name("avatar-default-symbolic"))
+        users_row.add_suffix(Gtk.Image(icon_name="go-next-symbolic"))
+        users_row.connect("activated", lambda _r: self._on_list_users())
+        users_list.add(users_row)
+        inner.append(users_list)
 
         # Help and Support Expander
         help_group = Adw.PreferencesGroup()
@@ -196,9 +224,9 @@ class MainView(Gtk.Box):
         row.connect("activated", lambda _r: self._window.show_user_detail(user))
         return row
 
-    def _on_add_user(self, _btn: Gtk.Button) -> None:
-        """Open the user creation flow via the users page."""
-        self._window.show_add_user()
+    def _on_list_users(self) -> None:
+        """Open the unsupervised users list."""
+        self._window.list_unsupervised_users()
 
     def _build_legal_group(self) -> Adw.PreferencesGroup:
         """Legal framework references (ECA, LGPD, GDPR, UK Code, DSA)."""

@@ -77,13 +77,13 @@ class UsersPage(Gtk.Box):
         self._main_box.append(self._status_page)
 
         # Top section: Create button
-        create_group = Adw.PreferencesGroup()
+        self.create_group = Adw.PreferencesGroup()
         self._add_btn = Adw.ButtonRow()
         self._add_btn.set_title(_("Create Supervised User"))
         self._add_btn.set_start_icon_name("list-add-symbolic")
         self._add_btn.connect("activated", self._on_create_clicked)
-        create_group.add(self._add_btn)
-        self._main_box.append(create_group)
+        self.create_group.add(self._add_btn)
+        self._main_box.append(self.create_group)
 
         # List section: Other users
         self._all_group = Adw.PreferencesGroup()
@@ -153,6 +153,7 @@ class UsersPage(Gtk.Box):
         # Show StatusPage if no users are available to be supervised
         self._all_group.set_visible(visible_users > 0)
         self._status_page.set_visible(visible_users == 0)
+        self.create_group.set_visible(visible_users == 0)
 
     def _on_create_clicked(self, _button: Gtk.Button) -> None:
         """Show dialog to create a new supervised user."""

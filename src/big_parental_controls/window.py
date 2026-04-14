@@ -205,8 +205,8 @@ class MainWindow(Adw.ApplicationWindow):
         nav_page.set_child(page_widget)
         self._nav_view.push(nav_page)
 
-    def show_add_user(self) -> None:
-        """Push the users management page."""
+    def list_unsupervised_users(self) -> None:
+        """Push the unsupervised users management page."""
         if self._is_supervised:
             return
         from big_parental_controls.ui.pages.users_page import UsersPage
