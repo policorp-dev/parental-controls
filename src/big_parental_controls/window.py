@@ -211,7 +211,7 @@ class MainWindow(Adw.ApplicationWindow):
             return
         from big_parental_controls.ui.pages.users_page import UsersPage
 
-        page_widget = UsersPage()
+        page_widget = UsersPage(self)
         nav_page = Adw.NavigationPage()
         nav_page.set_title(_("Users"))
         nav_page.set_child(page_widget)

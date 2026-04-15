@@ -106,6 +106,7 @@ class AccountsServiceWrapper:
             with contextlib.suppress(OSError):
                 os.unlink(pwfile)
             raise
+        '''
         # Helper deletes pwfile itself; wait for AccountsService to detect new user
         deadline = time.monotonic() + 5.0
         while True:
@@ -116,6 +117,17 @@ class AccountsServiceWrapper:
             if time.monotonic() > deadline:
                 break
             GLib.MainContext.default().iteration(True)
+        '''
+        return self.resolve_user(username)
+
+    def resolve_user(self, username, timeout=5.0):
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            for user in self._manager.list_users():
+                if user.get_user_name() == username:
+                    return user
+            time.sleep(0.1)
+
         return None
 
     def remove_supervised_status(self, user: AccountsService.User) -> None:

@@ -11,6 +11,7 @@ from big_parental_controls.services.accounts_service import AccountsServiceWrapp
 from big_parental_controls.services.activity_service import ActivityService
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
+from big_parental_controls.ui.pages.users_page import UsersPage
 
 _ = setup_i18n()
 
@@ -30,6 +31,7 @@ class MainView(Gtk.Box):
         self._accounts = AccountsServiceWrapper()
         self._activity = ActivityService()
         self._user_rows: list[Adw.ActionRow] = []
+        self.users_page = UsersPage(window=window)
         self._build_ui()
 
     def _build_ui(self) -> None:
@@ -97,9 +99,7 @@ class MainView(Gtk.Box):
         add_btn = Gtk.Button()
         add_btn.add_css_class("suggested-action")
         add_btn.set_halign(Gtk.Align.CENTER)
-        from big_parental_controls.ui.pages.users_page import UsersPage
-        users_page = UsersPage()
-        add_btn.connect("clicked", users_page._on_create_clicked)
+        add_btn.connect("clicked", self._on_create)
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         image = Gtk.Image.new_from_icon_name("list-add-symbolic")
         label = Gtk.Label(label=_("Create Supervised User"))
@@ -150,6 +150,9 @@ class MainView(Gtk.Box):
         self.append(toolbar)
 
         self.refresh_users()
+
+    def _on_create(self, _button: Gtk.Button):
+        self.users_page._on_create_clicked(_button, self.refresh_users)
 
     @staticmethod
     def _build_menu() -> Gio.Menu:

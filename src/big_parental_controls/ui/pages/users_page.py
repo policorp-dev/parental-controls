@@ -35,7 +35,7 @@ def _save_user_age_profile(username: str, age_range: str) -> None:
 class UsersPage(Gtk.Box):
     """Page for creating, removing, and managing supervised accounts."""
 
-    def __init__(self, **kwargs: object) -> None:
+    def __init__(self, window, **kwargs: object) -> None:
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=0, **kwargs)
         self._accounts = AccountsServiceWrapper()
         try:
@@ -46,6 +46,7 @@ class UsersPage(Gtk.Box):
         self._other_rows: list[Adw.ActionRow] = []
         self._build_ui()
         self._refresh_users()
+        self._window = window
 
     def _build_ui(self) -> None:
         toolbar = Adw.ToolbarView()
@@ -155,7 +156,7 @@ class UsersPage(Gtk.Box):
         self._status_page.set_visible(visible_users == 0)
         self.create_group.set_visible(visible_users == 0)
 
-    def _on_create_clicked(self, _button: Gtk.Button) -> None:
+    def _on_create_clicked(self, _button: Gtk.Button, callback=None) -> None:
         """Show dialog to create a new supervised user."""
         dialog = Adw.AlertDialog()
         dialog.set_heading(_("Create Supervised User"))
@@ -261,8 +262,9 @@ class UsersPage(Gtk.Box):
             password_row,
             confirm_row,
             age_row,
+            callback
         )
-        dialog.present(self.get_root())
+        dialog.present(self._window)
 
     def _on_create_response(
         self,
@@ -273,6 +275,7 @@ class UsersPage(Gtk.Box):
         password_row: Adw.PasswordEntryRow,
         confirm_row: Adw.PasswordEntryRow,
         age_row: Adw.ComboRow,
+        callback=None
     ) -> None:
         if response != "create":
             return
@@ -297,6 +300,7 @@ class UsersPage(Gtk.Box):
 
         def do_create() -> str:
             user = self._accounts.create_supervised_user(username, fullname, password)
+            
             if user is None:
                 raise RuntimeError(_("Failed to create user."))
 
@@ -308,19 +312,25 @@ class UsersPage(Gtk.Box):
                     )
                 except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
                     pass
+
             _save_user_age_profile(user.get_user_name(), age_range)
+            if callback:
+                GLib.idle_add(callback)
             return username
 
         def on_done(result: str) -> None:
-            self._hide_loading_overlay(loading)
-            self._add_btn.set_sensitive(True)
-            window = self.get_root()
-            if hasattr(window, "refresh_main_and_pop"):
-                window.refresh_main_and_pop()
-                window.show_toast(_("User %s created.") % result)
-            else:
-                self._refresh_users()
-                self._show_success(_("User %s created.") % result)
+            try:
+                self._hide_loading_overlay(loading)
+                self._add_btn.set_sensitive(True)
+                #window = self.get_root()
+                if hasattr(self._window, "refresh_main_and_pop"):
+                    self._window.refresh_main_and_pop()
+                    self._window.show_toast(_("User %s created.") % result)
+                else:
+                    self._refresh_users()
+                    self._show_success(_("User %s created.") % result)
+            except Exception as e:
+                print("on_done error:", e)
 
         def on_error(exc: Exception) -> None:
             self._hide_loading_overlay(loading)
@@ -384,10 +394,10 @@ class UsersPage(Gtk.Box):
 
         def on_done(result: str) -> None:
             self._hide_loading_overlay(loading)
-            window = self.get_root()
-            if hasattr(window, "refresh_main_and_pop"):
-                window.refresh_main_and_pop()
-                window.show_toast(_("%s is now supervised.") % result)
+            #window = self.get_root()
+            if hasattr(self._window, "refresh_main_and_pop"):
+                self._window.refresh_main_and_pop()
+                self._window.show_toast(_("%s is now supervised.") % result)
             else:
                 self._refresh_users()
                 self._show_success(_("%s is now supervised.") % result)
@@ -399,14 +409,14 @@ class UsersPage(Gtk.Box):
         run_async(do_add, on_done, on_error)
 
     def _show_success(self, message: str) -> None:
-        window = self.get_root()
-        if hasattr(window, "show_toast"):
-            window.show_toast(message)
+        #window = self.get_root()
+        if hasattr(self._window, "show_toast"):
+            self._window.show_toast(message)
 
     def _show_error(self, message: str) -> None:
-        window = self.get_root()
-        if hasattr(window, "show_error"):
-            window.show_error(message)
+        #window = self.get_root()
+        if hasattr(self._window, "show_error"):
+            self._window.show_error(message)
 
     def _show_loading_overlay(self, message: str) -> Gtk.Box:
         """Overlay the entire page with a semi-transparent loading screen."""
