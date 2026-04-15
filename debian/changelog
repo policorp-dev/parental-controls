@@ -1,3 +1,9 @@
+parental-controls (1.0.3) stable; urgency=medium
+
+  * Melhorias do layout
+
+ -- Vinicius Neves <vinicius.neves@policorp.com.br>  Wed, 15 Apr 2026 15:26:08 -0300
+
 parental-controls (1.0.2) stable; urgency=medium
 
   * Validar username
