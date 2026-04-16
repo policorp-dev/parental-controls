@@ -156,7 +156,7 @@ class UsersPage(Gtk.Box):
         self._status_page.set_visible(visible_users == 0)
         self.create_group.set_visible(visible_users == 0)
 
-    def _on_create_clicked(self, _button: Gtk.Button, callback=None) -> None:
+    def _on_create_clicked(self, _button: Gtk.Button) -> None:
         """Show dialog to create a new supervised user."""
         dialog = Adw.AlertDialog()
         dialog.set_heading(_("Create Supervised User"))
@@ -261,8 +261,7 @@ class UsersPage(Gtk.Box):
             fullname_row,
             password_row,
             confirm_row,
-            age_row,
-            callback
+            age_row
         )
         dialog.present(self._window)
 
@@ -274,8 +273,7 @@ class UsersPage(Gtk.Box):
         fullname_row: Adw.EntryRow,
         password_row: Adw.PasswordEntryRow,
         confirm_row: Adw.PasswordEntryRow,
-        age_row: Adw.ComboRow,
-        callback=None
+        age_row: Adw.ComboRow
     ) -> None:
         if response != "create":
             return
@@ -314,8 +312,6 @@ class UsersPage(Gtk.Box):
                     pass
 
             _save_user_age_profile(user.get_user_name(), age_range)
-            if callback:
-                GLib.idle_add(callback)
             return username
 
         def on_done(result: str) -> None:

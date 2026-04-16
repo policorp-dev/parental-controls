@@ -99,7 +99,7 @@ class MainView(Gtk.Box):
         add_btn = Gtk.Button()
         add_btn.add_css_class("suggested-action")
         add_btn.set_halign(Gtk.Align.CENTER)
-        add_btn.connect("clicked", self._on_create)
+        add_btn.connect("clicked", self.users_page._on_create_clicked)
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         image = Gtk.Image.new_from_icon_name("list-add-symbolic")
         label = Gtk.Label(label=_("Create Supervised User"))
@@ -150,9 +150,6 @@ class MainView(Gtk.Box):
         self.append(toolbar)
 
         self.refresh_users()
-
-    def _on_create(self, _button: Gtk.Button):
-        self.users_page._on_create_clicked(_button, self.refresh_users)
 
     @staticmethod
     def _build_menu() -> Gio.Menu:
