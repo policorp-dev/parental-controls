@@ -16,7 +16,8 @@ Depends:
  accountsservice,
  polkitd,
  acl,
- malcontent
+ malcontent,
+ ruby-notify
 Description: Parental control system (ECA Digital)
  System-level parental control using ACL, PAM and systemd.
  This package, controls-parental, is a fork of the original 

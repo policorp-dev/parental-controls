@@ -13,4 +13,6 @@ systemctl daemon-reexec || true
 systemctl enable big-parental-daemon.service || true
 systemctl start big-parental-daemon.service || true
 
+chmod +x /etc/skel/.local/bin/enable-parental-controls-listener.sh
+
 exit 0

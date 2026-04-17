@@ -17,10 +17,14 @@ use std::sync::Arc;
 use chrono::{Local, Datelike, Timelike};
 use nix::sys::signal::{kill, Signal};
 use nix::unistd::{Group, Pid, Uid, User};
+use nix::libc::getpwnam;
 use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 use tokio::time::{interval, Duration};
 use zbus::{interface, message::Header, Connection, Result};
+use std::os::unix::net::UnixStream;
+use std::io::{Write, ErrorKind};
+use zbus::Error;
 
 const SUPERVISED_GROUP: &str = "supervised";
 const VERSION: &str = "1.0";
@@ -572,10 +576,34 @@ fn terminate_session(username: &str, session_id: &str, reason: &str) {
         .output();
 }
 
+fn get_uid_by_username(username: &str) -> Result<u32> {
+    let c_username = CString::new(username).unwrap();
+
+    unsafe {
+        let user_ptr = getpwnam(c_username.as_ptr());
+
+        let user = &*user_ptr;
+
+        Ok(user.pw_uid)
+    }
+}
+
 fn notify_user(username: &str, summary: &str, body: &str) {
-    let _ = Command::new("sudo")
-        .args(["-u", username, "notify-send", "--urgency=critical", summary, body])
-        .output();
+    let uid: u32 = get_uid_by_username(username).unwrap();
+    let socket_path = format!(
+        "/run/user/{}/big-parental.sock",
+        uid
+    );
+
+    match UnixStream::connect(&socket_path) {
+        Ok(mut stream) => {
+            let msg = format!("{}|{}\n", summary, body);
+            let _ = stream.write_all(msg.as_bytes());
+        }
+        Err(e) => {
+            eprintln!("Erro ao conectar ao socket: {}", e);
+        }
+    }
 }
 
 fn day_code_applies(code: &str, current_wday: u8) -> bool {
