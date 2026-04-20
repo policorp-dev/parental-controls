@@ -1,5 +1,5 @@
 use std::os::unix::net::UnixListener;
-use std::io::{Read, BufRead, BufReader};
+use std::io::{BufRead, BufReader};
 use std::process::Command;
 use std::fs::{set_permissions, Permissions};
 use std::os::unix::fs::PermissionsExt;

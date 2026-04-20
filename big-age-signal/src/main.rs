@@ -23,8 +23,8 @@ use tokio::sync::Mutex;
 use tokio::time::{interval, Duration};
 use zbus::{interface, message::Header, Connection, Result};
 use std::os::unix::net::UnixStream;
-use std::io::{Write, ErrorKind};
-use zbus::Error;
+use std::io::{Write};
+use std::thread;
 
 const SUPERVISED_GROUP: &str = "supervised";
 const VERSION: &str = "1.0";
@@ -736,7 +736,7 @@ fn enforce_time_limits() {
     let mut changed = false;
 
     // Daily minute limit
-    for (username, cfg) in &limits {
+    for (username, cfg) in limits {
         let daily_minutes = cfg
             .get("daily_minutes")
             .and_then(|v| v.as_u64())
@@ -744,32 +744,34 @@ fn enforce_time_limits() {
         if daily_minutes == 0 {
             continue;
         }
-        let Some(session_id) = get_active_graphical_session(username) else {
+        let Some(session_id) = get_active_graphical_session(&username) else {
             continue;
         };
-        let prev = usage.get(username).copied().unwrap_or(0);
+        let prev = usage.get(&username).copied().unwrap_or(0);
         let total = prev + 1;
         usage.insert(username.clone(), total);
         changed = true;
 
         if total >= daily_minutes {
             notify_user(
-                username,
+                &username,
                 "Tempo diário esgotado",
                 &format!("Seu tempo de uso diário de {daily_minutes} min foi atingido."),
             );
-            if total >= daily_minutes + 1 {
+            thread::spawn(move || {
+                thread::sleep(Duration::from_secs(60));
+
                 terminate_session(
-                    username,
+                    &username,
                     &session_id,
                     &format!("daily limit {total}/{daily_minutes} min"),
                 );
-            }
+            });
         } else {
             let remaining = daily_minutes - total;
             if remaining == 5 || remaining == 1 {
                 notify_user(
-                    username,
+                    &username,
                     &format!("Aviso — {remaining} min restante(s)"),
                     &format!("Seu tempo diário acaba em {remaining} minuto(s)."),
                 );
@@ -790,7 +792,11 @@ fn enforce_time_limits() {
             "Horário de uso encerrado",
             "O período de uso permitido terminou.",
         );
-        terminate_session(&username, &session_id, "outside allowed schedule");
+        thread::spawn(move || {
+            thread::sleep(Duration::from_secs(60));
+
+            terminate_session(&username, &session_id, "outside allowed schedule");
+        });
     }
 
     if changed {
