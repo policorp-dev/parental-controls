@@ -13,6 +13,8 @@ import subprocess
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import TYPE_CHECKING
+import logging
+logging.basicConfig(level=logging.INFO)
 
 from big_parental_controls.core.constants import ACTIVITY_DIR
 
@@ -200,7 +202,7 @@ class ActivityService:
         `last` reads /var/log/wtmp directly — no sudo needed.
         """
         since_dt = datetime.now() - timedelta(days=days)
-        since_str = since_dt.strftime("%Y-%m-%dT%H:%M:%S")
+        since_str = since_dt.strftime("%Y-%m-%d %H:%M:%S")
 
         try:
             result = subprocess.run(
@@ -217,9 +219,13 @@ class ActivityService:
                 capture_output=True,
                 text=True,
                 timeout=15,
+                check=True
             )
-        except (subprocess.TimeoutExpired, FileNotFoundError):
+        except (subprocess.TimeoutExpired, FileNotFoundError) as e:
+            logging.error(f"Erro: {e}")
             return []
+        except Exception as e:
+            logging.error(f"Erro inesperado: {e}")
 
         if result.returncode != 0:
             return []
@@ -236,9 +242,9 @@ class ActivityService:
         """Parse a single line from `last --time-format iso`.
 
         Example lines:
-          rafael   tty5   2026-03-17T03:58:54-03:00 - 2026-03-17T04:09:59-03:00  (00:11)
-          bruno    pts/0  :0  2026-03-17T17:56:39-03:00   still logged in
-          bruno    tty2        2026-03-17T04:27:09-03:00 - crash  (02:05)
+          rafael   tty5   2026-03-17 03:58:54-03:00 - 2026-03-17T04:09:59-03:00  (00:11)
+          bruno    pts/0  :0  2026-03-17 17:56:39-03:00   still logged in
+          bruno    tty2        2026-03-17 04:27:09-03:00 - crash  (02:05)
         """
         if not line.startswith(username):
             return None
