@@ -1,6 +1,6 @@
-"""BigLinux Parental Controls — keep children safe on this computer."""
+"""Parental Controls — keep children safe on this computer."""
 
-__version__ = "1.0.0"
+__version__ = "1.0.3"
 
 if __name__ == "__main__":
     import os

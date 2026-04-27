@@ -90,10 +90,14 @@ class ParentalControlsApp(Adw.Application):
             issue_url=APP_ISSUE_URL,
             license_type=Gtk.License.GPL_3_0,
             developers=[APP_DEVELOPER],
-            copyright=f"© 2024-2025 {APP_DEVELOPER}",
+            copyright=f"© 2024-2026 {APP_DEVELOPER}",
             comments=_(
                 "Keep children safe on this computer.\n"
                 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
             ),
+        )
+        dialog.add_credit_section(
+            "Projeto Original",
+            ["Big Parental Controls - BigLinux"]
         )
         dialog.present(self.props.active_window)

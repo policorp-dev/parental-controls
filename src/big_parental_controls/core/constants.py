@@ -3,11 +3,11 @@
 import os as _os
 
 APP_ID = "br.com.biglinux.ParentalControls"
-APP_NAME = "Big Parental Controls"
-APP_VERSION = "1.0.0"
-APP_DEVELOPER = "BigLinux"
-APP_WEBSITE = "https://www.biglinux.com.br"
-APP_ISSUE_URL = "https://github.com/big/big-parental-controls/issues"
+APP_NAME = "Parental Controls"
+APP_VERSION = "1.0.3"
+APP_DEVELOPER = "Policorp"
+APP_WEBSITE = "https://www.policorp.com.br"
+APP_ISSUE_URL = "https://github.com/policorp-dev/parental-controls/issues"
 
 SUPERVISED_GROUP = "supervised"
 MIN_HUMAN_UID = 1000
