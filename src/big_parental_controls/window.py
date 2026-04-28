@@ -187,10 +187,14 @@ class MainWindow(Adw.ApplicationWindow):
             AppFilterPage,
         )
 
+        nav_page = self._nav_view.find_page("app_access")
+        if nav_page is not None:
+            self._nav_view.remove(nav_page)
         page_widget = AppFilterPage(user=user)
         nav_page = Adw.NavigationPage()
         nav_page.set_title(_("App Access"))
         nav_page.set_child(page_widget)
+        nav_page.set_tag("app_access")
         self._nav_view.push(nav_page)
 
     def show_dns_settings(self, user: object) -> None:

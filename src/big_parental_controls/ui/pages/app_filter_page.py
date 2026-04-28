@@ -19,7 +19,6 @@ from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
 
-
 class AppFilterPage(Gtk.Box):
     """Page for managing per-user app access control."""
 
@@ -39,60 +38,48 @@ class AppFilterPage(Gtk.Box):
         self._build_ui()
 
     def _build_ui(self) -> None:
-        toolbar = Adw.ToolbarView()
-        header = Adw.HeaderBar()
-        toolbar.add_top_bar(header)
+        self.toolbar = Adw.ToolbarView()
+        self.header = Adw.HeaderBar()
+        self.toolbar.add_top_bar(self.header)
 
-        scrolled = Gtk.Window()
-        #scrolled.set_vexpand(True)
-        #scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        self.scrolled = Gtk.Window()
+        #self.scrolled.set_vexpand(True)
+        #self.scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
 
-        clamp = Adw.Clamp()
-        clamp.set_maximum_size(600)
+        self.clamp = Adw.Clamp()
+        self.clamp.set_maximum_size(600)
 
-        inner = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
-        inner.set_margin_top(24)
-        inner.set_margin_bottom(24)
-        inner.set_margin_start(24)
-        inner.set_margin_end(24)
+        self.inner = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
+        self.inner.set_margin_top(24)
+        self.inner.set_margin_bottom(24)
+        self.inner.set_margin_start(24)
+        self.inner.set_margin_end(24)
 
         # User selector
-        selector_group = Adw.PreferencesGroup()
+        self.selector_group = Adw.PreferencesGroup()
         self._user_combo = Adw.ComboRow()
         self._user_combo.set_title(_("User"))
         self._user_model = Gtk.StringList()
         self._user_combo.set_model(self._user_model)
         self._user_combo.connect("notify::selected", self._on_user_changed)
-        selector_group.add(self._user_combo)
-        inner.append(selector_group)
+        self.selector_group.add(self._user_combo)
+        self.inner.append(self.selector_group)
 
         # Empty state
         self._empty_status = Adw.StatusPage()
         self._empty_status.set_icon_name("application-x-executable-symbolic")
         self._empty_status.set_title(_("Select a User"))
         self._empty_status.set_description(_("Choose a supervised user to manage app access."))
-        inner.append(self._empty_status)
+        self.inner.append(self._empty_status)
 
         # Search entry
         self._search_entry = Gtk.SearchEntry()
         self._search_entry.set_placeholder_text(_("Filter apps…"))
         self._search_entry.set_visible(False)
         self._search_entry.connect("search-changed", self._on_search_changed)
-        inner.append(self._search_entry)
+        self.inner.append(self._search_entry)
 
-        # Apps group
-        apps_box = Gtk.ScrolledWindow()
-        apps_box.set_vexpand(True)
-        apps_box.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        apps_clamp = Adw.Clamp()
-        apps_clamp.set_maximum_size(600)
-        apps_clamp.set_margin_bottom(5)
-        self._apps_group = Adw.PreferencesGroup()
-        self._apps_group.set_title(_("Installed Apps"))
-        self._apps_group.set_visible(False)
-        apps_clamp.set_child(self._apps_group)
-        apps_box.set_child(apps_clamp)
-        inner.append(apps_box)
+        self._draw_apps()
 
         '''
         # Apply button
@@ -104,12 +91,28 @@ class AppFilterPage(Gtk.Box):
         inner.append(self._apply_btn)*/
         '''
 
-        clamp.set_child(inner)
-        #scrolled.set_child(clamp)
-        toolbar.set_content(clamp)
-        self.append(toolbar)
-
         self._populate_user_combo()
+    
+    def _draw_apps(self):
+        # Apps group
+        if hasattr(self, 'apps_box') and self.apps_box is not None:
+            self.apps_box.unparent()
+        self.apps_box = Gtk.ScrolledWindow()
+        self.apps_box.set_vexpand(True)
+        self.apps_box.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        self.apps_clamp = Adw.Clamp()
+        self.apps_clamp.set_maximum_size(600)
+        self.apps_clamp.set_margin_bottom(5)
+        self._apps_group = Adw.PreferencesGroup()
+        self._apps_group.set_title(_("Installed Apps"))
+        self._apps_group.set_visible(False)
+        self.apps_clamp.set_child(self._apps_group)
+        self.apps_box.set_child(self.apps_clamp)
+        self.inner.append(self.apps_box)
+        self.clamp.set_child(self.inner)
+        #self.scrolled.set_child(self.clamp)
+        self.toolbar.set_content(self.clamp)
+        self.append(self.toolbar)
 
     def _populate_user_combo(self) -> None:
         """Populate user dropdown with supervised users."""
@@ -140,12 +143,13 @@ class AppFilterPage(Gtk.Box):
         self._selected_uid = user.get_uid()
         self._selected_username = user.get_user_name()
         self._empty_status.set_visible(False)
-        self._apps_group.set_visible(True)
         self._search_entry.set_visible(True)
         self._pending_changes.clear()
         #self._apply_btn.set_sensitive(False)
         self._filter_text = ""
         self._search_entry.set_text("")
+        self._draw_apps()
+        self._apps_group.set_visible(True)
         self._load_apps()
 
     def _load_apps(self) -> None:
