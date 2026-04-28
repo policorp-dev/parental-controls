@@ -759,7 +759,7 @@ fn enforce_time_limits() {
                 &format!("Seu tempo de uso diário de {daily_minutes} min foi atingido."),
             );
             thread::spawn(move || {
-                thread::sleep(Duration::from_secs(60));
+                thread::sleep(Duration::from_secs(30));
 
                 terminate_session(
                     &username,
@@ -793,7 +793,7 @@ fn enforce_time_limits() {
             "O período de uso permitido terminou.",
         );
         thread::spawn(move || {
-            thread::sleep(Duration::from_secs(60));
+            thread::sleep(Duration::from_secs(30));
 
             terminate_session(&username, &session_id, "outside allowed schedule");
         });
