@@ -15,7 +15,7 @@ class TestDesktopEntry(unittest.TestCase):
 
     def setUp(self):
         self.desktop_file = os.path.join(
-            PKG_DIR, "usr", "share", "applications", "big-parental-controls.desktop"
+            PKG_DIR, "usr", "share", "applications", "parental-controls.desktop"
         )
 
     def test_desktop_file_exists(self):
@@ -119,7 +119,7 @@ class TestPackageStructure(unittest.TestCase):
     def test_icon_exists(self):
         path = os.path.join(
             PKG_DIR, "usr", "share", "icons", "hicolor", "scalable", "apps",
-            "big-parental-controls.svg",
+            "parental-controls.svg",
         )
         self.assertTrue(os.path.isfile(path))
 
