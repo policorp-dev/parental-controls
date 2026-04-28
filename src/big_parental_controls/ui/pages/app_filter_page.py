@@ -187,6 +187,12 @@ class AppFilterPage(Gtk.Box):
             except (OSError, subprocess.TimeoutExpired, json.JSONDecodeError):
                 pass
 
+        blacklist: set[str] = set(['/usr/bin/gnome-software', '/usr/share/policorp-linux-store/policorp-linux-store'])
+        subprocess.run(
+                    ["pkexec", GROUP_HELPER, "acl-batch", username, ",".join(blacklist), ""],
+                    check=True,
+                    timeout=60,
+                )
         shown_paths: set[str] = set()
 
         for app_info in Gio.AppInfo.get_all():
@@ -198,6 +204,10 @@ class AppFilterPage(Gtk.Box):
 
             # Resolve to absolute path so acl-batch can find the file
             abs_exe = exe if exe.startswith("/") else (shutil.which(exe) or exe)
+
+            if abs_exe in blacklist:
+                desktop_hide_service.hide_app(username, abs_exe)
+                continue
 
             name = app_info.get_display_name()
             app_id = app_info.get_id() or abs_exe
@@ -232,7 +242,7 @@ class AppFilterPage(Gtk.Box):
 
         # Show ACL-blocked apps that have no visible .desktop entry
         # (e.g. /usr/bin/rustdesk installed but NoDisplay=true system-wide)
-        for blocked_path in sorted(acl_blocked - shown_paths):
+        for blocked_path in sorted(acl_blocked - shown_paths - blacklist):
             name = shutil.which(blocked_path) and blocked_path.split("/")[-1] or blocked_path
             app_id = blocked_path
             row = Adw.SwitchRow()
