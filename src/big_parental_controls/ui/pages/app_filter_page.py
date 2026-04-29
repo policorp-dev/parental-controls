@@ -191,7 +191,6 @@ class AppFilterPage(Gtk.Box):
             except (OSError, subprocess.TimeoutExpired, json.JSONDecodeError):
                 pass
 
-        blacklist: set[str] = set(['/usr/bin/gnome-software', '/usr/share/policorp-linux-store/policorp-linux-store'])
         shown_paths: set[str] = set()
 
         for app_info in Gio.AppInfo.get_all():
@@ -218,14 +217,6 @@ class AppFilterPage(Gtk.Box):
             else:
                 allowed = True
 
-            if abs_exe in blacklist and '/usr/bin/flatpak' in acl_blocked:
-                subprocess.run(
-                    ["pkexec", GROUP_HELPER, "acl-batch", username, ",".join(blacklist), ""],
-                    check=True,
-                    timeout=60,
-                )
-                allowed = False
-
             row = Adw.SwitchRow()
             row.set_title(name)
             row.set_subtitle(abs_exe)
@@ -243,15 +234,16 @@ class AppFilterPage(Gtk.Box):
             self._app_rows[app_id] = row
             shown_paths.add(abs_exe)
 
+        acl_whitelist: set[str] = set(['/usr/bin/flatpak'])
         # Show ACL-blocked apps that have no visible .desktop entry
         # (e.g. /usr/bin/rustdesk installed but NoDisplay=true system-wide)
-        for blocked_path in sorted(acl_blocked - shown_paths):
+        for blocked_path in sorted(acl_blocked.union(acl_whitelist) - shown_paths):
             name = shutil.which(blocked_path) and blocked_path.split("/")[-1] or blocked_path
             app_id = blocked_path
             row = Adw.SwitchRow()
             row.set_title(name)
             row.set_subtitle(blocked_path)
-            row.set_active(False)
+            row.set_active(blocked_path not in acl_blocked)
             row.connect("notify::active", self._on_app_toggled, app_id, blocked_path)
             img = Gtk.Image.new_from_icon_name("application-x-executable-symbolic")
             img.set_pixel_size(32)

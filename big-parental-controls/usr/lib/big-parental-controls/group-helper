@@ -70,9 +70,11 @@ case "$1" in
             /usr/bin/snap
             /usr/bin/ssh
             /usr/bin/rustdesk
+            /usr/bin/gnome-software
+            /usr/bin/policorp-store
         )
         for path in "${DEFAULT_BLOCKS[@]}"; do
-            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path"
         done
 
         # Save ACL state
@@ -84,7 +86,7 @@ case "$1" in
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk","/usr/bin/gnome-software","/usr/bin/policorp-store"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
@@ -183,9 +185,11 @@ print(age)
             /usr/bin/snap
             /usr/bin/ssh
             /usr/bin/rustdesk
+            /usr/bin/gnome-software
+            /usr/bin/policorp-store
         )
         for path in "${DEFAULT_BLOCKS[@]}"; do
-            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null
         done
 
         # Save ACL state
@@ -197,7 +201,7 @@ print(age)
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk","/usr/bin/gnome-software","/usr/bin/policorp-store"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
