@@ -619,7 +619,7 @@ for p in state.get(os.environ["BPC_USER"], []):
             IFS=',' read -ra BLOCK_PATHS <<< "$BLOCK_CSV"
             for path in "${BLOCK_PATHS[@]}"; do
                 [[ -e "$path" ]] || continue
-                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null
+                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
                 # Hide from desktop menu
                 BINARY=$(basename "$path")
                 for desktop in /usr/share/applications/*.desktop; do
@@ -640,7 +640,7 @@ DEOF
         if [[ -n "$UNBLOCK_CSV" && "$UNBLOCK_CSV" != "" ]]; then
             IFS=',' read -ra UNBLOCK_PATHS <<< "$UNBLOCK_CSV"
             for path in "${UNBLOCK_PATHS[@]}"; do
-                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null
+                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null || true
                 # Unhide from desktop menu
                 BINARY=$(basename "$path")
                 for desktop in /usr/share/applications/*.desktop; do

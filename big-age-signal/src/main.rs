@@ -837,7 +837,7 @@ async fn main() -> Result<()> {
     let _ = fs::create_dir_all(DATA_DIR);
     let _ = fs::create_dir_all(ACTIVITY_DIR);
 
-    let perm = fs::Permissions::from_mode(0o755);
+    let perm = fs::Permissions::from_mode(0o655);
     let _ = fs::set_permissions(DATA_DIR, perm);
 
     let connection = Connection::system().await?;
