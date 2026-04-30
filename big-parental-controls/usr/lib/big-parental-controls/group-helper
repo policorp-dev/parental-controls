@@ -96,7 +96,7 @@ print(json.dumps(state, indent=2))
 
         # Hide blocked apps from desktop menu
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] || continue
             BINARY=$(basename "$path")
@@ -160,6 +160,7 @@ print(age)
         [[ -z "$2" ]] && exit 1
         validate_username "$2"
         gpasswd -d "$2" "$GROUP"
+        malcontent-client set-app-filter "$2"
         ;;
         enforce-defaults)
         # Usage: enforce-defaults USERNAME
@@ -211,7 +212,7 @@ print(json.dumps(state, indent=2))
 
         # Hide blocked apps from desktop menu
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] || continue
             BINARY=$(basename "$path")
@@ -301,7 +302,7 @@ print(f"Re-applied {count} ACL(s)")
         HOME_DIR=$(get_home "$2")
         [[ -d "$HOME_DIR" ]] || exit 1
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         # Write NoDisplay override
         cat > "$APPS_DIR/$3" << EOF
 [Desktop Entry]
@@ -547,6 +548,7 @@ with open(limits_file, "w") as f:
             # (daemon keeps running — it will find no rules and do nothing)
         fi
         systemctl daemon-reload
+        malcontent-client set-app-filter "$2"
         ;;
     delete-user)
         # Usage: delete-user USERNAME
@@ -595,7 +597,7 @@ with open(limits_file, "w") as f:
         UNBLOCK_CSV="$4"
         HOME_DIR=$(get_home "$USERNAME")
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
 
         # Load current ACL state
         if [[ -f "$ACL_STATE" ]]; then
@@ -617,7 +619,7 @@ for p in state.get(os.environ["BPC_USER"], []):
             IFS=',' read -ra BLOCK_PATHS <<< "$BLOCK_CSV"
             for path in "${BLOCK_PATHS[@]}"; do
                 [[ -e "$path" ]] || continue
-                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null
                 # Hide from desktop menu
                 BINARY=$(basename "$path")
                 for desktop in /usr/share/applications/*.desktop; do
@@ -638,7 +640,7 @@ DEOF
         if [[ -n "$UNBLOCK_CSV" && "$UNBLOCK_CSV" != "" ]]; then
             IFS=',' read -ra UNBLOCK_PATHS <<< "$UNBLOCK_CSV"
             for path in "${UNBLOCK_PATHS[@]}"; do
-                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null || true
+                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null
                 # Unhide from desktop menu
                 BINARY=$(basename "$path")
                 for desktop in /usr/share/applications/*.desktop; do

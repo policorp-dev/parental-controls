@@ -421,7 +421,12 @@ class UserDetailPage(Gtk.Box):
         username = self._username
 
         def do_remove() -> bool:
-            return self._accounts.remove_from_supervised(username)
+            from big_parental_controls.services import acl_service
+            from big_parental_controls.services import time_service
+            remove = self._accounts.remove_from_supervised(username)
+            acl_service.unblock_all(username)
+            time_service.remove_all(username)
+            return remove
 
         def on_done(_ok: bool) -> None:
             self._hide_loading_overlay()

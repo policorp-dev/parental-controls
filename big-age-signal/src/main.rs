@@ -25,6 +25,7 @@ use zbus::{interface, message::Header, Connection, Result};
 use std::os::unix::net::UnixStream;
 use std::io::{Write};
 use std::thread;
+use std::os::unix::fs::PermissionsExt;
 
 const SUPERVISED_GROUP: &str = "supervised";
 const VERSION: &str = "1.0";
@@ -835,6 +836,9 @@ async fn main() -> Result<()> {
     // Ensure data directories exist
     let _ = fs::create_dir_all(DATA_DIR);
     let _ = fs::create_dir_all(ACTIVITY_DIR);
+
+    let perm = fs::Permissions::from_mode(0o755);
+    let _ = fs::set_permissions(DATA_DIR, perm);
 
     let connection = Connection::system().await?;
 
