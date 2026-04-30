@@ -307,6 +307,7 @@ class UsersPage(Gtk.Box):
                     self._malcontent.set_app_filter(
                         user.get_uid(),
                         oars_values=OARS_PRESETS[age_group],
+                        allow_user_installation=True
                     )
                 except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
                     pass
