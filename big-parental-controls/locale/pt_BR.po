@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 16:48-0300\n"
+"POT-Creation-Date: 2026-04-30 09:56-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -81,10 +81,10 @@ msgstr ""
 #: src/big_parental_controls/ui/compliance.py:53
 #: src/big_parental_controls/ui/compliance.py:87
 #: src/big_parental_controls/ui/pages/user_detail_page.py:403
-#: src/big_parental_controls/ui/pages/user_detail_page.py:443
-#: src/big_parental_controls/ui/pages/user_detail_page.py:466
-#: src/big_parental_controls/ui/pages/users_page.py:170
-#: src/big_parental_controls/ui/pages/users_page.py:314
+#: src/big_parental_controls/ui/pages/user_detail_page.py:448
+#: src/big_parental_controls/ui/pages/user_detail_page.py:471
+#: src/big_parental_controls/ui/pages/users_page.py:197
+#: src/big_parental_controls/ui/pages/users_page.py:347
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -139,7 +139,7 @@ msgstr "Dados exportados para %s"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/activity_page.py:47
-#: src/big_parental_controls/ui/pages/app_filter_page.py:62
+#: src/big_parental_controls/ui/pages/app_filter_page.py:61
 msgid "User"
 msgstr "Usuários"
 
@@ -156,7 +156,7 @@ msgstr ""
 "sistema verifica os programas em execução a cada minuto."
 
 #: src/big_parental_controls/ui/pages/activity_page.py:68
-#: src/big_parental_controls/ui/pages/app_filter_page.py:72
+#: src/big_parental_controls/ui/pages/app_filter_page.py:71
 msgid "Select a User"
 msgstr "Selecionar Usuário"
 
@@ -217,12 +217,12 @@ msgstr "%dh %dmin"
 msgid "%d min"
 msgstr "%d min"
 
-#: src/big_parental_controls/ui/pages/app_filter_page.py:73
+#: src/big_parental_controls/ui/pages/app_filter_page.py:72
 msgid "Choose a supervised user to manage app access."
 msgstr ""
 "Escolha um usuário supervisionado para gerenciar o acesso a aplicativos."
 
-#: src/big_parental_controls/ui/pages/app_filter_page.py:78
+#: src/big_parental_controls/ui/pages/app_filter_page.py:77
 msgid "Filter apps…"
 msgstr "Filtrar aplicativos..."
 
@@ -231,19 +231,9 @@ msgstr "Filtrar aplicativos..."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
-#: src/big_parental_controls/ui/pages/app_filter_page.py:85
+#: src/big_parental_controls/ui/pages/app_filter_page.py:107
 msgid "Installed Apps"
 msgstr "Aplicativos Permitidos"
-
-#: src/big_parental_controls/ui/pages/app_filter_page.py:90
-msgid "Apply Changes"
-msgstr "Aplicar Alterações"
-
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
-#: src/big_parental_controls/ui/pages/app_filter_page.py:286
-msgid "App access updated."
-msgstr "Permissões do aplicativo atualizadas."
 
 #: src/big_parental_controls/ui/pages/dns_page.py:30
 msgid ""
@@ -380,23 +370,23 @@ msgstr "DNS personalizado aplicado."
 msgid "Web filtering enabled."
 msgstr "Filtro da web desativado."
 
-#: src/big_parental_controls/ui/pages/main_view.py:17
+#: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Emotional support, 24h"
 msgstr "Apoio emocional, 24h"
 
-#: src/big_parental_controls/ui/pages/main_view.py:18
+#: src/big_parental_controls/ui/pages/main_view.py:20
 msgid "Online safety for children"
 msgstr "Segurança online para crianças"
 
-#: src/big_parental_controls/ui/pages/main_view.py:19
+#: src/big_parental_controls/ui/pages/main_view.py:21
 msgid "Human rights violations"
 msgstr "Violações dos direitos humanos"
 
-#: src/big_parental_controls/ui/pages/main_view.py:40
+#: src/big_parental_controls/ui/pages/main_view.py:43
 msgid "Main Menu"
 msgstr "Menu Principal"
 
-#: src/big_parental_controls/ui/pages/main_view.py:70
+#: src/big_parental_controls/ui/pages/main_view.py:73
 msgid "Manage screen time, apps and web filters for supervised users."
 msgstr ""
 "Gerencie o tempo de tela, aplicativos e filtros da web para usuários "
@@ -404,46 +394,56 @@ msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
-#: src/big_parental_controls/ui/pages/main_view.py:81
+#: src/big_parental_controls/ui/pages/main_view.py:84
 msgid "Supervised Users"
 msgstr "Supervisionado"
 
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: src/big_parental_controls/ui/pages/main_view.py:86
-msgid "Add Supervised User"
-msgstr "Adicionar Conta Supervisionada"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
+#: src/big_parental_controls/ui/pages/main_view.py:105
+#: src/big_parental_controls/ui/pages/users_page.py:83
+#: src/big_parental_controls/ui/pages/users_page.py:162
+msgid "Create Supervised User"
+msgstr "Criar Conta Supervisionada"
 
-#: src/big_parental_controls/ui/pages/main_view.py:95
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
+#: src/big_parental_controls/ui/pages/main_view.py:114
+#: src/big_parental_controls/ui/pages/users_page.py:91
+msgid "Other Users"
+msgstr "Usuários"
+
+#: src/big_parental_controls/ui/pages/main_view.py:125
 #: src/big_parental_controls/ui/pages/supervised_view.py:157
 msgid "Help and Support"
 msgstr "Ajuda e Suporte"
 
-#: src/big_parental_controls/ui/pages/main_view.py:120
+#: src/big_parental_controls/ui/pages/main_view.py:158
 msgid "About Parental Controls"
 msgstr "Sobre os Controles Parentais"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
-#: src/big_parental_controls/ui/pages/main_view.py:145
+#: src/big_parental_controls/ui/pages/main_view.py:183
+#: src/big_parental_controls/ui/pages/users_page.py:73
 msgid "No supervised users yet"
 msgstr "Nenhuma conta supervisionada"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
-#: src/big_parental_controls/ui/pages/main_view.py:147
+#: src/big_parental_controls/ui/pages/main_view.py:185
+#: src/big_parental_controls/ui/pages/users_page.py:75
 msgid "Create a supervised account to get started."
 msgstr "Crie um na página de Usuários para começar."
 
-#: src/big_parental_controls/ui/pages/main_view.py:184
-msgid "Legal Framework"
-msgstr "Marco Legal"
-
-#: src/big_parental_controls/ui/pages/main_view.py:188
+#: src/big_parental_controls/ui/pages/main_view.py:237
 msgid "ECA Digital — Brazil"
 msgstr "ECA Digital — Brasil"
 
-#: src/big_parental_controls/ui/pages/main_view.py:190
+#: src/big_parental_controls/ui/pages/main_view.py:239
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
 "Digital Environment. This app implements Art. 12 (age verification), Art. 13 "
@@ -455,11 +455,11 @@ msgstr ""
 "Art. 13 (minimização de dados), Art. 17 (medidas protetivas) e Art. 18 "
 "(monitoramento de atividade)."
 
-#: src/big_parental_controls/ui/pages/main_view.py:198
+#: src/big_parental_controls/ui/pages/main_view.py:247
 msgid "LGPD — Brazil"
 msgstr "LGPD — Brasil"
 
-#: src/big_parental_controls/ui/pages/main_view.py:200
+#: src/big_parental_controls/ui/pages/main_view.py:249
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
 "(children's data requires specific parental consent), Art. 18 (right to "
@@ -469,11 +469,11 @@ msgstr ""
 "crianças requerem consentimento parental específico), Art. 18 (direito de "
 "acesso e exclusão de dados), Art. 46 (segurança)."
 
-#: src/big_parental_controls/ui/pages/main_view.py:207
+#: src/big_parental_controls/ui/pages/main_view.py:256
 msgid "GDPR — European Union"
 msgstr "GDPR — União Europeia"
 
-#: src/big_parental_controls/ui/pages/main_view.py:209
+#: src/big_parental_controls/ui/pages/main_view.py:258
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
 "Art. 8 (child consent via parent), Art. 13 (transparent information), Art. "
@@ -485,11 +485,11 @@ msgstr ""
 "transparente), Art. 17 (direito ao apagamento), Art. 20 (portabilidade de "
 "dados), Art. 25 (privacidade por design)."
 
-#: src/big_parental_controls/ui/pages/main_view.py:217
+#: src/big_parental_controls/ui/pages/main_view.py:266
 msgid "UK Children's Code"
 msgstr "Código de Proteção Infantil do Reino Unido"
 
-#: src/big_parental_controls/ui/pages/main_view.py:219
+#: src/big_parental_controls/ui/pages/main_view.py:268
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
 "including data minimization, default protections, and parental controls."
@@ -498,17 +498,21 @@ msgstr ""
 "seguros para crianças, incluindo minimização de dados, proteções padrão e "
 "controles parentais."
 
-#: src/big_parental_controls/ui/pages/main_view.py:226
+#: src/big_parental_controls/ui/pages/main_view.py:275
 msgid "EU Digital Services Act"
 msgstr "Lei de Serviços Digitais da UE"
 
-#: src/big_parental_controls/ui/pages/main_view.py:228
+#: src/big_parental_controls/ui/pages/main_view.py:277
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
 "digital platforms."
 msgstr ""
 "Regulamento 2022/2065 — Transparência, segurança do usuário e proteção de "
 "menores em plataformas digitais."
+
+#: src/big_parental_controls/ui/pages/main_view.py:284
+msgid "Legal Framework"
+msgstr "Marco Legal"
 
 #: src/big_parental_controls/ui/pages/supervised_view.py:96
 msgid "My Screen Time"
@@ -523,21 +527,14 @@ msgstr "Olá, %s"
 msgid "Here you can see your screen time and application usage."
 msgstr "Aqui você pode ver seu tempo de tela e uso de aplicativos."
 
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
 #: src/big_parental_controls/ui/pages/support_page.py:16
-msgid "Centro de Valorização da Vida — emotional support by phone or chat"
-msgstr "Centro de Valorização da Vida — suporte emocional por telefone ou chat"
+#, fuzzy
+msgid "Emotional support — free of charge"
+msgstr "Apoio emocional, 24h"
 
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
 #: src/big_parental_controls/ui/pages/support_page.py:22
-msgid "Report and get help with online safety issues"
-msgstr "Relatar e obter ajuda com questões de segurança online."
+msgid "Help and reports on internet crimes and safety"
+msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
@@ -554,39 +551,74 @@ msgstr "Denunciar violações dos direitos de crianças e adolescentes"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
 #: src/big_parental_controls/ui/pages/support_page.py:34
-msgid "Internet security guides and best practices"
+#, fuzzy
+msgid "Security guides and best practices on the web"
 msgstr "Guias de segurança na Internet e melhores práticas"
 
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
-#: src/big_parental_controls/ui/pages/support_page.py:64
-msgid ""
-"If you or someone you know needs help, you are not alone. These "
-"organizations provide free, confidential support — no one will judge you."
+#: src/big_parental_controls/ui/pages/support_page.py:42
+msgid "ECA Digital (Law 15,211/2025)"
 msgstr ""
-"Se você ou alguém que você conhece precisa de ajuda, você não está sozinho. "
-"Essas organizações oferecem suporte gratuito e confidencial — ninguém irá te "
-"julgar.Se você ou alguém que você conhece precisa de ajuda, você não está "
-"sozinho. Essas organizações oferecem suporte gratuito e confidencial — "
-"ninguém irá julgá-lo."
+
+#: src/big_parental_controls/ui/pages/support_page.py:43
+msgid "Provides for the mandatory availability of parental supervision tools"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:48
+msgid "LGPD (Law 13,709/2018)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:49
+msgid "Protection of minors' personal data (Art. 14)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:54
+msgid "Marco Civil (Law 12,965/2014)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:55
+msgid "Rights and guarantees of internet users in Brazil"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:85
+msgid ""
+"We work to ensure a safe and healthy digital experience. Here you will find "
+"help channels and the legal basis for protection."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:99
+#, fuzzy
+msgid "Help and Support Channels"
+msgstr "Ajuda e Suporte"
+
+#: src/big_parental_controls/ui/pages/support_page.py:100
+#, fuzzy
+msgid "Emotional support, safety, and reporting"
+msgstr "Apoio emocional, 24h"
+
+#: src/big_parental_controls/ui/pages/support_page.py:122
+#, fuzzy
+msgid "Legal Framework and Protection"
+msgstr "Marco Legal"
+
+#: src/big_parental_controls/ui/pages/support_page.py:123
+msgid "Brazilian legislation on protection of minors"
+msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
-#: src/big_parental_controls/ui/pages/support_page.py:103
+#: src/big_parental_controls/ui/pages/support_page.py:147
 msgid "Emergency"
 msgstr "Emergência"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
-#: src/big_parental_controls/ui/pages/support_page.py:106
+#: src/big_parental_controls/ui/pages/support_page.py:150
 msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
 msgstr "Em caso de perigo iminente, ligue 190 (Polícia) ou 192 (SAMU)"
 
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
-#: src/big_parental_controls/ui/pages/support_page.py:107
-msgid "These numbers are free and available 24/7"
-msgstr "Esses números são gratuitos e estão disponíveis 24/7."
+#: src/big_parental_controls/ui/pages/support_page.py:151
+msgid "Free numbers available 24/7 throughout Brazil"
+msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
@@ -687,7 +719,7 @@ msgstr "Configurações de horário aplicadas."
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:149
 msgid "Account"
-msgstr "Excluir Conta"
+msgstr "Conta"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:160
 msgid "Profile"
@@ -697,7 +729,7 @@ msgstr "Perfil"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
 #: src/big_parental_controls/ui/pages/user_detail_page.py:164
-#: src/big_parental_controls/ui/pages/users_page.py:160
+#: src/big_parental_controls/ui/pages/users_page.py:187
 msgid "Age Group"
 msgstr "Faixa etária"
 
@@ -706,22 +738,22 @@ msgid "ECA Digital classification"
 msgstr "Classificação ECA Digital"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:189
 msgid "Child (0–12)"
 msgstr "Criança (0–12)"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:189
 msgid "Adolescent (13–15)"
 msgstr "Adolescente (13–15)"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:189
 msgid "Adolescent (16–17)"
 msgstr "Adolescente (16–17)"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:189
 msgid "Adult (18+)"
 msgstr "Adulto (18+)"
 
@@ -772,7 +804,7 @@ msgstr "Verifica os programas em execução a cada minuto"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 27
 #: src/big_parental_controls/ui/pages/user_detail_page.py:317
 #: src/big_parental_controls/ui/pages/welcome_page.py:57
-#: src/big_parental_controls/window.py:193
+#: src/big_parental_controls/window.py:178
 #: src/big_parental_controls/data/window.ui:132
 msgid "Screen Time"
 msgstr "Tempo de Tela"
@@ -789,7 +821,7 @@ msgstr "Definir horários permitidos e duração diária"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:335
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
-#: src/big_parental_controls/window.py:207
+#: src/big_parental_controls/window.py:195
 msgid "App Access"
 msgstr "Acesso a Aplicativos"
 
@@ -813,7 +845,7 @@ msgstr "Escolha quais aplicativos este usuário pode executar"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
 #: src/big_parental_controls/ui/pages/user_detail_page.py:353
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
-#: src/big_parental_controls/window.py:219
+#: src/big_parental_controls/window.py:208
 #: src/big_parental_controls/data/window.ui:160
 msgid "Web Filter"
 msgstr "Filtro da Web"
@@ -838,7 +870,7 @@ msgstr "Ações da Conta"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:374
-#: src/big_parental_controls/ui/pages/users_page.py:310
+#: src/big_parental_controls/ui/pages/users_page.py:343
 msgid "Remove Supervision"
 msgstr "Remover Conta Supervisionada"
 
@@ -870,22 +902,22 @@ msgstr ""
 "restrições."
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:404
-#: src/big_parental_controls/ui/pages/users_page.py:315
+#: src/big_parental_controls/ui/pages/users_page.py:348
 msgid "Remove"
 msgstr "Remover"
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:430
-#: src/big_parental_controls/ui/pages/users_page.py:342
+#: src/big_parental_controls/ui/pages/user_detail_page.py:435
+#: src/big_parental_controls/ui/pages/users_page.py:375
 #, python-format
 msgid "Supervision removed from %s."
 msgstr "Supervisão removida de %s."
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:438
+#: src/big_parental_controls/ui/pages/user_detail_page.py:443
 #, python-format
 msgid "Delete User '%s'?"
 msgstr "Excluir usuário '%s'?"
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:440
+#: src/big_parental_controls/ui/pages/user_detail_page.py:445
 msgid ""
 "This will permanently delete the account and the home folder with all files. "
 "This action cannot be undone."
@@ -893,15 +925,15 @@ msgstr ""
 "Isso excluirá permanentemente a conta e a pasta pessoal com todos os "
 "arquivos. Esta ação não pode ser desfeita."
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:444
+#: src/big_parental_controls/ui/pages/user_detail_page.py:449
 msgid "Delete Permanently"
 msgstr "Excluir Permanentemente"
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:460
+#: src/big_parental_controls/ui/pages/user_detail_page.py:465
 msgid "Are you sure?"
 msgstr "Tem certeza?"
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:462
+#: src/big_parental_controls/ui/pages/user_detail_page.py:467
 #, python-format
 msgid ""
 "ALL data of user '%s' will be permanently erased, including documents, "
@@ -910,134 +942,105 @@ msgstr ""
 "TODOS os dados do usuário '%s' serão apagados permanentemente, incluindo "
 "documentos, fotos e configurações. Esta ação NÃO pode ser desfeita."
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:467
+#: src/big_parental_controls/ui/pages/user_detail_page.py:472
 msgid "Yes, delete everything"
 msgstr "Sim, excluir tudo"
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:494
+#: src/big_parental_controls/ui/pages/user_detail_page.py:499
 #, python-format
 msgid "User '%s' has been deleted."
 msgstr "Usuário '%s' foi excluído."
 
-#: src/big_parental_controls/ui/pages/user_detail_page.py:498
+#: src/big_parental_controls/ui/pages/user_detail_page.py:503
 #, python-format
 msgid "Failed to delete user '%s'."
 msgstr "Falha ao excluir usuário '%s'."
 
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
-#: src/big_parental_controls/ui/pages/users_page.py:70
-#: src/big_parental_controls/ui/pages/users_page.py:135
-msgid "Create Supervised User"
-msgstr "Criar Conta Supervisionada"
-
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
-#: src/big_parental_controls/ui/pages/users_page.py:73
-msgid "Create supervised user"
-msgstr "Criar Conta Supervisionada"
-
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
-#: src/big_parental_controls/ui/pages/users_page.py:80
-msgid "Other Users"
-msgstr "Usuários"
-
-#
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: src/big_parental_controls/ui/pages/users_page.py:81
+#: src/big_parental_controls/ui/pages/users_page.py:92
 msgid "Add supervision to an existing account."
 msgstr "Adicionar Conta Supervisionada"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:121
+#: src/big_parental_controls/ui/pages/users_page.py:147
 msgid "Add supervision"
 msgstr "Adicionar Supervisão"
 
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:124
-#, python-format
-msgid "Add supervision to %s"
-msgstr "Adicionar supervisão a %s"
-
-#
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
-#: src/big_parental_controls/ui/pages/users_page.py:136
+#: src/big_parental_controls/ui/pages/users_page.py:163
 msgid "Set up a new supervised account on this computer."
 msgstr "Configure uma nova conta supervisionada neste computador."
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
-#: src/big_parental_controls/ui/pages/users_page.py:144
+#: src/big_parental_controls/ui/pages/users_page.py:171
 msgid "Username"
 msgstr "Nome de usuário"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
-#: src/big_parental_controls/ui/pages/users_page.py:148
+#: src/big_parental_controls/ui/pages/users_page.py:175
 msgid "Full Name"
 msgstr "Nome Completo"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
-#: src/big_parental_controls/ui/pages/users_page.py:152
+#: src/big_parental_controls/ui/pages/users_page.py:179
 msgid "Password"
 msgstr "Senha"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
-#: src/big_parental_controls/ui/pages/users_page.py:156
+#: src/big_parental_controls/ui/pages/users_page.py:183
 msgid "Confirm Password"
 msgstr "Confirmar Senha"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
-#: src/big_parental_controls/ui/pages/users_page.py:171
+#: src/big_parental_controls/ui/pages/users_page.py:198
 msgid "Create"
 msgstr "Criar"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
-#: src/big_parental_controls/ui/pages/users_page.py:259
+#: src/big_parental_controls/ui/pages/users_page.py:286
 msgid "Username and password are required."
 msgstr "Nome de usuário e senha são obrigatórios."
 
-#: src/big_parental_controls/ui/pages/users_page.py:269
+#: src/big_parental_controls/ui/pages/users_page.py:296
 #, python-format
 msgid "Creating user %s…"
 msgstr "Criando usuário %s…"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
-#: src/big_parental_controls/ui/pages/users_page.py:275
+#: src/big_parental_controls/ui/pages/users_page.py:303
 msgid "Failed to create user."
 msgstr "Falha ao criar conta de usuário: %s"
 
-#: src/big_parental_controls/ui/pages/users_page.py:294
-#: src/big_parental_controls/ui/pages/users_page.py:297
+#: src/big_parental_controls/ui/pages/users_page.py:325
+#: src/big_parental_controls/ui/pages/users_page.py:328
 #, python-format
 msgid "User %s created."
 msgstr "Usuário %s criado."
 
-#: src/big_parental_controls/ui/pages/users_page.py:312
+#: src/big_parental_controls/ui/pages/users_page.py:345
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr "Remover todas as restrições de %s? Isso não pode ser desfeito."
 
-#: src/big_parental_controls/ui/pages/users_page.py:352
+#: src/big_parental_controls/ui/pages/users_page.py:385
 msgid "Adding supervision…"
 msgstr "Adicionando supervisão…"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
-#: src/big_parental_controls/ui/pages/users_page.py:364
-#: src/big_parental_controls/ui/pages/users_page.py:367
+#: src/big_parental_controls/ui/pages/users_page.py:397
+#: src/big_parental_controls/ui/pages/users_page.py:400
 #, python-format
 msgid "%s is now supervised."
 msgstr "%s agora está supervisionado."
@@ -1052,9 +1055,9 @@ msgstr "%s agora está supervisionado."
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: src/big_parental_controls/ui/pages/welcome_page.py:38
 #: src/big_parental_controls/window.py:29
-#: src/big_parental_controls/window.py:67
-#: src/big_parental_controls/window.py:154
-#: src/big_parental_controls/window.py:178
+#: src/big_parental_controls/window.py:52
+#: src/big_parental_controls/window.py:139
+#: src/big_parental_controls/window.py:163
 #: src/big_parental_controls/data/window.ui:15
 msgid "Parental Controls"
 msgstr "Controles Parentais"
@@ -1224,16 +1227,16 @@ msgstr "Dom"
 msgid "No activity on this day"
 msgstr "Nenhuma atividade neste dia"
 
-#: src/big_parental_controls/window.py:72
+#: src/big_parental_controls/window.py:54
 msgid "Administrator authentication is required to change settings."
 msgstr ""
 "A autenticação de administrador é necessária para alterar as configurações."
 
-#: src/big_parental_controls/window.py:89
+#: src/big_parental_controls/window.py:73
 msgid "Authenticate"
 msgstr "Autenticar"
 
-#: src/big_parental_controls/window.py:130
+#: src/big_parental_controls/window.py:115
 msgid "Authentication failed. Try again."
 msgstr "Autenticação falhou. Tente novamente."
 
@@ -1242,19 +1245,19 @@ msgstr "Autenticação falhou. Tente novamente."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
-#: src/big_parental_controls/window.py:231
+#: src/big_parental_controls/window.py:220
 #: src/big_parental_controls/data/window.ui:76
 msgid "Users"
 msgstr "Usuários"
 
-#: src/big_parental_controls/window.py:266
-#: src/big_parental_controls/window.py:279
+#: src/big_parental_controls/window.py:255
+#: src/big_parental_controls/window.py:268
 msgid "OK"
 msgstr "OK"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
-#: src/big_parental_controls/window.py:277
+#: src/big_parental_controls/window.py:266
 msgid "Error"
 msgstr "Erro"
 
