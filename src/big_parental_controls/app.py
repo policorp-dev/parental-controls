@@ -86,7 +86,7 @@ class ParentalControlsApp(Adw.Application):
             application_icon="parental-controls",
             developer_name=APP_DEVELOPER,
             version=APP_VERSION,
-            website=APP_WEBSITE,
+            #website=APP_WEBSITE,
             issue_url=APP_ISSUE_URL,
             license_type=Gtk.License.GPL_3_0,
             developers=[APP_DEVELOPER],
@@ -98,6 +98,6 @@ class ParentalControlsApp(Adw.Application):
         )
         dialog.add_credit_section(
             "Projeto Original",
-            ["Big Parental Controls - BigLinux"]
+            ["Big Parental Controls - BigLinux ©"]
         )
         dialog.present(self.props.active_window)
