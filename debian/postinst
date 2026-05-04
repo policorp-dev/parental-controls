@@ -7,6 +7,8 @@ getent group supervised >/dev/null || groupadd -r supervised
 # garantir diretório
 mkdir -p /var/lib/big-parental-controls
 chmod 700 /var/lib/big-parental-controls
+touch /var/lib/big-parental-controls/time-state.tmp /var/lib/big-parental-controls/time-state.json
+chmod 644 /var/lib/big-parental-controls/time-state.tmp /var/lib/big-parental-controls/time-state.json
 
 # ativar serviço
 systemctl daemon-reexec || true

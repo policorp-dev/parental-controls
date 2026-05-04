@@ -510,9 +510,20 @@ fn append_snapshot(username: &str, processes: &[String]) {
 /// Write atomically: temp file → rename.
 fn atomic_write(path: &Path, content: &[u8]) {
     let tmp = path.with_extension("tmp");
-    if fs::write(&tmp, content).is_ok() {
-        let _ = fs::rename(&tmp, path);
+    match fs::File::create(&tmp) {
+        Ok(_) => println!("Arquivo criado com suceso"),
+        Err(e) => eprintln!("Erro ao criar arquivo: {}", e),
     }
+
+    let perm = fs::Permissions::from_mode(0o655);
+    let _ = fs::set_permissions(&tmp, perm);
+
+    if let Err(e) = fs::write(&tmp, content) {
+        eprintln!("Erro ao escrever no arquivo temporário {}: {}", tmp.display(), e);
+        return;
+    }
+
+    std::fs::copy(&tmp, &path);
 }
 
 fn prettify_app_name(comm: &str) -> String {
