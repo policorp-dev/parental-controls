@@ -4,7 +4,7 @@ import os as _os
 
 APP_ID = "br.com.biglinux.ParentalControls"
 APP_NAME = "Parental Controls"
-APP_VERSION = "1.0.3"
+APP_VERSION = "1.0.4"
 APP_DEVELOPER = "Policorp"
 APP_WEBSITE = "https://www.policorp.com.br"
 APP_ISSUE_URL = "https://github.com/policorp-dev/parental-controls/issues"
