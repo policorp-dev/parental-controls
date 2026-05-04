@@ -65,7 +65,7 @@ class MainView(Gtk.Box):
         header_box.set_halign(Gtk.Align.CENTER)
         header_box.set_margin_bottom(8)
 
-        icon = Gtk.Image(icon_name="big-parental-controls")
+        icon = Gtk.Image(icon_name="parental-controls")
         icon.set_pixel_size(64)
         header_box.append(icon)
 

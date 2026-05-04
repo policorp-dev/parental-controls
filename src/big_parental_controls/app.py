@@ -83,7 +83,7 @@ class ParentalControlsApp(Adw.Application):
     def _on_about(self, _action: Gio.SimpleAction, _param: object) -> None:
         dialog = Adw.AboutDialog(
             application_name=APP_NAME,
-            application_icon="big-parental-controls",
+            application_icon="parental-controls",
             developer_name=APP_DEVELOPER,
             version=APP_VERSION,
             website=APP_WEBSITE,
