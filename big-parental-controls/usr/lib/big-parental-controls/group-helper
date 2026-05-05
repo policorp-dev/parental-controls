@@ -3,6 +3,21 @@
 # Runs via pkexec for privilege escalation.
 set -e
 
+DEFAULT_BLOCKS=(
+	/usr/bin/pacman
+	/usr/bin/pamac-manager
+	/usr/bin/pamac-installer
+	/usr/bin/pamac-daemon
+	/usr/bin/yay
+	/usr/bin/paru
+	/usr/bin/flatpak
+	/usr/bin/snap
+	/usr/bin/ssh
+	/usr/bin/rustdesk
+	/usr/bin/gnome-software
+	/usr/bin/policorp-store
+	)
+
 GROUP="supervised"
 STATE_DIR="/var/lib/big-parental-controls"
 ACL_STATE="$STATE_DIR/acl-blocks.json"
@@ -58,21 +73,6 @@ case "$1" in
         groupadd -r "$GROUP" 2>/dev/null || true
         usermod -aG "$GROUP" "$USERNAME"
 
-        # Apply default ACL blocks
-        DEFAULT_BLOCKS=(
-            /usr/bin/pacman
-            /usr/bin/pamac-manager
-            /usr/bin/pamac-installer
-            /usr/bin/pamac-daemon
-            /usr/bin/yay
-            /usr/bin/paru
-            /usr/bin/flatpak
-            /usr/bin/snap
-            /usr/bin/ssh
-            /usr/bin/rustdesk
-            /usr/bin/gnome-software
-            /usr/bin/policorp-store
-        )
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path"
         done
@@ -175,20 +175,6 @@ print(age)
         usermod -aG "$GROUP" "$USERNAME"
 
         # Apply default ACL blocks
-        DEFAULT_BLOCKS=(
-            /usr/bin/pacman
-            /usr/bin/pamac-manager
-            /usr/bin/pamac-installer
-            /usr/bin/pamac-daemon
-            /usr/bin/yay
-            /usr/bin/paru
-            /usr/bin/flatpak
-            /usr/bin/snap
-            /usr/bin/ssh
-            /usr/bin/rustdesk
-            /usr/bin/gnome-software
-            /usr/bin/policorp-store
-        )
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null
         done
@@ -547,6 +533,12 @@ with open(limits_file, "w") as f:
             rm -f /etc/systemd/system/big-parental-time-check.service
             # (daemon keeps running — it will find no rules and do nothing)
         fi
+
+	# 9. Reset DEFAULT_BLOCKS permissions
+	for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}" "$path"
+        done
+
         systemctl daemon-reload
         malcontent-client set-app-filter "$2"
         ;;
