@@ -10,6 +10,7 @@ from gi.repository import Adw, Gio, Gtk
 
 from big_parental_controls.core.constants import (
     APP_DEVELOPER,
+    APP_CREATOR,
     APP_ID,
     APP_NAME,
     APP_VERSION,
@@ -89,7 +90,7 @@ class ParentalControlsApp(Adw.Application):
             #website=APP_WEBSITE,
             issue_url=APP_ISSUE_URL,
             license_type=Gtk.License.GPL_3_0,
-            developers=[APP_DEVELOPER],
+            developers=[APP_CREATOR],
             copyright=f"© 2024-2026 {APP_DEVELOPER}",
             comments=_(
                 "Keep children safe on this computer.\n"
@@ -97,7 +98,7 @@ class ParentalControlsApp(Adw.Application):
             ),
         )
         dialog.add_credit_section(
-            "Projeto Original",
-            ["Big Parental Controls - BigLinux ©"]
+            "Adaptado por",
+            [APP_DEVELOPER]
         )
         dialog.present(self.props.active_window)
