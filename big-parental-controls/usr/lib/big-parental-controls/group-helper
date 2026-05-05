@@ -536,7 +536,7 @@ with open(limits_file, "w") as f:
 
 	# 9. Reset DEFAULT_BLOCKS permissions
 	for path in "${DEFAULT_BLOCKS[@]}"; do
-            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}" "$path"
+            [[ -f "$path" ]] && setfacl -m "u:${USERNAME}" "$path" 2> /dev/null || true
         done
 
         systemctl daemon-reload

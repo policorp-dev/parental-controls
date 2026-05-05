@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+users=$(getent group supervised | cut -d: -f4 | tr ',' '\n')
+for user in $users; do
+	# limpa restricoes de execucao dos usuarios supervisionados
+	/usr/lib/big-parental-controls/group-helper remove-full "$user"
+done
+
 systemctl stop big-parental-daemon.service || true
 systemctl disable big-parental-daemon.service || true
 
