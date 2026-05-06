@@ -1,3 +1,16 @@
+parental-controls (1.0.6) stable; urgency=medium
+
+  * Habilitar flatpak automaticamente ao habilitar policorp-store
+  * Corrigir traducao
+
+ -- Vinicius Neves <vinicius.neves@policorp.com.br>  Wed, 06 May 2026 10:01:42 -0400
+
+parental-controls (1.0.5) stable; urgency=medium
+
+  * Remover restricoes ao desinstalar app
+
+ -- Vinicius Neves <vinicius.neves@policorp.com.br>  Wed, 06 May 2026 09:57:57 -0400
+
 parental-controls (1.0.4) stable; urgency=medium
 
   * Atualizar icone da aplicacao

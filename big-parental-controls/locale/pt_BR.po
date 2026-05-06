@@ -634,7 +634,7 @@ msgstr "Quando este usuário tem permissão para fazer login."
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/time_limits_page.py:68
 msgid "Enable schedule"
-msgstr "Ativar filtro da web"
+msgstr "Ativar agendamento"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90

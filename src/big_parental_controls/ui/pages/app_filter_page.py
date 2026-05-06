@@ -271,6 +271,9 @@ class AppFilterPage(Gtk.Box):
         self._pending_changes[exe] = row.get_active()
         #self._apply_btn.set_sensitive(True)
 
+        if "policorp-store" in exe and row.get_active() is True:
+            self._pending_changes["/usr/bin/flatpak"] = True
+
         """Apply pending changes via ACL batch."""
         if not self._selected_username or not self._pending_changes:
             return
