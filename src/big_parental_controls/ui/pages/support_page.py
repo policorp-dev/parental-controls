@@ -13,13 +13,13 @@ _ = setup_i18n()
 SUPPORT_LINKS = [
     {
         "title": "CVV 188",
-        "subtitle": _("Centro de Valorização da Vida — emotional support by phone or chat"),
+        "subtitle": _("Emotional support — free of charge"),
         "icon": "call-start-symbolic",
         "url": "https://www.cvv.org.br",
     },
     {
         "title": "SaferNet Brasil",
-        "subtitle": _("Report and get help with online safety issues"),
+        "subtitle": _("Help and reports on internet crimes and safety"),
         "icon": "security-high-symbolic",
         "url": "https://new.safernet.org.br",
     },
@@ -31,15 +31,36 @@ SUPPORT_LINKS = [
     },
     {
         "title": "CERT.br",
-        "subtitle": _("Internet security guides and best practices"),
+        "subtitle": _("Security guides and best practices on the web"),
         "icon": "network-server-symbolic",
         "url": "https://cartilha.cert.br",
     },
 ]
 
+LEGAL_LINKS = [
+    {
+        "title": _("ECA Digital (Law 15,211/2025)"),
+        "subtitle": _("Provides for the mandatory availability of parental supervision tools"),
+        "icon": "document-properties-symbolic",
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm", # General ECA as main reference
+    },
+    {
+        "title": _("LGPD (Law 13,709/2018)"),
+        "subtitle": _("Protection of minors' personal data (Art. 14)"),
+        "icon": "security-medium-symbolic",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+    },
+    {
+        "title": _("Marco Civil (Law 12,965/2014)"),
+        "subtitle": _("Rights and guarantees of internet users in Brazil"),
+        "icon": "network-workgroup-symbolic",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm",
+    },
+]
+
 
 class SupportPage(Gtk.Box):
-    """Page displaying support links and help channels."""
+    """Page displaying support links and legal framework."""
 
     def __init__(self, **kwargs: object) -> None:
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=0, **kwargs)
@@ -54,16 +75,15 @@ class SupportPage(Gtk.Box):
         clamp.set_maximum_size(600)
 
         inner = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
-        inner.set_margin_top(0)
+        inner.set_margin_top(18)
         inner.set_margin_bottom(24)
         inner.set_margin_start(24)
         inner.set_margin_end(24)
 
         desc = Gtk.Label(
             label=_(
-                "If you or someone you know needs help, you are not alone. "
-                "These organizations provide free, confidential support — "
-                "no one will judge you."
+                "We work to ensure a safe and healthy digital experience. "
+                "Here you will find help channels and the legal basis for protection."
             )
         )
         desc.set_wrap(True)
@@ -71,9 +91,15 @@ class SupportPage(Gtk.Box):
         desc.add_css_class("dim-label")
         inner.append(desc)
 
-        # Support links
+        # Main List
         group = Adw.PreferencesGroup()
 
+        # Support Expander
+        support_expander = Adw.ExpanderRow()
+        support_expander.set_title(_("Help and Support Channels"))
+        support_expander.set_subtitle(_("Emotional support, safety, and reporting"))
+        support_expander.set_icon_name("help-browser-symbolic")
+        
         for link in SUPPORT_LINKS:
             row = Adw.ActionRow()
             row.set_title(link["title"])
@@ -81,20 +107,38 @@ class SupportPage(Gtk.Box):
             row.set_activatable(True)
             row.connect("activated", self._on_link_activated, link["url"])
 
-            icon = Gtk.Image(
-                icon_name=link["icon"],
-                pixel_size=32,
-                accessible_role=Gtk.AccessibleRole.PRESENTATION,
-            )
+            icon = Gtk.Image(icon_name=link["icon"])
             row.add_prefix(icon)
-
-            arrow = Gtk.Image(
-                icon_name="go-next-symbolic",
-                accessible_role=Gtk.AccessibleRole.PRESENTATION,
-            )
+            
+            arrow = Gtk.Image(icon_name="go-next-symbolic")
             row.add_suffix(arrow)
+            
+            support_expander.add_row(row)
+        
+        group.add(support_expander)
 
-            group.add(row)
+        # Legal Expander
+        legal_expander = Adw.ExpanderRow()
+        legal_expander.set_title(_("Legal Framework and Protection"))
+        legal_expander.set_subtitle(_("Brazilian legislation on protection of minors"))
+        legal_expander.set_icon_name("emblem-system-symbolic")
+
+        for link in LEGAL_LINKS:
+            row = Adw.ActionRow()
+            row.set_title(link["title"])
+            row.set_subtitle(link["subtitle"])
+            row.set_activatable(True)
+            row.connect("activated", self._on_link_activated, link["url"])
+
+            icon = Gtk.Image(icon_name=link["icon"])
+            row.add_prefix(icon)
+            
+            arrow = Gtk.Image(icon_name="go-next-symbolic")
+            row.add_suffix(arrow)
+            
+            legal_expander.add_row(row)
+
+        group.add(legal_expander)
 
         inner.append(group)
 
@@ -104,12 +148,11 @@ class SupportPage(Gtk.Box):
 
         emergency_row = Adw.ActionRow()
         emergency_row.set_title(_("In case of immediate danger, call 190 (Police) or 192 (SAMU)"))
-        emergency_row.set_subtitle(_("These numbers are free and available 24/7"))
+        emergency_row.set_subtitle(_("Free numbers available 24/7 throughout Brazil"))
 
         emergency_icon = Gtk.Image(
             icon_name="emblem-important-symbolic",
             pixel_size=32,
-            accessible_role=Gtk.AccessibleRole.PRESENTATION,
         )
         emergency_row.add_prefix(emergency_icon)
 

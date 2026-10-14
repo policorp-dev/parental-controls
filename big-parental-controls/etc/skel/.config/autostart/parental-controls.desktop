@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/bash -c '$HOME/.local/bin/enable-parental-controls-listener.sh'
+Name=Iniciar Serviço
+Comment=Inicia o serviço listener do parental control automaticamente ao login
+X-GNOME-Autostart-enabled=true

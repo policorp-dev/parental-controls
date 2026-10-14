@@ -250,13 +250,15 @@ class ActivityBlock(Gtk.Box):
                 "remote": _("Remote session"),
                 "tty": _("Console session"),
             }.get(s.session_type, _("Session"))
-            row.set_subtitle(f"{dur}  •  {type_label}")
+            #row.set_subtitle(f"{dur}  •  {type_label}")
+            row.set_subtitle(f"{dur}")
 
             icon_name = {
                 "wayland": "video-display-symbolic",
                 "remote": "network-workgroup-symbolic",
                 "tty": "utilities-terminal-symbolic",
             }.get(s.session_type, "computer-symbolic")
-            row.add_prefix(Gtk.Image(icon_name=icon_name))
+            #row.add_prefix(Gtk.Image(icon_name=icon_name))
+            row.add_prefix(Gtk.Image(icon_name="video-display-symbolic"))
             self._sessions_group.add(row)
             self._session_rows.append(row)

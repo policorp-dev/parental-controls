@@ -3,6 +3,21 @@
 # Runs via pkexec for privilege escalation.
 set -e
 
+DEFAULT_BLOCKS=(
+	/usr/bin/pacman
+	/usr/bin/pamac-manager
+	/usr/bin/pamac-installer
+	/usr/bin/pamac-daemon
+	/usr/bin/yay
+	/usr/bin/paru
+	/usr/bin/flatpak
+	/usr/bin/snap
+	/usr/bin/ssh
+	/usr/bin/rustdesk
+	/usr/bin/gnome-software
+	/usr/bin/policorp-store
+	)
+
 GROUP="supervised"
 STATE_DIR="/var/lib/big-parental-controls"
 ACL_STATE="$STATE_DIR/acl-blocks.json"
@@ -58,21 +73,8 @@ case "$1" in
         groupadd -r "$GROUP" 2>/dev/null || true
         usermod -aG "$GROUP" "$USERNAME"
 
-        # Apply default ACL blocks
-        DEFAULT_BLOCKS=(
-            /usr/bin/pacman
-            /usr/bin/pamac-manager
-            /usr/bin/pamac-installer
-            /usr/bin/pamac-daemon
-            /usr/bin/yay
-            /usr/bin/paru
-            /usr/bin/flatpak
-            /usr/bin/snap
-            /usr/bin/ssh
-            /usr/bin/rustdesk
-        )
         for path in "${DEFAULT_BLOCKS[@]}"; do
-            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path"
         done
 
         # Save ACL state
@@ -84,7 +86,7 @@ case "$1" in
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk","/usr/bin/gnome-software","/usr/bin/policorp-store"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
@@ -94,7 +96,7 @@ print(json.dumps(state, indent=2))
 
         # Hide blocked apps from desktop menu
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] || continue
             BINARY=$(basename "$path")
@@ -158,6 +160,7 @@ print(age)
         [[ -z "$2" ]] && exit 1
         validate_username "$2"
         gpasswd -d "$2" "$GROUP"
+        malcontent-client set-app-filter "$2"
         ;;
         enforce-defaults)
         # Usage: enforce-defaults USERNAME
@@ -172,20 +175,8 @@ print(age)
         usermod -aG "$GROUP" "$USERNAME"
 
         # Apply default ACL blocks
-        DEFAULT_BLOCKS=(
-            /usr/bin/pacman
-            /usr/bin/pamac-manager
-            /usr/bin/pamac-installer
-            /usr/bin/pamac-daemon
-            /usr/bin/yay
-            /usr/bin/paru
-            /usr/bin/flatpak
-            /usr/bin/snap
-            /usr/bin/ssh
-            /usr/bin/rustdesk
-        )
         for path in "${DEFAULT_BLOCKS[@]}"; do
-            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null
         done
 
         # Save ACL state
@@ -197,7 +188,7 @@ print(age)
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk","/usr/bin/gnome-software","/usr/bin/policorp-store"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
@@ -207,7 +198,7 @@ print(json.dumps(state, indent=2))
 
         # Hide blocked apps from desktop menu
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] || continue
             BINARY=$(basename "$path")
@@ -297,7 +288,7 @@ print(f"Re-applied {count} ACL(s)")
         HOME_DIR=$(get_home "$2")
         [[ -d "$HOME_DIR" ]] || exit 1
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
         # Write NoDisplay override
         cat > "$APPS_DIR/$3" << EOF
 [Desktop Entry]
@@ -542,7 +533,14 @@ with open(limits_file, "w") as f:
             rm -f /etc/systemd/system/big-parental-time-check.service
             # (daemon keeps running — it will find no rules and do nothing)
         fi
+
+	# 9. Reset DEFAULT_BLOCKS permissions
+	for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -f "$path" ]] && setfacl -m "u:${USERNAME}" "$path" 2> /dev/null || true
+        done
+
         systemctl daemon-reload
+        malcontent-client set-app-filter "$2"
         ;;
     delete-user)
         # Usage: delete-user USERNAME
@@ -591,7 +589,7 @@ with open(limits_file, "w") as f:
         UNBLOCK_CSV="$4"
         HOME_DIR=$(get_home "$USERNAME")
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR"
+        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
 
         # Load current ACL state
         if [[ -f "$ACL_STATE" ]]; then

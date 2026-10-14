@@ -17,10 +17,15 @@ use std::sync::Arc;
 use chrono::{Local, Datelike, Timelike};
 use nix::sys::signal::{kill, Signal};
 use nix::unistd::{Group, Pid, Uid, User};
+use nix::libc::getpwnam;
 use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 use tokio::time::{interval, Duration};
 use zbus::{interface, message::Header, Connection, Result};
+use std::os::unix::net::UnixStream;
+use std::io::{Write};
+use std::thread;
+use std::os::unix::fs::PermissionsExt;
 
 const SUPERVISED_GROUP: &str = "supervised";
 const VERSION: &str = "1.0";
@@ -505,9 +510,20 @@ fn append_snapshot(username: &str, processes: &[String]) {
 /// Write atomically: temp file → rename.
 fn atomic_write(path: &Path, content: &[u8]) {
     let tmp = path.with_extension("tmp");
-    if fs::write(&tmp, content).is_ok() {
-        let _ = fs::rename(&tmp, path);
+    match fs::File::create(&tmp) {
+        Ok(_) => println!("Arquivo criado com suceso"),
+        Err(e) => eprintln!("Erro ao criar arquivo: {}", e),
     }
+
+    let perm = fs::Permissions::from_mode(0o655);
+    let _ = fs::set_permissions(&tmp, perm);
+
+    if let Err(e) = fs::write(&tmp, content) {
+        eprintln!("Erro ao escrever no arquivo temporário {}: {}", tmp.display(), e);
+        return;
+    }
+
+    std::fs::copy(&tmp, &path);
 }
 
 fn prettify_app_name(comm: &str) -> String {
@@ -572,10 +588,34 @@ fn terminate_session(username: &str, session_id: &str, reason: &str) {
         .output();
 }
 
+fn get_uid_by_username(username: &str) -> Result<u32> {
+    let c_username = CString::new(username).unwrap();
+
+    unsafe {
+        let user_ptr = getpwnam(c_username.as_ptr());
+
+        let user = &*user_ptr;
+
+        Ok(user.pw_uid)
+    }
+}
+
 fn notify_user(username: &str, summary: &str, body: &str) {
-    let _ = Command::new("sudo")
-        .args(["-u", username, "notify-send", "--urgency=critical", summary, body])
-        .output();
+    let uid: u32 = get_uid_by_username(username).unwrap();
+    let socket_path = format!(
+        "/run/user/{}/big-parental.sock",
+        uid
+    );
+
+    match UnixStream::connect(&socket_path) {
+        Ok(mut stream) => {
+            let msg = format!("{}|{}\n", summary, body);
+            let _ = stream.write_all(msg.as_bytes());
+        }
+        Err(e) => {
+            eprintln!("Erro ao conectar ao socket: {}", e);
+        }
+    }
 }
 
 fn day_code_applies(code: &str, current_wday: u8) -> bool {
@@ -708,7 +748,7 @@ fn enforce_time_limits() {
     let mut changed = false;
 
     // Daily minute limit
-    for (username, cfg) in &limits {
+    for (username, cfg) in limits {
         let daily_minutes = cfg
             .get("daily_minutes")
             .and_then(|v| v.as_u64())
@@ -716,32 +756,34 @@ fn enforce_time_limits() {
         if daily_minutes == 0 {
             continue;
         }
-        let Some(session_id) = get_active_graphical_session(username) else {
+        let Some(session_id) = get_active_graphical_session(&username) else {
             continue;
         };
-        let prev = usage.get(username).copied().unwrap_or(0);
+        let prev = usage.get(&username).copied().unwrap_or(0);
         let total = prev + 1;
         usage.insert(username.clone(), total);
         changed = true;
 
         if total >= daily_minutes {
             notify_user(
-                username,
+                &username,
                 "Tempo diário esgotado",
                 &format!("Seu tempo de uso diário de {daily_minutes} min foi atingido."),
             );
-            if total >= daily_minutes + 1 {
+            thread::spawn(move || {
+                thread::sleep(Duration::from_secs(30));
+
                 terminate_session(
-                    username,
+                    &username,
                     &session_id,
                     &format!("daily limit {total}/{daily_minutes} min"),
                 );
-            }
+            });
         } else {
             let remaining = daily_minutes - total;
             if remaining == 5 || remaining == 1 {
                 notify_user(
-                    username,
+                    &username,
                     &format!("Aviso — {remaining} min restante(s)"),
                     &format!("Seu tempo diário acaba em {remaining} minuto(s)."),
                 );
@@ -762,7 +804,11 @@ fn enforce_time_limits() {
             "Horário de uso encerrado",
             "O período de uso permitido terminou.",
         );
-        terminate_session(&username, &session_id, "outside allowed schedule");
+        thread::spawn(move || {
+            thread::sleep(Duration::from_secs(30));
+
+            terminate_session(&username, &session_id, "outside allowed schedule");
+        });
     }
 
     if changed {
@@ -801,6 +847,9 @@ async fn main() -> Result<()> {
     // Ensure data directories exist
     let _ = fs::create_dir_all(DATA_DIR);
     let _ = fs::create_dir_all(ACTIVITY_DIR);
+
+    let perm = fs::Permissions::from_mode(0o655);
+    let _ = fs::set_permissions(DATA_DIR, perm);
 
     let connection = Connection::system().await?;
 

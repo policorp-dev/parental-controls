@@ -10,6 +10,7 @@ from gi.repository import Adw, Gio, Gtk
 
 from big_parental_controls.core.constants import (
     APP_DEVELOPER,
+    APP_CREATOR,
     APP_ID,
     APP_NAME,
     APP_VERSION,
@@ -83,17 +84,21 @@ class ParentalControlsApp(Adw.Application):
     def _on_about(self, _action: Gio.SimpleAction, _param: object) -> None:
         dialog = Adw.AboutDialog(
             application_name=APP_NAME,
-            application_icon="big-parental-controls",
+            application_icon="parental-controls",
             developer_name=APP_DEVELOPER,
             version=APP_VERSION,
-            website=APP_WEBSITE,
+            #website=APP_WEBSITE,
             issue_url=APP_ISSUE_URL,
             license_type=Gtk.License.GPL_3_0,
-            developers=[APP_DEVELOPER],
-            copyright=f"© 2024-2025 {APP_DEVELOPER}",
+            developers=[APP_CREATOR],
+            copyright=f"© 2024-2026 {APP_DEVELOPER}",
             comments=_(
                 "Keep children safe on this computer.\n"
                 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
             ),
+        )
+        dialog.add_credit_section(
+            "Adaptado por",
+            [APP_DEVELOPER]
         )
         dialog.present(self.props.active_window)

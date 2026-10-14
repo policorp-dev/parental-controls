@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+
+  <!-- Escudo -->
+  <path d="M64 8
+           L108 24
+           V56
+           C108 84 88 104 64 120
+           C40 104 20 84 20 56
+           V24 Z" fill="#4CAF50"></path>
+
+  <!-- Borda do escudo -->
+  <path d="M64 8
+           L108 24
+           V56
+           C108 84 88 104 64 120
+           C40 104 20 84 20 56
+           V24 Z" fill="none" stroke="#2E7D32" stroke-width="4"></path>
+
+  <!-- Pai -->
+  <circle cx="44" cy="48" r="8" fill="#E3F2FD"></circle>
+  <rect x="36" y="58" width="16" height="24" rx="5" fill="#E3F2FD"></rect>
+  <rect x="32" y="60" width="4" height="18" rx="2" fill="#E3F2FD"></rect>
+  <rect x="52" y="60" width="4" height="18" rx="2" fill="#E3F2FD"></rect>
+  <rect x="39" y="82" width="4" height="16" rx="2" fill="#E3F2FD"></rect>
+  <rect x="45" y="82" width="4" height="16" rx="2" fill="#E3F2FD"></rect>
+
+  <!-- Mãe -->
+  <circle cx="84" cy="48" r="8" fill="#FFF8E1"></circle>
+  <path d="M76 58
+           Q84 54 92 58
+           L96 84
+           H72 Z" fill="#FFF8E1"></path>
+  <rect x="72" y="60" width="4" height="18" rx="2" fill="#FFF8E1"></rect>
+  <rect x="92" y="60" width="4" height="18" rx="2" fill="#FFF8E1"></rect>
+  <rect x="80" y="84" width="4" height="14" rx="2" fill="#FFF8E1"></rect>
+  <rect x="86" y="84" width="4" height="14" rx="2" fill="#FFF8E1"></rect>
+
+  <!-- Criança -->
+  <circle cx="64" cy="62" r="6" fill="#BBDEFB"></circle>
+  <rect x="58" y="70" width="12" height="16" rx="4" fill="#BBDEFB"></rect>
+  <rect x="55" y="72" width="3" height="10" rx="1.5" fill="#BBDEFB"></rect>
+  <rect x="70" y="72" width="3" height="10" rx="1.5" fill="#BBDEFB"></rect>
+  <rect x="61" y="86" width="3" height="10" rx="1.5" fill="#BBDEFB"></rect>
+  <rect x="65" y="86" width="3" height="10" rx="1.5" fill="#BBDEFB"></rect>
+
+  <!-- Cadeado -->
+  <rect x="52" y="96" width="24" height="16" rx="3" fill="#FFC107"></rect>
+  <path d="M56 96
+           V90
+           C56 84 60 80 64 80
+           C68 80 72 84 72 90
+           V96" fill="none" stroke="#FFC107" stroke-width="4" stroke-linecap="round"></path>
+
+</svg>

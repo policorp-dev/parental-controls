@@ -1,22 +1,24 @@
 """Main view — landing screen with supervised users list and help links."""
 
 import gi
+import os
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, Gio, Gtk
+from gi.repository import Adw, Gio, Gtk, Gdk
 
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.services.activity_service import ActivityService
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
+from big_parental_controls.ui.pages.users_page import UsersPage
 
 _ = setup_i18n()
 
 SUPPORT_LINKS = [
-    ("CVV 188", _("Emotional support, 24h"), "188"),
-    ("SaferNet", _("Online safety for children"), "https://www.safernet.org.br"),
-    ("Disque 100", _("Human rights violations"), "100"),
+    ("CVV 188", _("Emotional support, 24h"), "188", "call-start-symbolic"),
+    ("SaferNet", _("Online safety for children"), "https://www.safernet.org.br", "security-high-symbolic"),
+    ("Disque 100", _("Human rights violations"), "100", "dialog-warning-symbolic"),
 ]
 
 
@@ -29,6 +31,7 @@ class MainView(Gtk.Box):
         self._accounts = AccountsServiceWrapper()
         self._activity = ActivityService()
         self._user_rows: list[Adw.ActionRow] = []
+        self.users_page = UsersPage(window=window)
         self._build_ui()
 
     def _build_ui(self) -> None:
@@ -62,7 +65,7 @@ class MainView(Gtk.Box):
         header_box.set_halign(Gtk.Align.CENTER)
         header_box.set_margin_bottom(8)
 
-        icon = Gtk.Image(icon_name="big-parental-controls")
+        icon = Gtk.Image(icon_name="parental-controls")
         icon.set_pixel_size(64)
         header_box.append(icon)
 
@@ -81,6 +84,7 @@ class MainView(Gtk.Box):
         self._users_group.set_title(_("Supervised Users"))
         inner.append(self._users_group)
 
+        '''
         # Add user button
         add_btn = Gtk.Button()
         add_btn.set_label(_("Add Supervised User"))
@@ -88,19 +92,53 @@ class MainView(Gtk.Box):
         add_btn.add_css_class("pill")
         add_btn.set_halign(Gtk.Align.CENTER)
         add_btn.connect("clicked", self._on_add_user)
+        add_btn.set_icon_name("list-add-symbolic")
         inner.append(add_btn)
+        '''
 
-        # Help group
+        add_btn = Gtk.Button()
+        add_btn.add_css_class("suggested-action")
+        add_btn.set_halign(Gtk.Align.CENTER)
+        add_btn.connect("clicked", self.users_page._on_create_clicked)
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        image = Gtk.Image.new_from_icon_name("list-add-symbolic")
+        label = Gtk.Label(label=_("Create Supervised User"))
+        box.append(image)
+        box.append(label)
+        add_btn.set_child(box)
+        self._users_group.set_header_suffix(add_btn)
+
+        # Users list button
+        users_list = Adw.PreferencesGroup()
+        users_row = Adw.ActionRow()
+        users_row.set_title(_("Other Users"))
+        users_row.set_activatable(True)
+        users_row.add_prefix(Gtk.Image.new_from_icon_name("avatar-default-symbolic"))
+        users_row.add_suffix(Gtk.Image(icon_name="go-next-symbolic"))
+        users_row.connect("activated", lambda _r: self._on_list_users())
+        users_list.add(users_row)
+        inner.append(users_list)
+
+        # Help and Support Expander
         help_group = Adw.PreferencesGroup()
-        help_group.set_title(_("Help and Support"))
-        for name, desc, contact in SUPPORT_LINKS:
+        help_expander = Adw.ExpanderRow()
+        help_expander.set_title(_("Help and Support"))
+        help_expander.set_icon_name("help-browser-symbolic")
+
+        for name, desc, contact, icon_name in SUPPORT_LINKS:
             row = Adw.ActionRow()
             row.set_title(name)
             row.set_subtitle(desc)
+            
+            prefix_icon = Gtk.Image(icon_name=icon_name)
+            row.add_prefix(prefix_icon)
+            
             suffix = Gtk.Label(label=contact)
             suffix.add_css_class("dim-label")
             row.add_suffix(suffix)
-            help_group.add(row)
+            help_expander.add_row(row)
+
+        help_group.add(help_expander)
         inner.append(help_group)
 
         # Legal framework group
@@ -163,9 +201,21 @@ class MainView(Gtk.Box):
         row.set_title(info["name"])
         row.set_subtitle(info["username"])
         row.set_activatable(True)
-
+        '''
         icon = Gtk.Image(icon_name="avatar-default-symbolic")
         row.add_prefix(icon)
+        '''
+
+        # Get user's icon
+        avatar = Adw.Avatar(size=32)
+        user_avatar_path = info["user"].props.icon_file;
+        if user_avatar_path and os.access(user_avatar_path, os.R_OK):
+            texture = Gdk.Texture.new_from_filename(user_avatar_path)
+            avatar.set_custom_image(texture)
+        else:
+            avatar.set_text(info["name"])
+            avatar.set_show_initials(True)
+        row.add_prefix(avatar)
 
         arrow = Gtk.Image(icon_name="go-next-symbolic")
         row.add_suffix(arrow)
@@ -174,14 +224,13 @@ class MainView(Gtk.Box):
         row.connect("activated", lambda _r: self._window.show_user_detail(user))
         return row
 
-    def _on_add_user(self, _btn: Gtk.Button) -> None:
-        """Open the user creation flow via the users page."""
-        self._window.show_add_user()
+    def _on_list_users(self) -> None:
+        """Open the unsupervised users list."""
+        self._window.list_unsupervised_users()
 
     def _build_legal_group(self) -> Adw.PreferencesGroup:
         """Legal framework references (ECA, LGPD, GDPR, UK Code, DSA)."""
         group = Adw.PreferencesGroup()
-        group.set_title(_("Legal Framework"))
 
         laws = [
             (
@@ -231,10 +280,16 @@ class MainView(Gtk.Box):
             ),
         ]
 
+        legal_expander = Adw.ExpanderRow()
+        legal_expander.set_title(_("Legal Framework"))
+        legal_expander.set_icon_name("emblem-system-symbolic")
+
         for title, subtitle in laws:
             row = Adw.ActionRow()
             row.set_title(title)
             row.set_subtitle(subtitle)
-            group.add(row)
+            legal_expander.add_row(row)
+
+        group.add(legal_expander)
 
         return group
