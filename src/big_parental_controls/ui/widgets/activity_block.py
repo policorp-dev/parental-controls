@@ -128,7 +128,10 @@ class ActivityBlock(Gtk.Box):
 
         # ── Sessions ──────────────────────────────────────────
         self._sessions_group = Adw.PreferencesGroup()
-        self._sessions_group.set_title(_("Sessions"))
+        self._sessions_expander = Adw.ExpanderRow()
+        self._sessions_expander.set_title(_("Sessions"))
+        self._sessions_expander.set_icon_name("document-open-recent-symbolic")
+        self._sessions_group.add(self._sessions_expander)
         self.append(self._sessions_group)
 
         # Spinner
@@ -225,16 +228,25 @@ class ActivityBlock(Gtk.Box):
 
     def _populate_sessions(self, sessions: list) -> None:
         for row in self._session_rows:
-            self._sessions_group.remove(row)
+            self._sessions_expander.remove(row)
         self._session_rows.clear()
 
         if not sessions:
+            self._sessions_expander.set_subtitle(_("No sessions on this day"))
             row = Adw.ActionRow()
             row.set_title(_("No sessions on this day"))
             row.add_css_class("dim-label")
-            self._sessions_group.add(row)
+            self._sessions_expander.add_row(row)
             self._session_rows.append(row)
             return
+
+        total_sessions = len(sessions)
+        if total_sessions == 1:
+            self._sessions_expander.set_subtitle(_("1 session"))
+        else:
+            self._sessions_expander.set_subtitle(
+                _("%d sessions") % total_sessions
+            )
 
         for s in sessions:
             row = Adw.ActionRow()
@@ -260,5 +272,5 @@ class ActivityBlock(Gtk.Box):
             }.get(s.session_type, "computer-symbolic")
             #row.add_prefix(Gtk.Image(icon_name=icon_name))
             row.add_prefix(Gtk.Image(icon_name="video-display-symbolic"))
-            self._sessions_group.add(row)
+            self._sessions_expander.add_row(row)
             self._session_rows.append(row)

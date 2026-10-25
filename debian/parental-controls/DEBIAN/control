@@ -1,0 +1,12 @@
+Package: parental-controls
+Version: 1.0.6
+Architecture: amd64
+Maintainer: Carlos Eduardo Obristo <carlos.eduardo@policorp.com.br>
+Installed-Size: 2753
+Depends: python3, python3-gi, libgtk-4-1, libadwaita-1-0, libmalcontent-0-0, accountsservice, polkitd, acl, malcontent, ruby-notify, libpam-wtmpdb, wtmpdb
+Section: admin
+Priority: optional
+Description: Parental control system (ECA Digital)
+ System-level parental control using ACL, PAM and systemd.
+ This package, controls-parental, is a fork of the original
+ big-controle-parental project.

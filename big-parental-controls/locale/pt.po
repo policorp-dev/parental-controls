@@ -1,0 +1,1017 @@
+#: src/big_parental_controls/app.py:96
+msgid ""
+"Keep children safe on this computer.\n"
+"Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:28
+msgid "Enable Activity Monitoring"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:31
+#, python-format
+msgid ""
+"By enabling monitoring for %(user)s, the following data will be collected "
+"and stored exclusively on this device:\n"
+"\n"
+"Data collected:\n"
+" Names of applications used (checked every 60 seconds)\n"
+" Duration of use per application\n"
+" Login and logout times\n"
+"\n"
+"Data controller: You (the device administrator).\n"
+"Purpose: Child safety monitoring.\n"
+"Legal basis: Parental consent (LGPD Art. 14, GDPR Art. 8, ECA Digital Art. "
+"18).\n"
+"Retention: 30 days, then automatically deleted.\n"
+"Access: Only you can view detailed reports.\n"
+"Storage: Local only  no data is transmitted.\n"
+"\n"
+"Rights: You can disable monitoring, export data, or delete all data at any "
+"time. The supervised user will be informed that monitoring is active via the "
+"system tray indicator."
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:53
+#: src/big_parental_controls/ui/compliance.py:87
+#: src/big_parental_controls/ui/pages/user_detail_page.py:403
+#: src/big_parental_controls/ui/pages/user_detail_page.py:448
+#: src/big_parental_controls/ui/pages/user_detail_page.py:471
+#: src/big_parental_controls/ui/pages/users_page.py:197
+#: src/big_parental_controls/ui/pages/users_page.py:348
+msgid "Cancel"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:54
+msgid "I Understand and Consent"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:78
+#: src/big_parental_controls/ui/pages/user_detail_page.py:183
+#: src/big_parental_controls/ui/pages/user_detail_page.py:237
+msgid "Delete Activity Data"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:81
+#, python-format
+msgid ""
+"All activity data for %(user)s will be permanently deleted.\n"
+"This includes app usage history and session records.\n"
+"\n"
+"This action cannot be undone."
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:88
+msgid "Delete All Data"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:116
+#, python-format
+msgid "Activity data deleted for %s"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:130
+#: src/big_parental_controls/ui/pages/user_detail_page.py:195
+#: src/big_parental_controls/ui/pages/user_detail_page.py:250
+msgid "Export Activity Data"
+msgstr ""
+
+#: src/big_parental_controls/ui/compliance.py:179
+#, python-format
+msgid "Data exported to %s"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:48
+#: src/big_parental_controls/ui/pages/app_filter_page.py:61
+msgid "User"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:57
+msgid "Monitored Users"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:60
+msgid ""
+"Choose which supervised accounts have activity tracking. The system checks "
+"running programs every minute."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:69
+#: src/big_parental_controls/ui/pages/app_filter_page.py:71
+msgid "Select a User"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:71
+msgid "Choose a supervised user to view activity."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:77
+msgid "Daily Usage"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:78
+msgid "Minutes of screen time per day"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:88
+msgid "Time of Day"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:89
+msgid "When this user is most active"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:100
+msgid "Recent Sessions"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:211
+#, python-format
+msgid "Bar chart: %d total minutes across %d days"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:225
+#, python-format
+msgid "Hourly chart: peak activity at %d:00"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:235
+#: src/big_parental_controls/ui/widgets/activity_block.py:245
+msgid "1 session"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:238
+#: src/big_parental_controls/ui/widgets/activity_block.py:248
+#, python-format
+msgid "%d sessions"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:245
+#: src/big_parental_controls/ui/widgets/activity_block.py:255
+msgid "still active"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:250
+#: src/big_parental_controls/ui/widgets/usage_chart.py:60
+#, python-format
+msgid "%dh %dmin"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/activity_page.py:252
+#: src/big_parental_controls/ui/widgets/usage_chart.py:60
+#, python-format
+msgid "%d min"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/app_filter_page.py:72
+msgid "Choose a supervised user to manage app access."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/app_filter_page.py:77
+msgid "Filter apps"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/app_filter_page.py:107
+msgid "Installed Apps"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:30
+msgid ""
+"Blocks adult content, gambling, and phishing websites. One of the most "
+"widely used free family filters."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:41
+msgid ""
+"By Cisco. Automatically blocks adult content on all devices. No account or "
+"configuration needed."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:52
+msgid ""
+"By Cloudflare (1.1.1.3). Blocks malware and adult content. Very fast and "
+"privacy-focused."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:91
+msgid "What is web filtering?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:94
+msgid ""
+"Web filtering uses special DNS servers to block access to inappropriate "
+"websites such as adult content, gambling, and known malicious pages. It "
+"works transparently  no software is installed on the child's session; the "
+"system's firewall redirects their internet lookups to a protective server."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:108
+#, python-format
+msgid "Filtering for %s"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:112
+msgid "Enable web filtering"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:115
+msgid ""
+"When enabled, all web requests from this user are redirected through the "
+"chosen DNS provider."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:125
+msgid "Choose a provider"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:128
+msgid ""
+"Each provider maintains a list of blocked sites. All options below are free "
+"and privacy-respecting."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:154
+msgid "Learn more"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:165
+msgid "Custom DNS server"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:167
+msgid "Enter your own DNS addresses for advanced setups."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:182
+msgid "Custom DNS Addresses"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:186
+msgid "Primary DNS"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:190
+msgid "Secondary DNS (optional)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:196
+#: src/big_parental_controls/ui/pages/time_limits_page.py:113
+msgid "Apply"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:275
+msgid "Web filtering disabled."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:282
+msgid "Please select a DNS provider."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:289
+msgid "Primary DNS address is required."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:300
+msgid "Custom DNS applied."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:311
+msgid "Web filtering enabled."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:19
+msgid "Emotional support, 24h"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:20
+msgid "Online safety for children"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:21
+msgid "Human rights violations"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:43
+msgid "Main Menu"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:73
+msgid "Manage screen time, apps and web filters for supervised users."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:84
+msgid "Supervised Users"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:105
+#: src/big_parental_controls/ui/pages/users_page.py:83
+#: src/big_parental_controls/ui/pages/users_page.py:162
+msgid "Create Supervised User"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:114
+#: src/big_parental_controls/ui/pages/users_page.py:91
+msgid "Other Users"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:125
+#: src/big_parental_controls/ui/pages/supervised_view.py:160
+msgid "Help and Support"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:158
+msgid "About Parental Controls"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:183
+#: src/big_parental_controls/ui/pages/users_page.py:73
+msgid "No supervised users yet"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:185
+#: src/big_parental_controls/ui/pages/users_page.py:75
+msgid "Create a supervised account to get started."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:237
+msgid "ECA Digital  Brazil"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:239
+msgid ""
+"Law 15.211/2025  Safety, Privacy, and Parental Control for Children in the "
+"Digital Environment. This app implements Art. 12 (age verification), Art. 13 "
+"(data minimization), Art. 17 (protective measures), and Art. 18 (activity "
+"monitoring)."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:247
+msgid "LGPD  Brazil"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:249
+msgid ""
+"Law 13.709/2018  General Data Protection Law. Compliant with Art. 14 "
+"(children's data requires specific parental consent), Art. 18 (right to "
+"access and delete data), Art. 46 (security)."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:256
+msgid "GDPR  European Union"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:258
+msgid ""
+"Regulation 2016/679  General Data Protection Regulation. Compliant with Art. "
+"8 (child consent via parent), Art. 13 (transparent information), Art. 17 "
+"(right to erasure), Art. 20 (data portability), Art. 25 (privacy by design)."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:266
+msgid "UK Children's Code"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:268
+msgid ""
+"Age Appropriate Design Code  15 standards for child-safe digital services, "
+"including data minimization, default protections, and parental controls."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:275
+msgid "EU Digital Services Act"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:277
+msgid ""
+"Regulation 2022/2065  Transparency, user safety, and minors' protection in "
+"digital platforms."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/main_view.py:284
+msgid "Legal Framework"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:98
+msgid "My Screen Time"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:138
+#, python-format
+msgid "Hello, %s"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:144
+msgid "Here you can see your screen time and application usage."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:202
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:16
+msgid "Emotional support  free of charge"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:22
+msgid "Help and reports on internet crimes and safety"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:27
+msgid "Disque 100"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:28
+msgid "Report violations of children's and adolescents' rights"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:34
+msgid "Security guides and best practices on the web"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:42
+msgid "ECA Digital (Law 15,211/2025)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:43
+msgid "Provides for the mandatory availability of parental supervision tools"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:48
+msgid "LGPD (Law 13,709/2018)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:49
+msgid "Protection of minors' personal data (Art. 14)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:54
+msgid "Marco Civil (Law 12,965/2014)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:55
+msgid "Rights and guarantees of internet users in Brazil"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:85
+msgid ""
+"We work to ensure a safe and healthy digital experience. Here you will find "
+"help channels and the legal basis for protection."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:99
+msgid "Help and Support Channels"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:100
+msgid "Emotional support, safety, and reporting"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:122
+msgid "Legal Framework and Protection"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:123
+msgid "Brazilian legislation on protection of minors"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:147
+msgid "Emergency"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:150
+msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/support_page.py:151
+msgid "Free numbers available 24/7 throughout Brazil"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:61
+msgid "Allowed Hours"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:63
+msgid "When this user is allowed to log in."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:68
+msgid "Enable schedule"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:82
+msgid "Add Time Range"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:92
+msgid "Daily Usage Limit"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:94
+msgid "Maximum time this user can stay logged in per day."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:99
+msgid "Enable daily limit"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:104
+msgid "Minutes per day"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:185
+msgid "Start hour"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:195
+msgid "Start minute"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:205
+msgid "End hour"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:215
+msgid "End minute"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:229
+msgid "Delete range"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:231
+msgid "Delete time range"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:288
+msgid "End time must be after start time in all ranges."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:322
+msgid "Time settings applied."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:149
+msgid "Account"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:160
+msgid "Profile"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:164
+#: src/big_parental_controls/ui/pages/users_page.py:187
+msgid "Age Group"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:165
+msgid "ECA Digital classification"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:167
+#: src/big_parental_controls/ui/pages/users_page.py:189
+msgid "Child (012)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:167
+#: src/big_parental_controls/ui/pages/users_page.py:189
+msgid "Adolescent (1315)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:167
+#: src/big_parental_controls/ui/pages/users_page.py:189
+msgid "Adolescent (1617)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:167
+#: src/big_parental_controls/ui/pages/users_page.py:189
+msgid "Adult (18+)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:185
+#: src/big_parental_controls/ui/pages/user_detail_page.py:239
+msgid "Permanently remove all collected data (LGPD Art. 18)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:197
+#: src/big_parental_controls/ui/pages/user_detail_page.py:252
+msgid "Download data as JSON file (GDPR Art. 20)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:209
+msgid "Monitoring"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:211
+msgid "Track which programs are used and for how long."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:215
+msgid "Activity Monitoring"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:218
+msgid ""
+"Usage data stays exclusively on this device. In accordance with ECA Digital, "
+"LGPD, UK Children's Code, and EU DSA, parents may review usage patterns. No "
+"data is transmitted externally."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:230
+msgid "Enable monitoring"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:232
+msgid "Checks running programs every minute"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:317
+#: src/big_parental_controls/ui/pages/welcome_page.py:57
+#: src/big_parental_controls/window.py:178
+#: src/big_parental_controls/data/window.ui:132
+msgid "Screen Time"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:319
+msgid "Edit Time Limits"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:321
+msgid "Set allowed hours and daily duration"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:335
+#: src/big_parental_controls/ui/pages/welcome_page.py:52
+#: src/big_parental_controls/window.py:195
+msgid "App Access"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:337
+msgid "Manage Allowed Apps"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:339
+msgid "Choose which applications this user can run"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:353
+#: src/big_parental_controls/ui/pages/welcome_page.py:60
+#: src/big_parental_controls/window.py:208
+#: src/big_parental_controls/data/window.ui:160
+msgid "Web Filter"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:355
+msgid "Edit Web Filter"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:357
+msgid "Choose DNS provider to block inappropriate content"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:371
+msgid "Account Actions"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:374
+#: src/big_parental_controls/ui/pages/users_page.py:344
+msgid "Remove Supervision"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:376
+msgid "Keep the account but remove parental controls"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:384
+msgid "Delete User"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:386
+msgid "Permanently remove the account and all data"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:397
+msgid "Remove Supervision?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:399
+#, python-format
+msgid ""
+"This will remove parental controls from %s. The account will remain but "
+"without restrictions."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:404
+#: src/big_parental_controls/ui/pages/users_page.py:349
+msgid "Remove"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:435
+#: src/big_parental_controls/ui/pages/users_page.py:376
+#, python-format
+msgid "Supervision removed from %s."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:443
+#, python-format
+msgid "Delete User '%s'?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:445
+msgid ""
+"This will permanently delete the account and the home folder with all files. "
+"This action cannot be undone."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:449
+msgid "Delete Permanently"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:465
+msgid "Are you sure?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:467
+#, python-format
+msgid ""
+"ALL data of user '%s' will be permanently erased, including documents, "
+"photos and settings. This action CANNOT be undone."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:472
+msgid "Yes, delete everything"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:499
+#, python-format
+msgid "User '%s' has been deleted."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:503
+#, python-format
+msgid "Failed to delete user '%s'."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:92
+msgid "Add supervision to an existing account."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:147
+msgid "Add supervision"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:163
+msgid "Set up a new supervised account on this computer."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:171
+msgid "Username"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:175
+msgid "Full Name"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:179
+msgid "Password"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:183
+msgid "Confirm Password"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:198
+msgid "Create"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:286
+msgid "Username and password are required."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:296
+#, python-format
+msgid "Creating user %s"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:303
+msgid "Failed to create user."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:326
+#: src/big_parental_controls/ui/pages/users_page.py:329
+#, python-format
+msgid "User %s created."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:346
+#, python-format
+msgid "Remove all restrictions from %s? This cannot be undone."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:386
+msgid "Adding supervision"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:398
+#: src/big_parental_controls/ui/pages/users_page.py:401
+#, python-format
+msgid "%s is now supervised."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:38
+#: src/big_parental_controls/window.py:29
+#: src/big_parental_controls/window.py:52
+#: src/big_parental_controls/window.py:139
+#: src/big_parental_controls/window.py:163
+#: src/big_parental_controls/data/window.ui:15
+msgid "Parental Controls"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:40
+msgid "Protect children online  manage apps, screen time, and web filtering."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:46
+msgid "Features"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:49
+msgid "Supervised Accounts"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:49
+msgid "Create protected user profiles"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:53
+msgid "Control which apps each child can use"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:58
+msgid "Set allowed hours and daily usage limits"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:60
+msgid "Block inappropriate web content via DNS"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:78
+msgid "Privacy"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:81
+msgid "Data stays on this computer"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/welcome_page.py:83
+msgid "Compliant with ECA Digital, LGPD, and GDPR  no data leaves this device."
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:68
+msgid "No data"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:88
+msgid "Previous week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:99
+msgid "Next week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:122
+msgid "Hours of the Day"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:132
+msgid "Sessions"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:177
+msgid "This week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:179
+msgid "Last week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:182
+#, python-format
+msgid "%d weeks ago"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:204
+msgid "Extended usage detected"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:206
+#, python-format
+msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:235
+#: src/big_parental_controls/ui/widgets/activity_block.py:237
+msgid "No sessions on this day"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:261
+msgid "Graphical session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:262
+msgid "Remote session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:263
+msgid "Console session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:264
+msgid "Session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:58
+msgid "No activity"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Mon"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Tue"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Wed"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Thu"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Fri"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Sat"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Sun"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:331
+msgid "No activity on this day"
+msgstr ""
+
+#: src/big_parental_controls/window.py:54
+msgid "Administrator authentication is required to change settings."
+msgstr ""
+
+#: src/big_parental_controls/window.py:73
+msgid "Authenticate"
+msgstr ""
+
+#: src/big_parental_controls/window.py:115
+msgid "Authentication failed. Try again."
+msgstr ""
+
+#: src/big_parental_controls/window.py:220
+#: src/big_parental_controls/data/window.ui:76
+msgid "Users"
+msgstr ""
+
+#: src/big_parental_controls/window.py:255
+#: src/big_parental_controls/window.py:268
+msgid "OK"
+msgstr ""
+
+#: src/big_parental_controls/window.py:266
+msgid "Error"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:48
+#: src/big_parental_controls/data/window.ui:235
+msgid "Home"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:104
+msgid "Allowed Apps"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:188
+msgid "Activity"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:216
+msgid "Help"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:245
+msgid "Main menu"
+msgstr ""
+
+#: src/big_parental_controls/data/window.ui:270
+msgid "About"
+msgstr ""

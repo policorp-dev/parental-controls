@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-30 09:56-0400\n"
+"POT-Creation-Date: 2026-10-25 14:26-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-#: src/big_parental_controls/app.py:95
+#: src/big_parental_controls/app.py:96
 msgid ""
 "Keep children safe on this computer.\n"
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
@@ -84,7 +84,7 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:448
 #: src/big_parental_controls/ui/pages/user_detail_page.py:471
 #: src/big_parental_controls/ui/pages/users_page.py:197
-#: src/big_parental_controls/ui/pages/users_page.py:347
+#: src/big_parental_controls/ui/pages/users_page.py:348
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -138,16 +138,16 @@ msgstr "Dados exportados para %s"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
-#: src/big_parental_controls/ui/pages/activity_page.py:47
+#: src/big_parental_controls/ui/pages/activity_page.py:48
 #: src/big_parental_controls/ui/pages/app_filter_page.py:61
 msgid "User"
 msgstr "Usuários"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:56
+#: src/big_parental_controls/ui/pages/activity_page.py:57
 msgid "Monitored Users"
 msgstr "Usuários Monitorados"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:59
+#: src/big_parental_controls/ui/pages/activity_page.py:60
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
 "running programs every minute."
@@ -155,55 +155,67 @@ msgstr ""
 "Escolha quais contas supervisionadas têm rastreamento de atividade. O "
 "sistema verifica os programas em execução a cada minuto."
 
-#: src/big_parental_controls/ui/pages/activity_page.py:68
+#: src/big_parental_controls/ui/pages/activity_page.py:69
 #: src/big_parental_controls/ui/pages/app_filter_page.py:71
 msgid "Select a User"
 msgstr "Selecionar Usuário"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:70
+#: src/big_parental_controls/ui/pages/activity_page.py:71
 msgid "Choose a supervised user to view activity."
 msgstr "Escolha um usuário supervisionado para ver a atividade."
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
-#: src/big_parental_controls/ui/pages/activity_page.py:76
+#: src/big_parental_controls/ui/pages/activity_page.py:77
 msgid "Daily Usage"
 msgstr "Limite de Uso Diário"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
-#: src/big_parental_controls/ui/pages/activity_page.py:77
+#: src/big_parental_controls/ui/pages/activity_page.py:78
 msgid "Minutes of screen time per day"
 msgstr "Minutos por dia"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:87
+#: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "Time of Day"
 msgstr "Hora do Dia"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:88
+#: src/big_parental_controls/ui/pages/activity_page.py:89
 msgid "When this user is most active"
 msgstr "Quando este usuário é mais ativo"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:98
+#: src/big_parental_controls/ui/pages/activity_page.py:100
 msgid "Recent Sessions"
 msgstr "Sessões Recentes"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:207
+#: src/big_parental_controls/ui/pages/activity_page.py:211
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
 msgstr "Gráfico de barras: %d minutos totais em %d dias"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:221
+#: src/big_parental_controls/ui/pages/activity_page.py:225
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
 msgstr "Gráfico horário: pico de atividade às %d:00"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:232
-#: src/big_parental_controls/ui/widgets/activity_block.py:243
+#: src/big_parental_controls/ui/pages/activity_page.py:235
+#: src/big_parental_controls/ui/widgets/activity_block.py:245
+#, fuzzy
+msgid "1 session"
+msgstr "Sessão"
+
+#: src/big_parental_controls/ui/pages/activity_page.py:238
+#: src/big_parental_controls/ui/widgets/activity_block.py:248
+#, fuzzy, python-format
+msgid "%d sessions"
+msgstr "Sessões"
+
+#: src/big_parental_controls/ui/pages/activity_page.py:245
+#: src/big_parental_controls/ui/widgets/activity_block.py:255
 msgid "still active"
 msgstr "ainda ativo"
 
-#: src/big_parental_controls/ui/pages/activity_page.py:237
+#: src/big_parental_controls/ui/pages/activity_page.py:250
 #: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%dh %dmin"
@@ -211,7 +223,7 @@ msgstr "%dh %dmin"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
-#: src/big_parental_controls/ui/pages/activity_page.py:239
+#: src/big_parental_controls/ui/pages/activity_page.py:252
 #: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%d min"
@@ -376,7 +388,7 @@ msgstr "Apoio emocional, 24h"
 
 #: src/big_parental_controls/ui/pages/main_view.py:20
 msgid "Online safety for children"
-msgstr "Segurança online para crianças"
+msgstr "Denúncias e segurança digital"
 
 #: src/big_parental_controls/ui/pages/main_view.py:21
 msgid "Human rights violations"
@@ -417,7 +429,7 @@ msgid "Other Users"
 msgstr "Usuários"
 
 #: src/big_parental_controls/ui/pages/main_view.py:125
-#: src/big_parental_controls/ui/pages/supervised_view.py:157
+#: src/big_parental_controls/ui/pages/supervised_view.py:160
 msgid "Help and Support"
 msgstr "Ajuda e Suporte"
 
@@ -514,18 +526,22 @@ msgstr ""
 msgid "Legal Framework"
 msgstr "Marco Legal"
 
-#: src/big_parental_controls/ui/pages/supervised_view.py:96
+#: src/big_parental_controls/ui/pages/supervised_view.py:98
 msgid "My Screen Time"
 msgstr "Meu Tempo de Tela"
 
-#: src/big_parental_controls/ui/pages/supervised_view.py:136
+#: src/big_parental_controls/ui/pages/supervised_view.py:138
 #, python-format
 msgid "Hello, %s"
 msgstr "Olá, %s"
 
-#: src/big_parental_controls/ui/pages/supervised_view.py:142
+#: src/big_parental_controls/ui/pages/supervised_view.py:144
 msgid "Here you can see your screen time and application usage."
 msgstr "Aqui você pode ver seu tempo de tela e uso de aplicativos."
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:202
+msgid "Copied to clipboard"
+msgstr "Copiado para a área de transferência"
 
 #: src/big_parental_controls/ui/pages/support_page.py:16
 #, fuzzy
@@ -870,7 +886,7 @@ msgstr "Ações da Conta"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:374
-#: src/big_parental_controls/ui/pages/users_page.py:343
+#: src/big_parental_controls/ui/pages/users_page.py:344
 msgid "Remove Supervision"
 msgstr "Remover Conta Supervisionada"
 
@@ -902,12 +918,12 @@ msgstr ""
 "restrições."
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:404
-#: src/big_parental_controls/ui/pages/users_page.py:348
+#: src/big_parental_controls/ui/pages/users_page.py:349
 msgid "Remove"
 msgstr "Remover"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:435
-#: src/big_parental_controls/ui/pages/users_page.py:375
+#: src/big_parental_controls/ui/pages/users_page.py:376
 #, python-format
 msgid "Supervision removed from %s."
 msgstr "Supervisão removida de %s."
@@ -1021,26 +1037,26 @@ msgstr "Criando usuário %s…"
 msgid "Failed to create user."
 msgstr "Falha ao criar conta de usuário: %s"
 
-#: src/big_parental_controls/ui/pages/users_page.py:325
-#: src/big_parental_controls/ui/pages/users_page.py:328
+#: src/big_parental_controls/ui/pages/users_page.py:326
+#: src/big_parental_controls/ui/pages/users_page.py:329
 #, python-format
 msgid "User %s created."
 msgstr "Usuário %s criado."
 
-#: src/big_parental_controls/ui/pages/users_page.py:345
+#: src/big_parental_controls/ui/pages/users_page.py:346
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr "Remover todas as restrições de %s? Isso não pode ser desfeito."
 
-#: src/big_parental_controls/ui/pages/users_page.py:385
+#: src/big_parental_controls/ui/pages/users_page.py:386
 msgid "Adding supervision…"
 msgstr "Adicionando supervisão…"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
-#: src/big_parental_controls/ui/pages/users_page.py:397
-#: src/big_parental_controls/ui/pages/users_page.py:400
+#: src/big_parental_controls/ui/pages/users_page.py:398
+#: src/big_parental_controls/ui/pages/users_page.py:401
 #, python-format
 msgid "%s is now supervised."
 msgstr "%s agora está supervisionado."
@@ -1145,49 +1161,50 @@ msgstr "Próxima semana"
 msgid "Hours of the Day"
 msgstr "Horas do Dia"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:131
+#: src/big_parental_controls/ui/widgets/activity_block.py:132
 msgid "Sessions"
 msgstr "Sessões"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:174
+#: src/big_parental_controls/ui/widgets/activity_block.py:177
 msgid "This week"
 msgstr "Esta semana"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:176
+#: src/big_parental_controls/ui/widgets/activity_block.py:179
 msgid "Last week"
 msgstr "Semana passada"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:179
+#: src/big_parental_controls/ui/widgets/activity_block.py:182
 #, python-format
 msgid "%d weeks ago"
 msgstr "%d semanas atrás"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:201
+#: src/big_parental_controls/ui/widgets/activity_block.py:204
 msgid "Extended usage detected"
 msgstr "Uso prolongado detectado"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:203
+#: src/big_parental_controls/ui/widgets/activity_block.py:206
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr "%(user)s usou o computador por %(hours)dh %(mins)dmin hoje."
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:233
+#: src/big_parental_controls/ui/widgets/activity_block.py:235
+#: src/big_parental_controls/ui/widgets/activity_block.py:237
 msgid "No sessions on this day"
 msgstr "Nenhuma sessão neste dia"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:249
+#: src/big_parental_controls/ui/widgets/activity_block.py:261
 msgid "Graphical session"
 msgstr "Sessão gráfica"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:250
+#: src/big_parental_controls/ui/widgets/activity_block.py:262
 msgid "Remote session"
 msgstr "Sessão remota"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:251
+#: src/big_parental_controls/ui/widgets/activity_block.py:263
 msgid "Console session"
 msgstr "Sessão de console"
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:252
+#: src/big_parental_controls/ui/widgets/activity_block.py:264
 msgid "Session"
 msgstr "Sessão"
 

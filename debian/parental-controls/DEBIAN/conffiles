@@ -1,0 +1,2 @@
+/etc/skel/.config/autostart/parental-controls.desktop
+/etc/skel/.local/bin/enable-parental-controls-listener.sh

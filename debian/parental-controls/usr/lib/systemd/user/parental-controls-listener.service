@@ -1,0 +1,12 @@
+[Unit]
+Description=Parental Control Notification Listener
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/big-parental-controls/big-parental-notify-listener
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
