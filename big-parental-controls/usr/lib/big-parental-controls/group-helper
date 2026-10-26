@@ -881,6 +881,13 @@ print(json.dumps(user_cfg))
         chmod 700 "$ACTIVITY_DIR"
         chown root:root "$ACTIVITY_DIR"
         ;;
+    activity-delete)
+        # Usage: activity-delete USERNAME
+        # Remove activity data directory for a user.
+        [[ -z "$2" ]] && { echo "Usage: activity-delete USERNAME" >&2; exit 1; }
+        validate_username "$2"
+        rm -rf "$STATE_DIR/activity/$2"
+        ;;
     set-age-profile)
         # Usage: set-age-profile USERNAME AGE_RANGE
         # AGE_RANGE must be one of: 0-12, 13-15, 16-17, 18+

@@ -2,7 +2,7 @@
 263e6973349994bd76bdc245a31da3b0  usr/lib/big-parental-controls/acl-reapply
 0c9285e7ff3ff88693c21367ac0bf8d7  usr/lib/big-parental-controls/big-parental-daemon
 83cf9800129d92c3b01f286de47d823e  usr/lib/big-parental-controls/big-parental-notify-listener
-2693fe9a206466d43b8adff9d97ad31b  usr/lib/big-parental-controls/group-helper
+fe7666c13df1732110e99f8b1335a2d1  usr/lib/big-parental-controls/group-helper
 372cff3f82bf3afa902b78dc39e06dfd  usr/lib/big-parental-controls/pam-time-message
 33ab856817f1d4184393e34e3b032ac2  usr/lib/big-parental-controls/time-check
 48f17236b2c3de92bafb5e5b3beda9ca  usr/lib/python3/dist-packages/big_parental_controls/__init__.py
@@ -22,10 +22,10 @@ ba05d91e8ff643872ce3e436f5056ba8  usr/lib/python3/dist-packages/big_parental_con
 b8987b6a54d962acd5dacda10497179a  usr/lib/python3/dist-packages/big_parental_controls/services/desktop_hide_service.py
 e9cb6884429863b84e84efb13388f8ee  usr/lib/python3/dist-packages/big_parental_controls/services/dns_service.py
 99df984790d4ab631d39a41c175b0cb4  usr/lib/python3/dist-packages/big_parental_controls/services/malcontent_service.py
-f66ab2e37b73cae88e446341719e02d3  usr/lib/python3/dist-packages/big_parental_controls/services/polkit_service.py
+e58f0600646731e58c282a710ddbb0bf  usr/lib/python3/dist-packages/big_parental_controls/services/polkit_service.py
 4d845686e4498bceac75d1b788dafa68  usr/lib/python3/dist-packages/big_parental_controls/services/time_service.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/ui/__init__.py
-bc7848a9e12a5c97f73c21b44585bef8  usr/lib/python3/dist-packages/big_parental_controls/ui/compliance.py
+baa66f9436677d93c24ba2796c68ac35  usr/lib/python3/dist-packages/big_parental_controls/ui/compliance.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/__init__.py
 b8e690d5c00e76516a05483d18972483  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/activity_page.py
 adb7d84900d9b8a22ce39619bf596eff  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
@@ -84,5 +84,5 @@ dcc80646fc708de9ad39fdac42e99b83  usr/share/locale/ru/LC_MESSAGES/big-parental-c
 18b441becd75ff7a721f65c265026a8e  usr/share/locale/tr/LC_MESSAGES/big-parental-controls.mo
 116856b22ee927d913b05f582177d66f  usr/share/locale/uk/LC_MESSAGES/big-parental-controls.mo
 c57ebcb8363ee43e541032f9eae5a6d7  usr/share/locale/zh/LC_MESSAGES/big-parental-controls.mo
-3e3e2611960931c81bd0e8d3b1455648  usr/share/polkit-1/actions/br.com.biglinux.parental-controls.policy
-a7f4a78576fb3f6df1ad8d8e267680ae  usr/share/polkit-1/rules.d/50-big-parental-controls.rules
+92b4c9e375eacc19b253321c829cba05  usr/share/polkit-1/actions/br.com.biglinux.parental-controls.policy
+350802a51ab28919b443adea44cf8d0c  usr/share/polkit-1/rules.d/50-big-parental-controls.rules

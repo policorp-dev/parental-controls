@@ -4,11 +4,11 @@ msgid ""
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:28
+#: src/big_parental_controls/ui/compliance.py:29
 msgid "Enable Activity Monitoring"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:31
+#: src/big_parental_controls/ui/compliance.py:32
 #, python-format
 msgid ""
 "By enabling monitoring for %(user)s, the following data will be collected "
@@ -32,8 +32,8 @@ msgid ""
 "system tray indicator."
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:53
-#: src/big_parental_controls/ui/compliance.py:87
+#: src/big_parental_controls/ui/compliance.py:54
+#: src/big_parental_controls/ui/compliance.py:88
 #: src/big_parental_controls/ui/pages/user_detail_page.py:403
 #: src/big_parental_controls/ui/pages/user_detail_page.py:448
 #: src/big_parental_controls/ui/pages/user_detail_page.py:471
@@ -42,17 +42,17 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:54
+#: src/big_parental_controls/ui/compliance.py:55
 msgid "I Understand and Consent"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:78
+#: src/big_parental_controls/ui/compliance.py:79
 #: src/big_parental_controls/ui/pages/user_detail_page.py:183
 #: src/big_parental_controls/ui/pages/user_detail_page.py:237
 msgid "Delete Activity Data"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:81
+#: src/big_parental_controls/ui/compliance.py:82
 #, python-format
 msgid ""
 "All activity data for %(user)s will be permanently deleted.\n"
@@ -61,22 +61,22 @@ msgid ""
 "This action cannot be undone."
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:88
+#: src/big_parental_controls/ui/compliance.py:89
 msgid "Delete All Data"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:116
+#: src/big_parental_controls/ui/compliance.py:113
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:130
+#: src/big_parental_controls/ui/compliance.py:127
 #: src/big_parental_controls/ui/pages/user_detail_page.py:195
 #: src/big_parental_controls/ui/pages/user_detail_page.py:250
 msgid "Export Activity Data"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:179
+#: src/big_parental_controls/ui/compliance.py:176
 #, python-format
 msgid "Data exported to %s"
 msgstr ""

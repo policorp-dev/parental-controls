@@ -21,6 +21,10 @@ polkit.addRule(function(action, subject) {
         if (action.id.indexOf("org.freedesktop.accounts") === 0) {
             return polkit.Result.NO;
         }
+        // Block parental controls helper and settings
+        if (action.id.indexOf("br.com.biglinux.parental-controls") === 0) {
+            return polkit.Result.NO;
+        }
         // Block disk/USB mounting
         if (action.id.indexOf("org.freedesktop.udisks2") === 0) {
             return polkit.Result.AUTH_ADMIN;

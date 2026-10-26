@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 03:05-0300\n"
+"POT-Creation-Date: 2026-10-26 03:29-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,11 +22,11 @@ msgid ""
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:28
+#: src/big_parental_controls/ui/compliance.py:29
 msgid "Enable Activity Monitoring"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:31
+#: src/big_parental_controls/ui/compliance.py:32
 #, python-format
 msgid ""
 "By enabling monitoring for %(user)s, the following data will be collected "
@@ -57,8 +57,8 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 472
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 534
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 172
-#: src/big_parental_controls/ui/compliance.py:53
-#: src/big_parental_controls/ui/compliance.py:87
+#: src/big_parental_controls/ui/compliance.py:54
+#: src/big_parental_controls/ui/compliance.py:88
 #: src/big_parental_controls/ui/pages/user_detail_page.py:403
 #: src/big_parental_controls/ui/pages/user_detail_page.py:448
 #: src/big_parental_controls/ui/pages/user_detail_page.py:471
@@ -67,17 +67,17 @@ msgstr ""
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/big_parental_controls/ui/compliance.py:54
+#: src/big_parental_controls/ui/compliance.py:55
 msgid "I Understand and Consent"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:78
+#: src/big_parental_controls/ui/compliance.py:79
 #: src/big_parental_controls/ui/pages/user_detail_page.py:183
 #: src/big_parental_controls/ui/pages/user_detail_page.py:237
 msgid "Delete Activity Data"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:81
+#: src/big_parental_controls/ui/compliance.py:82
 #, python-format
 msgid ""
 "All activity data for %(user)s will be permanently deleted.\n"
@@ -88,22 +88,22 @@ msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
-#: src/big_parental_controls/ui/compliance.py:88
+#: src/big_parental_controls/ui/compliance.py:89
 msgid "Delete All Data"
 msgstr "Fiók törlése"
 
-#: src/big_parental_controls/ui/compliance.py:116
+#: src/big_parental_controls/ui/compliance.py:113
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:130
+#: src/big_parental_controls/ui/compliance.py:127
 #: src/big_parental_controls/ui/pages/user_detail_page.py:195
 #: src/big_parental_controls/ui/pages/user_detail_page.py:250
 msgid "Export Activity Data"
 msgstr ""
 
-#: src/big_parental_controls/ui/compliance.py:179
+#: src/big_parental_controls/ui/compliance.py:176
 #, python-format
 msgid "Data exported to %s"
 msgstr ""
