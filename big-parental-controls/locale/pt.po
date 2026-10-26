@@ -37,8 +37,8 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:403
 #: src/big_parental_controls/ui/pages/user_detail_page.py:448
 #: src/big_parental_controls/ui/pages/user_detail_page.py:471
-#: src/big_parental_controls/ui/pages/users_page.py:197
-#: src/big_parental_controls/ui/pages/users_page.py:348
+#: src/big_parental_controls/ui/pages/users_page.py:196
+#: src/big_parental_controls/ui/pages/users_page.py:347
 msgid "Cancel"
 msgstr ""
 
@@ -304,13 +304,13 @@ msgid "Supervised Users"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/main_view.py:105
-#: src/big_parental_controls/ui/pages/users_page.py:83
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:82
+#: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Create Supervised User"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/main_view.py:114
-#: src/big_parental_controls/ui/pages/users_page.py:91
+#: src/big_parental_controls/ui/pages/users_page.py:90
 msgid "Other Users"
 msgstr ""
 
@@ -324,12 +324,10 @@ msgid "About Parental Controls"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/main_view.py:183
-#: src/big_parental_controls/ui/pages/users_page.py:73
 msgid "No supervised users yet"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/main_view.py:185
-#: src/big_parental_controls/ui/pages/users_page.py:75
 msgid "Create a supervised account to get started."
 msgstr ""
 
@@ -559,7 +557,7 @@ msgid "Profile"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:164
-#: src/big_parental_controls/ui/pages/users_page.py:187
+#: src/big_parental_controls/ui/pages/users_page.py:186
 msgid "Age Group"
 msgstr ""
 
@@ -568,22 +566,22 @@ msgid "ECA Digital classification"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Child (012)"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adolescent (1315)"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adolescent (1617)"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adult (18+)"
 msgstr ""
 
@@ -673,7 +671,7 @@ msgid "Account Actions"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:374
-#: src/big_parental_controls/ui/pages/users_page.py:344
+#: src/big_parental_controls/ui/pages/users_page.py:343
 msgid "Remove Supervision"
 msgstr ""
 
@@ -701,12 +699,12 @@ msgid ""
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:404
-#: src/big_parental_controls/ui/pages/users_page.py:349
+#: src/big_parental_controls/ui/pages/users_page.py:348
 msgid "Remove"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:435
-#: src/big_parental_controls/ui/pages/users_page.py:376
+#: src/big_parental_controls/ui/pages/users_page.py:375
 #, python-format
 msgid "Supervision removed from %s."
 msgstr ""
@@ -751,68 +749,76 @@ msgstr ""
 msgid "Failed to delete user '%s'."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:92
+#: src/big_parental_controls/ui/pages/users_page.py:72
+msgid "No other users found"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:74
+msgid "Create a supervised user to get started."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/users_page.py:91
 msgid "Add supervision to an existing account."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:147
+#: src/big_parental_controls/ui/pages/users_page.py:146
 msgid "Add supervision"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:163
+#: src/big_parental_controls/ui/pages/users_page.py:162
 msgid "Set up a new supervised account on this computer."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:171
+#: src/big_parental_controls/ui/pages/users_page.py:170
 msgid "Username"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:175
+#: src/big_parental_controls/ui/pages/users_page.py:174
 msgid "Full Name"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:179
+#: src/big_parental_controls/ui/pages/users_page.py:178
 msgid "Password"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:183
+#: src/big_parental_controls/ui/pages/users_page.py:182
 msgid "Confirm Password"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:198
+#: src/big_parental_controls/ui/pages/users_page.py:197
 msgid "Create"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:286
+#: src/big_parental_controls/ui/pages/users_page.py:285
 msgid "Username and password are required."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:296
+#: src/big_parental_controls/ui/pages/users_page.py:295
 #, python-format
 msgid "Creating user %s"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:303
+#: src/big_parental_controls/ui/pages/users_page.py:302
 msgid "Failed to create user."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:326
-#: src/big_parental_controls/ui/pages/users_page.py:329
+#: src/big_parental_controls/ui/pages/users_page.py:325
+#: src/big_parental_controls/ui/pages/users_page.py:328
 #, python-format
 msgid "User %s created."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:346
+#: src/big_parental_controls/ui/pages/users_page.py:345
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:386
+#: src/big_parental_controls/ui/pages/users_page.py:385
 msgid "Adding supervision"
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:398
-#: src/big_parental_controls/ui/pages/users_page.py:401
+#: src/big_parental_controls/ui/pages/users_page.py:397
+#: src/big_parental_controls/ui/pages/users_page.py:400
 #, python-format
 msgid "%s is now supervised."
 msgstr ""

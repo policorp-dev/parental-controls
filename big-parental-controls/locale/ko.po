@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 14:26-0300\n"
+"POT-Creation-Date: 2026-10-26 02:40-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -62,8 +62,8 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:403
 #: src/big_parental_controls/ui/pages/user_detail_page.py:448
 #: src/big_parental_controls/ui/pages/user_detail_page.py:471
-#: src/big_parental_controls/ui/pages/users_page.py:197
-#: src/big_parental_controls/ui/pages/users_page.py:348
+#: src/big_parental_controls/ui/pages/users_page.py:196
+#: src/big_parental_controls/ui/pages/users_page.py:347
 msgid "Cancel"
 msgstr "취소"
 
@@ -382,8 +382,8 @@ msgstr "감독 학습"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/main_view.py:105
-#: src/big_parental_controls/ui/pages/users_page.py:83
-#: src/big_parental_controls/ui/pages/users_page.py:162
+#: src/big_parental_controls/ui/pages/users_page.py:82
+#: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Create Supervised User"
 msgstr "감독 계정 만들기"
 
@@ -393,7 +393,7 @@ msgstr "감독 계정 만들기"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/main_view.py:114
-#: src/big_parental_controls/ui/pages/users_page.py:91
+#: src/big_parental_controls/ui/pages/users_page.py:90
 msgid "Other Users"
 msgstr "사용자"
 
@@ -417,14 +417,12 @@ msgstr "부모 통제"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
 #: src/big_parental_controls/ui/pages/main_view.py:183
-#: src/big_parental_controls/ui/pages/users_page.py:73
 msgid "No supervised users yet"
 msgstr "감독 계정이 없습니다."
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
 #: src/big_parental_controls/ui/pages/main_view.py:185
-#: src/big_parental_controls/ui/pages/users_page.py:75
 msgid "Create a supervised account to get started."
 msgstr "사용자 페이지에서 시작하려면 하나를 만드세요."
 
@@ -704,7 +702,7 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
 #: src/big_parental_controls/ui/pages/user_detail_page.py:164
-#: src/big_parental_controls/ui/pages/users_page.py:187
+#: src/big_parental_controls/ui/pages/users_page.py:186
 msgid "Age Group"
 msgstr "연령대"
 
@@ -715,24 +713,24 @@ msgstr ""
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Child (0–12)"
 msgstr "10세 미만 아동"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adolescent (13–15)"
 msgstr "10대 (13–16)"
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adolescent (16–17)"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:167
-#: src/big_parental_controls/ui/pages/users_page.py:189
+#: src/big_parental_controls/ui/pages/users_page.py:188
 msgid "Adult (18+)"
 msgstr ""
 
@@ -847,7 +845,7 @@ msgstr ""
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:374
-#: src/big_parental_controls/ui/pages/users_page.py:344
+#: src/big_parental_controls/ui/pages/users_page.py:343
 msgid "Remove Supervision"
 msgstr "감독 계정 제거"
 
@@ -879,12 +877,12 @@ msgid ""
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:404
-#: src/big_parental_controls/ui/pages/users_page.py:349
+#: src/big_parental_controls/ui/pages/users_page.py:348
 msgid "Remove"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/user_detail_page.py:435
-#: src/big_parental_controls/ui/pages/users_page.py:376
+#: src/big_parental_controls/ui/pages/users_page.py:375
 #, python-format
 msgid "Supervision removed from %s."
 msgstr ""
@@ -933,96 +931,107 @@ msgstr ""
 msgid "Failed to delete user '%s'."
 msgstr "사용자 계정을 생성하지 못했습니다: %s"
 
+#: src/big_parental_controls/ui/pages/users_page.py:72
+msgid "No other users found"
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
+#: src/big_parental_controls/ui/pages/users_page.py:74
+#, fuzzy
+msgid "Create a supervised user to get started."
+msgstr "사용자 페이지에서 시작하려면 하나를 만드세요."
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: src/big_parental_controls/ui/pages/users_page.py:92
+#: src/big_parental_controls/ui/pages/users_page.py:91
 msgid "Add supervision to an existing account."
 msgstr "감독 계정 추가"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:147
+#: src/big_parental_controls/ui/pages/users_page.py:146
 msgid "Add supervision"
 msgstr "감독 추가"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
-#: src/big_parental_controls/ui/pages/users_page.py:163
+#: src/big_parental_controls/ui/pages/users_page.py:162
 msgid "Set up a new supervised account on this computer."
 msgstr ""
 "안전하게 이 컴퓨터를 사용할 수 있도록 자녀를 위한 관리 계정을 만드세요."
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
-#: src/big_parental_controls/ui/pages/users_page.py:171
+#: src/big_parental_controls/ui/pages/users_page.py:170
 msgid "Username"
 msgstr "사용자 이름"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
-#: src/big_parental_controls/ui/pages/users_page.py:175
+#: src/big_parental_controls/ui/pages/users_page.py:174
 msgid "Full Name"
 msgstr "전체 이름"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
-#: src/big_parental_controls/ui/pages/users_page.py:179
+#: src/big_parental_controls/ui/pages/users_page.py:178
 msgid "Password"
 msgstr "비밀번호"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
-#: src/big_parental_controls/ui/pages/users_page.py:183
+#: src/big_parental_controls/ui/pages/users_page.py:182
 msgid "Confirm Password"
 msgstr "비밀번호 확인"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
-#: src/big_parental_controls/ui/pages/users_page.py:198
+#: src/big_parental_controls/ui/pages/users_page.py:197
 msgid "Create"
 msgstr "생성하다"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
-#: src/big_parental_controls/ui/pages/users_page.py:286
+#: src/big_parental_controls/ui/pages/users_page.py:285
 msgid "Username and password are required."
 msgstr "사용자 이름과 비밀번호가 필요합니다."
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
-#: src/big_parental_controls/ui/pages/users_page.py:296
+#: src/big_parental_controls/ui/pages/users_page.py:295
 #, fuzzy, python-format
 msgid "Creating user %s…"
 msgstr "계정 생성 중…"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
-#: src/big_parental_controls/ui/pages/users_page.py:303
+#: src/big_parental_controls/ui/pages/users_page.py:302
 msgid "Failed to create user."
 msgstr "사용자 계정을 생성하지 못했습니다: %s"
 
-#: src/big_parental_controls/ui/pages/users_page.py:326
-#: src/big_parental_controls/ui/pages/users_page.py:329
+#: src/big_parental_controls/ui/pages/users_page.py:325
+#: src/big_parental_controls/ui/pages/users_page.py:328
 #, python-format
 msgid "User %s created."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/users_page.py:346
+#: src/big_parental_controls/ui/pages/users_page.py:345
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr ""
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:386
+#: src/big_parental_controls/ui/pages/users_page.py:385
 msgid "Adding supervision…"
 msgstr "감독 추가"
 
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
-#: src/big_parental_controls/ui/pages/users_page.py:398
-#: src/big_parental_controls/ui/pages/users_page.py:401
+#: src/big_parental_controls/ui/pages/users_page.py:397
+#: src/big_parental_controls/ui/pages/users_page.py:400
 #, fuzzy, python-format
 msgid "%s is now supervised."
 msgstr "감독 학습 만들기"

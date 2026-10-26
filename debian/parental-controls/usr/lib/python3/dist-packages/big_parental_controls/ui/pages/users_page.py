@@ -69,10 +69,9 @@ class UsersPage(Gtk.Box):
         # Bottom section: StatusPage for empty state (initially hidden)
         self._status_page = Adw.StatusPage()
         self._status_page.set_icon_name("system-users-symbolic")
-        # Usando texto original encontrado no sistema
-        self._status_page.set_title(_("No supervised users yet"))
+        self._status_page.set_title(_("No other users found"))
         self._status_page.set_description(
-            _("Create a supervised account to get started.")
+            _("Create a supervised user to get started.")
         )
         self._status_page.set_visible(False)
         self._main_box.append(self._status_page)

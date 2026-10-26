@@ -2,7 +2,7 @@ Package: parental-controls
 Version: 1.0.6
 Architecture: amd64
 Maintainer: Carlos Eduardo Obristo <carlos.eduardo@policorp.com.br>
-Installed-Size: 2757
+Installed-Size: 2758
 Depends: python3, python3-gi, libgtk-4-1, libadwaita-1-0, libmalcontent-0-0, accountsservice, polkitd, acl, malcontent, ruby-notify, libpam-wtmpdb, wtmpdb
 Section: admin
 Priority: optional
