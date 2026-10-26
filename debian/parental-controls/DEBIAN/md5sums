@@ -53,7 +53,7 @@ c2acc706e51dc703c6844531c8a78e24  usr/lib/systemd/user/big-age-signal.service
 b9baa2b44a31314550f6308da4923469  usr/share/dbus-1/interfaces/br.com.biglinux.AgeSignal.xml
 c511770d7fc58dc2441e88c2c8785608  usr/share/dbus-1/services/br.com.biglinux.AgeSignal.service
 bd9a810bc4767bcd59fdd86ab23e030a  usr/share/dbus-1/system.d/br.com.biglinux.ParentalDaemon.conf
-647c378acb6e5563fab9cdeab642f8e0  usr/share/doc/parental-controls/changelog.gz
+8edae9585a76ab4610f42b56a096c3af  usr/share/doc/parental-controls/changelog.gz
 aae01b811f0a5c169f67c707b362a2a1  usr/share/icons/hicolor/scalable/apps/big-parental-controls.svg
 fdc2b12662517c22a69204a6c6a16205  usr/share/icons/hicolor/scalable/apps/parental-controls.svg
 6bb8e267a150ccbb9c0b6dfdb6588019  usr/share/libalpm/hooks/big-parental-controls-acl.hook
