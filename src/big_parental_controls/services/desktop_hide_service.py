@@ -1,7 +1,6 @@
 """Service for hiding/unhiding .desktop entries for supervised users."""
 
 import contextlib
-import json
 import logging
 import os
 import shutil
@@ -54,27 +53,13 @@ def _find_desktop_id_for_binary(binary_path: str) -> str | None:
     return None
 
 
-def get_hidden_desktop_ids(username: str) -> set[str]:
-    """Get the set of hidden desktop IDs for a supervised user."""
-    try:
-        result = subprocess.run(
-            ["pkexec", GROUP_HELPER, "desktop-get-user-hidden", username],
-            capture_output=True,
-            text=True,
-            check=False,
-            timeout=20,
-        )
-        if result.returncode == 0:
-            data = json.loads(result.stdout or "[]")
-            if isinstance(data, list):
-                return set(data)
-    except (OSError, subprocess.TimeoutExpired, json.JSONDecodeError):
-        pass
-    return set()
+def hide_app(username: str, binary_path: str) -> bool:
+    """Hide an app from the user's menu by creating a NoDisplay .desktop override."""
+    desktop_id = _find_desktop_id_for_binary(binary_path)
+    if not desktop_id:
+        log.debug("No .desktop found for %s — skipping hide", binary_path)
+        return False
 
-
-def hide_desktop(username: str, desktop_id: str) -> bool:
-    """Hide a specific .desktop entry from the user's menu."""
     try:
         subprocess.run(
             ["pkexec", GROUP_HELPER, "desktop-hide", username, desktop_id],
@@ -89,8 +74,13 @@ def hide_desktop(username: str, desktop_id: str) -> bool:
     return True
 
 
-def unhide_desktop(username: str, desktop_id: str) -> bool:
-    """Unhide a specific .desktop entry from the user's menu."""
+def unhide_app(username: str, binary_path: str) -> bool:
+    """Unhide an app from the user's menu by removing the NoDisplay override."""
+    desktop_id = _find_desktop_id_for_binary(binary_path)
+    if not desktop_id:
+        log.debug("No .desktop found for %s — skipping unhide", binary_path)
+        return False
+
     try:
         subprocess.run(
             ["pkexec", GROUP_HELPER, "desktop-unhide", username, desktop_id],
@@ -103,46 +93,6 @@ def unhide_desktop(username: str, desktop_id: str) -> bool:
 
     _refresh_menu_cache(username)
     return True
-
-
-def batch_desktop_changes(
-    username: str, hide_ids: list[str], unhide_ids: list[str]
-) -> bool:
-    """Batch hide/unhide .desktop entries for a user."""
-    hide_csv = ",".join(hide_ids) if hide_ids else ""
-    unhide_csv = ",".join(unhide_ids) if unhide_ids else ""
-    try:
-        subprocess.run(
-            ["pkexec", GROUP_HELPER, "desktop-batch", username, hide_csv, unhide_csv],
-            check=True,
-            timeout=30,
-        )
-    except subprocess.CalledProcessError:
-        log.error("Failed batch desktop changes for %s", username)
-        return False
-
-    _refresh_menu_cache(username)
-    return True
-
-
-def hide_app(username: str, target: str) -> bool:
-    """Hide an app from the user's menu by creating a NoDisplay .desktop override."""
-    desktop_id = target if target.endswith(".desktop") else _find_desktop_id_for_binary(target)
-    if not desktop_id:
-        log.debug("No .desktop found for %s — skipping hide", target)
-        return False
-
-    return hide_desktop(username, desktop_id)
-
-
-def unhide_app(username: str, target: str) -> bool:
-    """Unhide an app from the user's menu by removing the NoDisplay override."""
-    desktop_id = target if target.endswith(".desktop") else _find_desktop_id_for_binary(target)
-    if not desktop_id:
-        log.debug("No .desktop found for %s — skipping unhide", target)
-        return False
-
-    return unhide_desktop(username, desktop_id)
 
 
 def unhide_all(username: str) -> bool:

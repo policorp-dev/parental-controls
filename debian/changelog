@@ -1,7 +1,6 @@
 parental-controls (1.0.7) stable; urgency=medium
 
   * Link de ajuda/suporte como texto ou redirecionar, de forma dinamica.
-  * Resolver conflito de bloqueio entre apps com mesmo binario.
   * Padroniza dropdown do usuario supervisionado.
   * Corrigir texto de usuarios nao supervisionados.
   * Reduzir solicitacao de senha de administrador.
