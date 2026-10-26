@@ -2,14 +2,14 @@
 263e6973349994bd76bdc245a31da3b0  usr/lib/big-parental-controls/acl-reapply
 0c9285e7ff3ff88693c21367ac0bf8d7  usr/lib/big-parental-controls/big-parental-daemon
 83cf9800129d92c3b01f286de47d823e  usr/lib/big-parental-controls/big-parental-notify-listener
-fe7666c13df1732110e99f8b1335a2d1  usr/lib/big-parental-controls/group-helper
+ee3732ea010931115041a744a55f7ade  usr/lib/big-parental-controls/group-helper
 372cff3f82bf3afa902b78dc39e06dfd  usr/lib/big-parental-controls/pam-time-message
 33ab856817f1d4184393e34e3b032ac2  usr/lib/big-parental-controls/time-check
-48f17236b2c3de92bafb5e5b3beda9ca  usr/lib/python3/dist-packages/big_parental_controls/__init__.py
+56eb8eba77708f238bbd564617831c02  usr/lib/python3/dist-packages/big_parental_controls/__init__.py
 3b23846623cae7893bcf57c46cbd25dd  usr/lib/python3/dist-packages/big_parental_controls/__main__.py
 04619bbffe179b1691440ac9964381a9  usr/lib/python3/dist-packages/big_parental_controls/app.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/core/__init__.py
-bcb4c0d3e50a0c297dc06dfeda3e8ea9  usr/lib/python3/dist-packages/big_parental_controls/core/constants.py
+27b5441d3b4f87a66d25e7e980a0040a  usr/lib/python3/dist-packages/big_parental_controls/core/constants.py
 5dcb61a621259db367e1846093dacf5d  usr/lib/python3/dist-packages/big_parental_controls/core/types.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/daemon_client/__init__.py
 5ba25b02fdd414f1a8f768604c807592  usr/lib/python3/dist-packages/big_parental_controls/daemon_client/client.py
@@ -19,7 +19,7 @@ d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_con
 cf2c74a570d9105688c635cb965b7ead  usr/lib/python3/dist-packages/big_parental_controls/services/accounts_service.py
 f31c0c5ab82430dcf9bc79ff5498c237  usr/lib/python3/dist-packages/big_parental_controls/services/acl_service.py
 ba05d91e8ff643872ce3e436f5056ba8  usr/lib/python3/dist-packages/big_parental_controls/services/activity_service.py
-b8987b6a54d962acd5dacda10497179a  usr/lib/python3/dist-packages/big_parental_controls/services/desktop_hide_service.py
+74f9eab9ae9806921e19f2f7e84901dc  usr/lib/python3/dist-packages/big_parental_controls/services/desktop_hide_service.py
 e9cb6884429863b84e84efb13388f8ee  usr/lib/python3/dist-packages/big_parental_controls/services/dns_service.py
 99df984790d4ab631d39a41c175b0cb4  usr/lib/python3/dist-packages/big_parental_controls/services/malcontent_service.py
 e58f0600646731e58c282a710ddbb0bf  usr/lib/python3/dist-packages/big_parental_controls/services/polkit_service.py
@@ -28,7 +28,7 @@ d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_con
 baa66f9436677d93c24ba2796c68ac35  usr/lib/python3/dist-packages/big_parental_controls/ui/compliance.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/__init__.py
 b8e690d5c00e76516a05483d18972483  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/activity_page.py
-adb7d84900d9b8a22ce39619bf596eff  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
+c3675d96858d36c1d1d0eaa6512f3036  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
 72929108ce74475e30b9b9a45479d754  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/dns_page.py
 e983b26ec609b8e24a959ebf9f3cda6d  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/main_view.py
 53a8e45e9e43e2d79f409a4c184f66dd  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/supervised_view.py
@@ -53,7 +53,7 @@ c2acc706e51dc703c6844531c8a78e24  usr/lib/systemd/user/big-age-signal.service
 b9baa2b44a31314550f6308da4923469  usr/share/dbus-1/interfaces/br.com.biglinux.AgeSignal.xml
 c511770d7fc58dc2441e88c2c8785608  usr/share/dbus-1/services/br.com.biglinux.AgeSignal.service
 bd9a810bc4767bcd59fdd86ab23e030a  usr/share/dbus-1/system.d/br.com.biglinux.ParentalDaemon.conf
-8edae9585a76ab4610f42b56a096c3af  usr/share/doc/parental-controls/changelog.gz
+10403c0ca2da45c053d7778c28bba9b5  usr/share/doc/parental-controls/changelog.gz
 aae01b811f0a5c169f67c707b362a2a1  usr/share/icons/hicolor/scalable/apps/big-parental-controls.svg
 fdc2b12662517c22a69204a6c6a16205  usr/share/icons/hicolor/scalable/apps/parental-controls.svg
 6bb8e267a150ccbb9c0b6dfdb6588019  usr/share/libalpm/hooks/big-parental-controls-acl.hook

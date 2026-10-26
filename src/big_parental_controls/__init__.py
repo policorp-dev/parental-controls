@@ -1,6 +1,6 @@
 """Parental Controls — keep children safe on this computer."""
 
-__version__ = "1.0.4"
+__version__ = "1.0.7"
 
 if __name__ == "__main__":
     import os
