@@ -288,7 +288,7 @@ print(f"Re-applied {count} ACL(s)")
         HOME_DIR=$(get_home "$2")
         [[ -d "$HOME_DIR" ]] || exit 1
         APPS_DIR="$HOME_DIR/.local/share/applications"
-        mkdir -p "$APPS_DIR" && chown -R "$USERNAME":"$USERNAME" "$HOME_DIR/.local"
+        mkdir -p "$APPS_DIR" && chown -R "$2":"$2" "$HOME_DIR/.local"
         # Write NoDisplay override
         cat > "$APPS_DIR/$3" << EOF
 [Desktop Entry]
@@ -303,6 +303,63 @@ EOF
         HOME_DIR=$(get_home "$2")
         OVERRIDE="$HOME_DIR/.local/share/applications/$3"
         [[ -f "$OVERRIDE" ]] && rm -f "$OVERRIDE"
+        ;;
+    desktop-batch)
+        # Usage: desktop-batch USERNAME HIDE_CSV UNHIDE_CSV
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        [[ -d "$HOME_DIR" ]] || exit 1
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        mkdir -p "$APPS_DIR" && chown -R "$2":"$2" "$HOME_DIR/.local"
+        HIDE_CSV="$3"
+        UNHIDE_CSV="$4"
+        if [[ -n "$HIDE_CSV" && "$HIDE_CSV" != "" ]]; then
+            IFS=',' read -ra HIDE_IDS <<< "$HIDE_CSV"
+            for did in "${HIDE_IDS[@]}"; do
+                [[ -z "$did" ]] && continue
+                cat > "$APPS_DIR/$did" << EOF
+[Desktop Entry]
+NoDisplay=true
+EOF
+                chown "$2":"$2" "$APPS_DIR/$did"
+            done
+        fi
+        if [[ -n "$UNHIDE_CSV" && "$UNHIDE_CSV" != "" ]]; then
+            IFS=',' read -ra UNHIDE_IDS <<< "$UNHIDE_CSV"
+            for did in "${UNHIDE_IDS[@]}"; do
+                [[ -z "$did" ]] && continue
+                rm -f "$APPS_DIR/$did"
+            done
+        fi
+        ;;
+    desktop-get-user-hidden)
+        # Usage: desktop-get-user-hidden USERNAME
+        # Returns JSON array of hidden desktop IDs for the user.
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        if [[ ! -d "$APPS_DIR" ]]; then
+            echo "[]"
+            exit 0
+        fi
+        BPC_APPS_DIR="$APPS_DIR" python3 -c '
+import os, json, glob
+apps_dir = os.environ.get("BPC_APPS_DIR", "")
+hidden = []
+if os.path.isdir(apps_dir):
+    for f in glob.glob(os.path.join(apps_dir, "*.desktop")):
+        try:
+            with open(f, encoding="utf-8", errors="ignore") as fp:
+                for line in fp:
+                    if line.strip().lower() == "nodisplay=true":
+                        hidden.append(os.path.basename(f))
+                        break
+        except OSError:
+            pass
+print(json.dumps(sorted(hidden)))
+' 2>/dev/null || echo "[]"
         ;;
     desktop-unhide-all)
         # Usage: desktop-unhide-all USERNAME

@@ -174,6 +174,7 @@ class AppFilterPage(Gtk.Box):
         # Read ACL state via privileged helper so the root-owned JSON is
         # always accessible regardless of file permissions or user context.
         acl_blocked: set[str] = set()
+        hidden_desktops: set[str] = set()
         username = self._selected_username or ""
         if username:
             try:
@@ -190,6 +191,7 @@ class AppFilterPage(Gtk.Box):
                         acl_blocked = set(blocked_list)
             except (OSError, subprocess.TimeoutExpired, json.JSONDecodeError):
                 pass
+            hidden_desktops = desktop_hide_service.get_hidden_desktop_ids(username)
 
         shown_paths: set[str] = set()
 
@@ -206,8 +208,11 @@ class AppFilterPage(Gtk.Box):
             name = app_info.get_display_name()
             app_id = app_info.get_id() or abs_exe
 
-            # ACL state takes priority over malcontent OARS
-            if abs_exe in acl_blocked:
+            # Desktop hidden state takes priority for desktop entries,
+            # then ACL state, then malcontent OARS
+            if app_id in hidden_desktops:
+                allowed = False
+            elif abs_exe in acl_blocked:
                 allowed = False
             elif self._malcontent:
                 try:
@@ -268,39 +273,54 @@ class AppFilterPage(Gtk.Box):
     def _on_app_toggled(
         self, row: Adw.SwitchRow, _pspec: object, app_id: str, exe: str
     ) -> None:
-        self._pending_changes[exe] = row.get_active()
-        #self._apply_btn.set_sensitive(True)
+        self._pending_changes[app_id] = (row.get_active(), exe)
 
         if "policorp-store" in exe and row.get_active() is True:
-            self._pending_changes["/usr/bin/flatpak"] = True
+            self._pending_changes["/usr/bin/flatpak"] = (True, "/usr/bin/flatpak")
 
-        """Apply pending changes via ACL batch."""
+        """Apply pending changes via ACL batch or desktop hide."""
         if not self._selected_username or not self._pending_changes:
             return
 
         username = self._selected_username
-        block_paths = [path for path, allowed in self._pending_changes.items() if not allowed]
-        unblock_paths = [path for path, allowed in self._pending_changes.items() if allowed]
+        changes = dict(self._pending_changes)
 
         def do_apply() -> None:
-            import subprocess
+            desktop_hide_ids: list[str] = []
+            desktop_unhide_ids: list[str] = []
+            acl_block_paths: list[str] = []
+            acl_unblock_paths: list[str] = []
 
-            block_csv = ",".join(block_paths) if block_paths else ""
-            unblock_csv = ",".join(unblock_paths) if unblock_paths else ""
-            subprocess.run(
-                ["pkexec", GROUP_HELPER, "acl-batch", username, block_csv, unblock_csv],
-                check=True,
-                timeout=60,
-            )
-            for path in block_paths:
-                desktop_hide_service.hide_app(username, path)
-            for path in unblock_paths:
-                desktop_hide_service.unhide_app(username, path)
+            for item_id, (allowed, item_exe) in changes.items():
+                if item_id.endswith(".desktop"):
+                    if allowed:
+                        desktop_unhide_ids.append(item_id)
+                        if item_exe and item_exe.startswith("/"):
+                            acl_unblock_paths.append(item_exe)
+                    else:
+                        desktop_hide_ids.append(item_id)
+                else:
+                    if allowed:
+                        acl_unblock_paths.append(item_id)
+                    else:
+                        acl_block_paths.append(item_id)
+
+            if desktop_hide_ids or desktop_unhide_ids:
+                desktop_hide_service.batch_desktop_changes(
+                    username, desktop_hide_ids, desktop_unhide_ids
+                )
+
+            if acl_block_paths or acl_unblock_paths:
+                block_csv = ",".join(acl_block_paths) if acl_block_paths else ""
+                unblock_csv = ",".join(acl_unblock_paths) if acl_unblock_paths else ""
+                subprocess.run(
+                    ["pkexec", GROUP_HELPER, "acl-batch", username, block_csv, unblock_csv],
+                    check=True,
+                    timeout=60,
+                )
 
         def on_done(_result: object) -> None:
             self._pending_changes.clear()
-            #self._apply_btn.set_sensitive(False)
-            #self._show_success(_("App access updated."))
 
         def on_error(exc: Exception) -> None:
             self._show_error(str(exc))

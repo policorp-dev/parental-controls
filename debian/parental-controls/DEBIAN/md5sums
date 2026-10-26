@@ -2,7 +2,7 @@
 263e6973349994bd76bdc245a31da3b0  usr/lib/big-parental-controls/acl-reapply
 0c9285e7ff3ff88693c21367ac0bf8d7  usr/lib/big-parental-controls/big-parental-daemon
 83cf9800129d92c3b01f286de47d823e  usr/lib/big-parental-controls/big-parental-notify-listener
-ee3732ea010931115041a744a55f7ade  usr/lib/big-parental-controls/group-helper
+2693fe9a206466d43b8adff9d97ad31b  usr/lib/big-parental-controls/group-helper
 372cff3f82bf3afa902b78dc39e06dfd  usr/lib/big-parental-controls/pam-time-message
 33ab856817f1d4184393e34e3b032ac2  usr/lib/big-parental-controls/time-check
 48f17236b2c3de92bafb5e5b3beda9ca  usr/lib/python3/dist-packages/big_parental_controls/__init__.py
@@ -19,7 +19,7 @@ d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_con
 cf2c74a570d9105688c635cb965b7ead  usr/lib/python3/dist-packages/big_parental_controls/services/accounts_service.py
 f31c0c5ab82430dcf9bc79ff5498c237  usr/lib/python3/dist-packages/big_parental_controls/services/acl_service.py
 ba05d91e8ff643872ce3e436f5056ba8  usr/lib/python3/dist-packages/big_parental_controls/services/activity_service.py
-74f9eab9ae9806921e19f2f7e84901dc  usr/lib/python3/dist-packages/big_parental_controls/services/desktop_hide_service.py
+b8987b6a54d962acd5dacda10497179a  usr/lib/python3/dist-packages/big_parental_controls/services/desktop_hide_service.py
 e9cb6884429863b84e84efb13388f8ee  usr/lib/python3/dist-packages/big_parental_controls/services/dns_service.py
 99df984790d4ab631d39a41c175b0cb4  usr/lib/python3/dist-packages/big_parental_controls/services/malcontent_service.py
 f66ab2e37b73cae88e446341719e02d3  usr/lib/python3/dist-packages/big_parental_controls/services/polkit_service.py
@@ -28,7 +28,7 @@ d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_con
 bc7848a9e12a5c97f73c21b44585bef8  usr/lib/python3/dist-packages/big_parental_controls/ui/compliance.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/__init__.py
 b8e690d5c00e76516a05483d18972483  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/activity_page.py
-c3675d96858d36c1d1d0eaa6512f3036  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
+adb7d84900d9b8a22ce39619bf596eff  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
 72929108ce74475e30b9b9a45479d754  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/dns_page.py
 e983b26ec609b8e24a959ebf9f3cda6d  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/main_view.py
 a99c8de222f731bb237d0084f7bdcc61  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/supervised_view.py
