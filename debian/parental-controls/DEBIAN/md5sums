@@ -31,14 +31,14 @@ b8e690d5c00e76516a05483d18972483  usr/lib/python3/dist-packages/big_parental_con
 adb7d84900d9b8a22ce39619bf596eff  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/app_filter_page.py
 72929108ce74475e30b9b9a45479d754  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/dns_page.py
 e983b26ec609b8e24a959ebf9f3cda6d  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/main_view.py
-a99c8de222f731bb237d0084f7bdcc61  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/supervised_view.py
+53a8e45e9e43e2d79f409a4c184f66dd  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/supervised_view.py
 b9da8d438deef9b58ea3dc103189eb39  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/support_page.py
 64e589b9a8b92cbabfef5419b53e07d0  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/time_limits_page.py
 4971cdc79f58d412d6b3cdb998c66c03  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/user_detail_page.py
 1f53828151a6eb4063ad24a7639e950e  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/users_page.py
 316ce432333443e80f9ed74947e79970  usr/lib/python3/dist-packages/big_parental_controls/ui/pages/welcome_page.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/ui/widgets/__init__.py
-44ef9d6a07c75bc5cf2bfe796e80dba1  usr/lib/python3/dist-packages/big_parental_controls/ui/widgets/activity_block.py
+979bc02b133d023577c4417b6b07699e  usr/lib/python3/dist-packages/big_parental_controls/ui/widgets/activity_block.py
 73ac3cf483db7e8ed15dcb0ecacbf3d2  usr/lib/python3/dist-packages/big_parental_controls/ui/widgets/usage_chart.py
 d41d8cd98f00b204e9800998ecf8427e  usr/lib/python3/dist-packages/big_parental_controls/utils/__init__.py
 0826f88ccb94a5cb26ff42b7e6b1ac08  usr/lib/python3/dist-packages/big_parental_controls/utils/async_runner.py

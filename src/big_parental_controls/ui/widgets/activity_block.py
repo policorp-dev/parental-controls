@@ -131,6 +131,7 @@ class ActivityBlock(Gtk.Box):
         self._sessions_expander = Adw.ExpanderRow()
         self._sessions_expander.set_title(_("Sessions"))
         self._sessions_expander.set_icon_name("document-open-recent-symbolic")
+        self._sessions_expander.set_expanded(True)
         self._sessions_group.add(self._sessions_expander)
         self.append(self._sessions_group)
 

@@ -23,6 +23,7 @@ class TestActivityBlockSessions(unittest.TestCase):
         block = ActivityBlock()
         self.assertIsInstance(block._sessions_expander, Adw.ExpanderRow)
         self.assertEqual(block._sessions_expander.get_title(), _("Sessions"))
+        self.assertTrue(block._sessions_expander.get_expanded())
 
     def test_populate_sessions_empty(self) -> None:
         block = ActivityBlock()

@@ -46,6 +46,7 @@ class TestSupervisedViewHelpSection(unittest.TestCase):
         expander_rows = find_expander_rows(view)
         self.assertEqual(len(expander_rows), 1)
         self.assertEqual(expander_rows[0].get_title(), _("Help and Support"))
+        self.assertTrue(expander_rows[0].get_expanded())
 
     @patch("big_parental_controls.ui.pages.supervised_view.AccountsServiceWrapper")
     @patch("big_parental_controls.ui.pages.supervised_view.ActivityBlock", DummyActivityBlock)

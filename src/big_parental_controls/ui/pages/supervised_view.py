@@ -159,6 +159,7 @@ class SupervisedView(Gtk.Box):
         help_expander = Adw.ExpanderRow()
         help_expander.set_title(_("Help and Support"))
         help_expander.set_icon_name("help-browser-symbolic")
+        help_expander.set_expanded(True)
 
         for name, desc, uri in _get_help_resources():
             row = Adw.ActionRow()

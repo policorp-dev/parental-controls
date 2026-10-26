@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 02:44-0300\n"
+"POT-Creation-Date: 2026-10-26 03:05-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,18 +155,18 @@ msgid "Hourly chart: peak activity at %d:00"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/activity_page.py:235
-#: src/big_parental_controls/ui/widgets/activity_block.py:245
+#: src/big_parental_controls/ui/widgets/activity_block.py:246
 msgid "1 session"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/activity_page.py:238
-#: src/big_parental_controls/ui/widgets/activity_block.py:248
+#: src/big_parental_controls/ui/widgets/activity_block.py:249
 #, python-format
 msgid "%d sessions"
 msgstr ""
 
 #: src/big_parental_controls/ui/pages/activity_page.py:245
-#: src/big_parental_controls/ui/widgets/activity_block.py:255
+#: src/big_parental_controls/ui/widgets/activity_block.py:256
 msgid "still active"
 msgstr ""
 
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Here you can see your screen time and application usage."
 msgstr ""
 
-#: src/big_parental_controls/ui/pages/supervised_view.py:202
+#: src/big_parental_controls/ui/pages/supervised_view.py:203
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -913,46 +913,46 @@ msgstr ""
 msgid "Sessions"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:177
+#: src/big_parental_controls/ui/widgets/activity_block.py:178
 msgid "This week"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:179
+#: src/big_parental_controls/ui/widgets/activity_block.py:180
 msgid "Last week"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:182
+#: src/big_parental_controls/ui/widgets/activity_block.py:183
 #, python-format
 msgid "%d weeks ago"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:204
+#: src/big_parental_controls/ui/widgets/activity_block.py:205
 msgid "Extended usage detected"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:206
+#: src/big_parental_controls/ui/widgets/activity_block.py:207
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:235
-#: src/big_parental_controls/ui/widgets/activity_block.py:237
+#: src/big_parental_controls/ui/widgets/activity_block.py:236
+#: src/big_parental_controls/ui/widgets/activity_block.py:238
 msgid "No sessions on this day"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:261
+#: src/big_parental_controls/ui/widgets/activity_block.py:262
 msgid "Graphical session"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:262
+#: src/big_parental_controls/ui/widgets/activity_block.py:263
 msgid "Remote session"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:263
+#: src/big_parental_controls/ui/widgets/activity_block.py:264
 msgid "Console session"
 msgstr ""
 
-#: src/big_parental_controls/ui/widgets/activity_block.py:264
+#: src/big_parental_controls/ui/widgets/activity_block.py:265
 msgid "Session"
 msgstr ""
 
