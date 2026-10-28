@@ -523,7 +523,7 @@ fn atomic_write(path: &Path, content: &[u8]) {
         return;
     }
 
-    std::fs::copy(&tmp, &path);
+    let _ = std::fs::copy(&tmp, &path);
 }
 
 fn prettify_app_name(comm: &str) -> String {

@@ -11,15 +11,12 @@ import sys
 # Add the source directory to path
 SRC_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "big-parental-controls",
-    "usr",
-    "share",
-    "biglinux",
-    "parental-controls",
+    "src",
 )
 sys.path.insert(0, SRC_DIR)
 
-from services.polkit_service import (
+from big_parental_controls.services import polkit_service
+from big_parental_controls.services.polkit_service import (
     POLKIT_RULES_TEMPLATE,
     rules_installed,
 )
@@ -37,12 +34,7 @@ class TestPolkitService(unittest.TestCase):
             os.remove(self.rules_file)
         os.rmdir(self.tmpdir)
 
-    @patch("services.polkit_service.POLKIT_RULES_DIR")
-    @patch("services.polkit_service.RULES_FILE")
-    def test_install_polkit_rules_creates_file(self, mock_file, mock_dir):
-        mock_dir.__str__ = lambda s: self.tmpdir
-        mock_file.__str__ = lambda s: self.rules_file
-
+    def test_install_polkit_rules_creates_file(self):
         # Directly test the template content
         with open(self.rules_file, "w") as f:
             f.write(POLKIT_RULES_TEMPLATE)
@@ -83,17 +75,21 @@ class TestPolkitService(unittest.TestCase):
         """
         self.assertIn("polkit.Result.AUTH_ADMIN", POLKIT_RULES_TEMPLATE)
 
+    def test_polkit_template_blocks_parental_controls_for_supervised(self):
+        """Verify supervised users cannot access parental controls actions directly."""
+        self.assertIn("br.com.biglinux.parental-controls", POLKIT_RULES_TEMPLATE)
+
     def test_rules_file_detection(self):
         """Test rules_installed() detection."""
         # Before creation
-        with patch("services.polkit_service.RULES_FILE", self.rules_file):
+        with patch.object(polkit_service, "POLKIT_RULES_FILE", self.rules_file):
             self.assertFalse(rules_installed())
 
         # After creation
         with open(self.rules_file, "w") as f:
             f.write("test")
 
-        with patch("services.polkit_service.RULES_FILE", self.rules_file):
+        with patch.object(polkit_service, "POLKIT_RULES_FILE", self.rules_file):
             self.assertTrue(rules_installed())
 
 

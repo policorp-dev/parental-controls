@@ -25,6 +25,7 @@ class ActivityPage(Gtk.Box):
         self._activity = ActivityService()
         self._daemon = DaemonClient()
         self._selected_username: str | None = None
+        self._session_rows: list[Adw.ActionRow] = []
         self._build_ui()
 
     def _build_ui(self) -> None:
@@ -95,7 +96,10 @@ class ActivityPage(Gtk.Box):
 
         # Recent sessions list
         self._sessions_group = Adw.PreferencesGroup()
-        self._sessions_group.set_title(_("Recent Sessions"))
+        self._sessions_expander = Adw.ExpanderRow()
+        self._sessions_expander.set_title(_("Recent Sessions"))
+        self._sessions_expander.set_icon_name("document-open-recent-symbolic")
+        self._sessions_group.add(self._sessions_expander)
         self._sessions_group.set_visible(False)
         inner.append(self._sessions_group)
 
@@ -225,6 +229,15 @@ class ActivityPage(Gtk.Box):
         # Sessions list
         self._clear_session_rows()
         sessions = data["sessions"]
+        if sessions:
+            total = len(sessions)
+            if total == 1:
+                self._sessions_expander.set_subtitle(_("1 session"))
+            else:
+                self._sessions_expander.set_subtitle(
+                    _("%d sessions") % total
+                )
+
         for s in sessions:
             row = Adw.ActionRow()
             start_str = s.start.strftime("%Y-%m-%d %H:%M")
@@ -250,17 +263,16 @@ class ActivityPage(Gtk.Box):
                 accessible_role=Gtk.AccessibleRole.PRESENTATION,
             )
             row.add_prefix(icon)
-            self._sessions_group.add(row)
+            self._sessions_expander.add_row(row)
+            self._session_rows.append(row)
 
         self._sessions_group.set_visible(bool(sessions))
 
     def _clear_session_rows(self) -> None:
-        """Remove all rows from sessions group."""
-        while True:
-            child = self._sessions_group.get_first_child()
-            if child is None:
-                break
-            self._sessions_group.remove(child)
+        """Remove all rows from sessions expander."""
+        for row in self._session_rows:
+            self._sessions_expander.remove(row)
+        self._session_rows.clear()
 
     def refresh(self) -> None:
         if self._selected_username:

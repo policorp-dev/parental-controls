@@ -8,6 +8,7 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gio, Gtk
 
+from big_parental_controls.core.constants import GROUP_HELPER
 from big_parental_controls.services.activity_service import ActivityService
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
@@ -99,13 +100,9 @@ def confirm_delete_data(
             return
         import subprocess
 
-        data_dir = (
-            f"/var/lib/big-parental-controls/activity/{username}"
-        )
-
         def do_delete() -> bool:
             subprocess.run(
-                ["pkexec", "rm", "-rf", data_dir],
+                ["pkexec", GROUP_HELPER, "activity-delete", username],
                 timeout=10,
                 check=False,
             )

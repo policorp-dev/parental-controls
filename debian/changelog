@@ -1,3 +1,12 @@
+parental-controls (1.0.7) stable; urgency=medium
+
+  * Link de ajuda/suporte como texto ou redirecionar, de forma dinamica.
+  * Padroniza dropdown do usuario supervisionado.
+  * Corrigir texto de usuarios nao supervisionados.
+  * Reduzir solicitacao de senha de administrador.
+
+ -- Vinicius Neves <usuario@policorp>  Mon, 26 Oct 2026 09:08:19 -0300
+
 parental-controls (1.0.6) stable; urgency=medium
 
   * Habilitar flatpak automaticamente ao habilitar policorp-store

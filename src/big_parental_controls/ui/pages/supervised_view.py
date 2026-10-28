@@ -7,7 +7,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, Gtk
+from gi.repository import Adw, Gdk, Gio, Gtk
 
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.ui.widgets.activity_block import ActivityBlock
@@ -21,7 +21,7 @@ _ = setup_i18n()
 _HELP_RESOURCES: dict[str, list[tuple[str, str, str]]] = {
     "pt_BR": [
         ("CVV 188", "Apoio emocional, 24h", "tel:188"),
-        ("SaferNet", "Segurança online para crianças e adolescentes", "https://new.safernet.org.br/denuncie"),
+        ("SaferNet", "Denúncias e segurança digital", "https://new.safernet.org.br/denuncie"),
         ("Disque 100", "Violações de direitos humanos", "tel:100"),
     ],
     "pt": [
@@ -90,6 +90,8 @@ class SupervisedView(Gtk.Box):
         self._build_ui()
 
     def _build_ui(self) -> None:
+        self._toast_overlay = Adw.ToastOverlay()
+
         toolbar = Adw.ToolbarView()
 
         header = Adw.HeaderBar()
@@ -154,36 +156,72 @@ class SupervisedView(Gtk.Box):
 
         # Help group
         help_group = Adw.PreferencesGroup()
-        help_group.set_title(_("Help and Support"))
+        help_expander = Adw.ExpanderRow()
+        help_expander.set_title(_("Help and Support"))
+        help_expander.set_icon_name("help-browser-symbolic")
+        help_expander.set_expanded(True)
+
         for name, desc, uri in _get_help_resources():
             row = Adw.ActionRow()
             row.set_title(name)
             row.set_subtitle(desc)
             row.set_activatable(True)
-            if uri.startswith("tel:"):
-                phone = uri.removeprefix("tel:")
-                suffix = Gtk.Label(label=phone)
-                suffix.add_css_class("dim-label")
-                row.add_suffix(suffix)
-            else:
-                arrow = Gtk.Image(icon_name="adw-external-link-symbolic")
-                arrow.add_css_class("dim-label")
-                row.add_suffix(arrow)
-            row.connect("activated", self._on_help_row_activated, uri)
-            help_group.add(row)
+            val = uri.removeprefix("tel:") if uri.startswith("tel:") else uri
+            suffix = Gtk.Label(label=val)
+            suffix.add_css_class("dim-label")
+            row.add_suffix(suffix)
+
+            scheme = uri.split(":", 1)[0] if ":" in uri else ""
+            has_app = Gio.AppInfo.get_default_for_uri_scheme(scheme) is not None if scheme else False
+            icon_name = "adw-external-link-symbolic" if has_app else "edit-copy-symbolic"
+
+            action_icon = Gtk.Image(icon_name=icon_name)
+            action_icon.add_css_class("dim-label")
+            row.add_suffix(action_icon)
+
+            row.connect("activated", self._on_help_row_activated, uri, val)
+            help_expander.add_row(row)
+
+        help_group.add(help_expander)
         inner.append(help_group)
 
         clamp.set_child(inner)
         scrolled.set_child(clamp)
         toolbar.set_content(scrolled)
-        self.append(toolbar)
+        self._toast_overlay.set_child(toolbar)
+        self.append(self._toast_overlay)
 
         # Load own data
         self._activity_block.load_user(self._username)
 
+    def _copy_to_clipboard(self, text: str) -> None:
+        """Copy the text to the system clipboard and show toast confirmation."""
+        display = self.get_display() if hasattr(self, "get_display") and self.get_display() else Gdk.Display.get_default()
+        if display:
+            clipboard = display.get_clipboard()
+            clipboard.set(text)
+        toast = Adw.Toast.new(_("Copied to clipboard"))
+        self._toast_overlay.add_toast(toast)
+
     def _on_help_row_activated(
-        self, _row: Adw.ActionRow, uri: str,
+        self, _row: Adw.ActionRow, uri: str, val: str,
     ) -> None:
-        """Open the help link in the default handler."""
-        launcher = Gtk.UriLauncher(uri=uri)
-        launcher.launch(self.get_root(), None, None)
+        """Open the link with the default launcher if available, otherwise copy to clipboard."""
+        scheme = uri.split(":", 1)[0] if ":" in uri else ""
+        app_info = Gio.AppInfo.get_default_for_uri_scheme(scheme) if scheme else None
+        if app_info is not None:
+            try:
+                launcher = Gtk.UriLauncher(uri=uri)
+
+                def on_launch_finish(launcher_obj: Gtk.UriLauncher, res: Gio.AsyncResult) -> None:
+                    try:
+                        launcher_obj.launch_finish(res)
+                    except Exception:
+                        self._copy_to_clipboard(val)
+
+                root = self.get_root() if hasattr(self, "get_root") else None
+                launcher.launch(root, None, on_launch_finish)
+                return
+            except Exception:
+                pass
+        self._copy_to_clipboard(val)
